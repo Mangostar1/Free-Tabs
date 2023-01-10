@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { BassTabForm, GuitarTabForm } from "pages/Home/TabForm";
+import './styles/chooseIns.css'
 
 export default function Home() {
 
@@ -21,11 +22,11 @@ export default function Home() {
     return(
         <>
             <h1>Home</h1>
-            <form>
-                <label htmlFor="bass">Bass</label>
+            <form className='chooseIns'>
+                <label id='chooseBass' htmlFor="bass">Bass</label>
                 <input onChange={bass} type="radio" defaultValue="bass" name="instrument" className="choose-instrument" id="bass" defaultChecked />
 
-                <label htmlFor="guitar">Guitar</label>
+                <label id='chooseGuitar' htmlFor="guitar">Guitar</label>
                 <input onChange={guitar} type="radio" defaultValue="guitar" name="instrument" className="choose-instrument" id="guitar" />
             </form>
 

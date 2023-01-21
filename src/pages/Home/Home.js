@@ -9,13 +9,13 @@ export default function Home() {
     
     const bass = () => {
         setCount(0);
-        let $tabRoot = document.querySelector('.tab-root');
+        let $tabRoot = document.querySelector('.tab-root');//<-- Tab Root come from TabForm.js line 29
         $tabRoot.innerHTML = '';
     }
 
     const guitar = () => {
         setCount(1);
-        let $tabRoot = document.querySelector('.tab-root');
+        let $tabRoot = document.querySelector('.tab-root');//<-- Tab Root come from TabForm.js line 29
         $tabRoot.innerHTML = '';
     }
 

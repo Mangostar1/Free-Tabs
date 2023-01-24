@@ -1,14 +1,13 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
 import { createBassTab } from "./scripts/createBassTab";
 import { createGuitarTab } from "./scripts/createGuitarTab";
 
 export function BassTabForm() {
 
-    const $tabRoot = useRef();
-
     const sendNotes = () => {
         const strings = document.querySelectorAll('.strings');
+        const $tabRoot = document.querySelector('.tab-root');
 
         createBassTab($tabRoot, strings);
 
@@ -26,7 +25,7 @@ export function BassTabForm() {
                 <input placeholder="E" type="number" name="" className="strings" id="string-1" min="0" max="24" />
                 <input onClick={sendNotes} id="sendNote-bass" className="send-notes" type="button" defaultValue="Send Tab" />
             </form>
-            <div className="tab-root" ref={$tabRoot}></div>
+            <div className="tab-root"></div>
         </>
     )
 }

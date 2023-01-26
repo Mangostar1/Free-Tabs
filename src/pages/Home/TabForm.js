@@ -19,10 +19,10 @@ export function BassTabForm() {
     return(
         <>
             <form id="create-bass-tab" className="from-create-tab">
-                <input placeholder="G" type="number" name="" className="strings" id="string-4" min="0" max="24" />
-                <input placeholder="D" type="number" name="" className="strings" id="string-3" min="0" max="24" />
-                <input placeholder="A" type="number" name="" className="strings" id="string-2" min="0" max="24" />
-                <input placeholder="E" type="number" name="" className="strings" id="string-1" min="0" max="24" />
+                <input placeholder="G" type="number" name="" className="strings border-solid border-x border-y border-black" id="string-4" min="0" max="24" />
+                <input placeholder="D" type="number" name="" className="strings border-solid border-x border-y border-black" id="string-3" min="0" max="24" />
+                <input placeholder="A" type="number" name="" className="strings border-solid border-x border-y border-black" id="string-2" min="0" max="24" />
+                <input placeholder="E" type="number" name="" className="strings border-solid border-x border-y border-black" id="string-1" min="0" max="24" />
                 <input onClick={sendNotes} id="sendNote-bass" className="send-notes" type="button" defaultValue="Send Tab" />
             </form>
             <div className="tab-root"></div>

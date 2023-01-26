@@ -10,8 +10,8 @@ export default function PublicRoutes() {
         <header className='bg-slate-500 text-neutral-50 px-8 py-3'>
             <nav>
                 <ul className='flex justify-start gap-10'>
-                    <Link className='bg-orange-300 text-black px-2 py-1' to='/'>Home</Link>
-                    <Link className='bg-orange-300 text-black px-2 py-1' to='/asdasd'>404 Page</Link>
+                    <Link className='text-xl text-white hover:text-orange-300' to='/'>Home</Link>
+                    <Link className='text-xl text-white hover:text-orange-300' to='/asdasd'>404 Page</Link>
                 </ul>
             </nav>
         </header>

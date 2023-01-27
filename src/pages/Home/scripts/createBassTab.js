@@ -1,4 +1,4 @@
-let $bassStrings;
+let $strings;
 const scaleNotes = ['G', 'D', 'A', 'E'];
 
 export function createBassTab(element, num) {
@@ -7,34 +7,46 @@ export function createBassTab(element, num) {
 
     $bassTab.classList.add("bass-tab");
 
+    
     if (!element.hasChildNodes()) {//<-- first print on screen
-
+        
+        
         for (let i = 0; i < scaleNotes.length; i++) {
-            $bassTab.innerHTML += `
-            <p class="bass-strings">
-                ${scaleNotes[i]} ——${num[i].value === "" ? "—" : num[i].value}
-            </p>
-            `;
+
+            const bassStrings = document.createElement('p');
+            bassStrings.classList.add('bass-strings');
+            
+            bassStrings.textContent += `${scaleNotes[i]} ——${num[i].value === "" ? "—" : num[i].value}`;
+            
+            $bassTab.appendChild(bassStrings);
+
         }
+
     }
 
     if (element.hasChildNodes()) {
-        $bassStrings = document.querySelectorAll('.bass-strings');
+        $strings = document.querySelectorAll('.bass-strings');
 
-        for (let i = 0; i < $bassStrings.length; i++) {
+        for (let i = 0; i < $strings.length; i++) {
             
-            if ($bassStrings[i].innerText.length === 41) {
-                console.log('No more tabs on this div');
+            if ($strings[i].textContent.length === 41) {
+                console.log('%cNo more tabs on this div', 'background-color:yellow; font-size:20px;');
                 break;
             } else {
-                $bassStrings[i].innerText += `——${num[i].value === "" ? "—" : num[i].value}`;
+                $strings[i].textContent += `——${num[i].value === "" ? "—" : num[i].value}`;
             }
 
         }
 
     }
+    
+    setTimeout(() => {
+        $strings = document.querySelectorAll('.bass-strings');
+    
+        console.log($strings[0].textContent.length === 41);
+    }, 1);
 
-    if (!element.hasChildNodes()) {//<-- prevents double div
+    if (element.children.length === 0) {//<-- prevents double div
         element.appendChild($bassTab);
     }
 

@@ -36,5 +36,5 @@ export function createBassTab(element, num) {
     if (!element.hasChildNodes()) {//<-- prevents double div
         element.appendChild($bassTab);
     }
-    
+
 }

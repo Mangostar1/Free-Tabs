@@ -8,15 +8,8 @@ export function BassTabForm() {
     const sendNotes = () => {
         const strings = document.querySelectorAll('.strings');
         const $tabRoot = document.querySelector('.tab-root');
-        let $bassStrings = document.querySelectorAll('.bass-strings');
 
         createBassTab($tabRoot, strings);
-        
-        /* if ($bassStrings[0].innerText.length === 41) {
-            createBassTab($tabRoot, strings);
-        } */
-
-        //console.log($bassStrings[0].innerText.length === 41);
 
         for (let e = 0; e < strings.length; e++) {
             strings[e].value = '';

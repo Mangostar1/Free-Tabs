@@ -10,7 +10,7 @@ export function createBassTab(element, num) {
 
         for (let i = 0; i < scaleNotes.length; i++) {
             $bassTab.innerHTML += `
-            <p id="bass-${i}" class="bass-strings">
+            <p class="bass-strings">
                 ${scaleNotes[i]} ——${num[i].value === "" ? "—" : num[i].value}
             </p>
             `;

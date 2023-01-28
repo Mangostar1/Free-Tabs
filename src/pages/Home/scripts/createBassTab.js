@@ -4,12 +4,15 @@ const scaleNotes = ['G', 'D', 'A', 'E'];
 export function createBassTab(element, num) {
     
     const $bassTab = document.createElement('article');
-
     $bassTab.classList.add("bass-tab");
 
+    element.appendChild($bassTab);
+
+}
+
+export function addNotes(element, num) {
     
     if (!element.hasChildNodes()) {//<-- first print on screen
-        
         
         for (let i = 0; i < scaleNotes.length; i++) {
 
@@ -18,36 +21,28 @@ export function createBassTab(element, num) {
             
             bassStrings.textContent += `${scaleNotes[i]} ——${num[i].value === "" ? "—" : num[i].value}`;
             
-            $bassTab.appendChild(bassStrings);
+            element.appendChild(bassStrings);
 
         }
 
-    }
-
-    if (element.hasChildNodes()) {
+    } else {
+        
         $strings = document.querySelectorAll('.bass-strings');
-
+    
         for (let i = 0; i < $strings.length; i++) {
             
             if ($strings[i].textContent.length === 41) {
-                console.log('%cNo more tabs on this div', 'background-color:yellow; font-size:20px;');
+                console.log('%cNo more tabs on this div', 'background-color:yellow; color:#000; font-size:20px;');
                 break;
             } else {
                 $strings[i].textContent += `——${num[i].value === "" ? "—" : num[i].value}`;
             }
-
+    
         }
-
     }
-    
-    setTimeout(() => {
-        $strings = document.querySelectorAll('.bass-strings');
-    
-        console.log($strings[0].textContent.length === 41);
-    }, 1);
 
-    if (element.children.length === 0) {//<-- prevents double div
-        element.appendChild($bassTab);
-    }
+    /* if (element.hasChildNodes()) {
+
+    } */
 
 }

@@ -1,24 +1,37 @@
-import React from 'react'
+import React,{ useState } from 'react'
 
 import { createBassTab, addNotes } from "./scripts/createBassTab";
 import { createGuitarTab } from "./scripts/createGuitarTab";
 
+
 export function BassTabForm() {
+
+    const [count, setCount] = useState(0)
 
     const sendNotes = () => {
         const strings = document.querySelectorAll('.strings');
         const $tabRoot = document.querySelector('.tab-root');
 
-        //let test = document.querySelector('.bass-strings');
+        let $bassStrings = document.querySelector('.bass-strings');
         let $bassTab;
         
-        createBassTab($tabRoot);
+        if (count === 0) {//<-- create the first $tabRoot without duplicating them
+            createBassTab($tabRoot);
+            setCount(1)
+        }
         
         $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab()
+        
+        if (count === 1) {
+            addNotes($bassTab, strings);
+        }
 
-        addNotes($bassTab, strings);
+        /* if ($bassStrings.textContent.length === 41) {
+            createBassTab($tabRoot);
+            addNotes($bassTab, strings);
+            setCount(2)
+        } */
 
-        //console.log(test.textContent.length);
         
         for (let e = 0; e < strings.length; e++) {//<-- clean the inputs .strings
             strings[e].value = '';

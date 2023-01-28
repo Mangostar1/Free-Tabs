@@ -5,6 +5,7 @@ export function createBassTab(element, num) {
     
     const $bassTab = document.createElement('article');
     $bassTab.classList.add("bass-tab");
+    $bassTab.id = num;
 
     element.appendChild($bassTab);
 
@@ -40,9 +41,5 @@ export function addNotes(element, num) {
     
         }
     }
-
-    /* if (element.hasChildNodes()) {
-
-    } */
 
 }

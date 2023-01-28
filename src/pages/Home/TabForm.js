@@ -12,18 +12,18 @@ export function BassTabForm() {
         const strings = document.querySelectorAll('.strings');
         const $tabRoot = document.querySelector('.tab-root');
 
-        let $bassStrings = document.querySelector('.bass-strings');
+        //let $bassStrings = document.querySelector('.bass-strings');
         let $bassTab;
         
         if (count === 0) {//<-- create the first $tabRoot without duplicating them
-            createBassTab($tabRoot);
+            createBassTab($tabRoot, 1);//<-- create an article and insert it inside $tabRoot
             setCount(1)
         }
         
         $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab()
         
         if (count === 1) {
-            addNotes($bassTab, strings);
+            addNotes($bassTab, strings);//<-- article inside of section .tab-root, strings
         }
 
         /* if ($bassStrings.textContent.length === 41) {

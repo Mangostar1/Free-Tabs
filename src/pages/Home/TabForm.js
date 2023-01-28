@@ -12,7 +12,7 @@ export function BassTabForm() {
         const strings = document.querySelectorAll('.strings');
         const $tabRoot = document.querySelector('.tab-root');
 
-        //let $bassStrings = document.querySelector('.bass-strings');
+        let $bassStrings = document.querySelector('.bass-strings');
         let $bassTab;
         
         if (count === 0) {//<-- create the first $tabRoot without duplicating them
@@ -25,12 +25,15 @@ export function BassTabForm() {
         if (count === 1) {
             addNotes($bassTab, strings);//<-- article inside of section .tab-root, strings
         }
-
-        /* if ($bassStrings.textContent.length === 41) {
-            createBassTab($tabRoot);
-            addNotes($bassTab, strings);
-            setCount(2)
-        } */
+        if ($bassStrings.textContent.length === 41) {
+            if (count === 1) {
+                createBassTab($tabRoot, 2);
+                setCount(2)
+            }
+            
+            let test = document.getElementById('2');//<-- testeando una nueva forma de incertar un segundo articulo con nuevas tab dentro
+            addNotes(test, strings);
+        }
 
         
         for (let e = 0; e < strings.length; e++) {//<-- clean the inputs .strings

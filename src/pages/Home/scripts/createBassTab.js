@@ -1,11 +1,11 @@
 let $strings;
 const scaleNotes = ['G', 'D', 'A', 'E'];
 
-export function createBassTab(element, num) {
+export function createBassTab(element, id) {
     
     const $bassTab = document.createElement('article');
     $bassTab.classList.add("bass-tab");
-    $bassTab.id = num;
+    $bassTab.id = id;
 
     element.appendChild($bassTab);
 
@@ -19,6 +19,7 @@ export function addNotes(element, num) {
 
             const bassStrings = document.createElement('p');
             bassStrings.classList.add('bass-strings');
+            bassStrings.id = `strings-${i}`;
             
             bassStrings.textContent += `${scaleNotes[i]} ——${num[i].value === "" ? "—" : num[i].value}`;
             

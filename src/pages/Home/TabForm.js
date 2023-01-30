@@ -15,7 +15,7 @@ export function BassTabForm() {
         const strings = document.querySelectorAll('.strings');
         const $tabRoot = document.querySelector('.tab-root');
 
-        let $bassStrings = document.querySelector('.bass-strings');
+        let $bassStrings = document.querySelector('.bass-strings');//<-- create by addNotes() in scripts/createBassTab.js
         let $bassTab;
         
         if (count === 0) {//<-- create the first $tabRoot without duplicating them
@@ -31,7 +31,7 @@ export function BassTabForm() {
 
         /* -- Optimizar desde aca hacia abajo para la creacion de multiples <article> -- */
         
-        if ($bassStrings.textContent.length >= 41) {
+        if ($bassStrings.textContent.length >= 41) {//<-- if true, create a second article
             if (count === 1) {
                 createBassTab($tabRoot, 2);
                 setCount(2)
@@ -39,6 +39,32 @@ export function BassTabForm() {
             
             let secondTab = document.getElementById('2');
             addNotes(secondTab, strings, 'B');
+        }
+
+
+        let test = document.querySelector('.B')
+
+        if (test.textContent.length >= 41) {//<-- if true, create a third article
+            if (count === 2) {
+                createBassTab($tabRoot, 3);
+                setCount(3)
+            }
+            
+            let secondTab = document.getElementById('3');
+            addNotes(secondTab, strings, 'C');
+        }
+
+        let test2 = document.querySelector('.C');
+
+        if (test2.textContent.length >= 41) {//<-- if true, create a third article
+            if (count === 3) {
+                console.log('pasa por aca')
+                createBassTab($tabRoot, 4);
+                setCount(4)
+            }
+            
+            let secondTab = document.getElementById('4');
+            addNotes(secondTab, strings, 'D');
         }
 
         /* -- Hasta aca se debed e optimizar -- */

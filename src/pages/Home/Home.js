@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
+//components
 import { BassTabForm, GuitarTabForm } from "pages/Home/TabForm";
+
+//styles
 import './styles/chooseIns.css'
 
 export default function Home() {

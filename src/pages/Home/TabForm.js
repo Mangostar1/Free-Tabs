@@ -1,8 +1,11 @@
 import React,{ useState } from 'react'
 
+//scripts
 import { createBassTab, addNotes } from "./scripts/createBassTab";
 import { createGuitarTab } from "./scripts/createGuitarTab";
 
+//styles
+import './styles/tabsContent.css'
 
 export function BassTabForm() {
 
@@ -23,9 +26,9 @@ export function BassTabForm() {
         $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab()
         
         if (count === 1) {
-            addNotes($bassTab, strings, 'A');//<-- article inside of section .tab-root, strings
+            addNotes($bassTab, strings, 'A');//<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
         }
-        if ($bassStrings.textContent.length === 41) {
+        if ($bassStrings.textContent.length >= 41) {
             if (count === 1) {
                 createBassTab($tabRoot, 2);
                 setCount(2)
@@ -35,8 +38,9 @@ export function BassTabForm() {
             addNotes(test, strings, 'B');
         }
 
-        
-        for (let e = 0; e < strings.length; e++) {//<-- clean the inputs .strings
+
+        // Clean the inputs .strings
+        for (let e = 0; e < strings.length; e++) {
             strings[e].value = '';
         }
     }

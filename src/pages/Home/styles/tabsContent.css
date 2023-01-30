@@ -1,0 +1,11 @@
+.bass-tab{
+    margin: 1rem 0;
+}
+
+.bass-tab:first-child{
+    margin-top: 0px;
+}
+
+.bass-tab:last-child{
+    margin-bottom: 0px;
+}

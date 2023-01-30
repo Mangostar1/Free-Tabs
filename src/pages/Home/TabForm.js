@@ -23,7 +23,7 @@ export function BassTabForm() {
         $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab()
         
         if (count === 1) {
-            addNotes($bassTab, strings);//<-- article inside of section .tab-root, strings
+            addNotes($bassTab, strings, 'A');//<-- article inside of section .tab-root, strings
         }
         if ($bassStrings.textContent.length === 41) {
             if (count === 1) {
@@ -32,7 +32,7 @@ export function BassTabForm() {
             }
             
             let test = document.getElementById('2');//<-- testeando una nueva forma de incertar un segundo articulo con nuevas tab dentro
-            addNotes(test, strings);
+            addNotes(test, strings, 'B');
         }
 
         

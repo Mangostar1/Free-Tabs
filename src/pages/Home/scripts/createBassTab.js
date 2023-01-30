@@ -11,15 +11,15 @@ export function createBassTab(element, id) {
 
 }
 
-export function addNotes(element, num) {
+export function addNotes(element, num, id) {
     
     if (!element.hasChildNodes()) {//<-- first print on screen
         
         for (let i = 0; i < scaleNotes.length; i++) {
 
-            const bassStrings = document.createElement('p');
-            bassStrings.classList.add('bass-strings');
-            bassStrings.id = `strings-${i}`;
+            const bassStrings = document.createElement('p');//<-- create <p> the element
+            bassStrings.classList.add('bass-strings', id);//<-- add class
+            bassStrings.id = `strings-${i}-${id}`;//<-- add ID
             
             bassStrings.textContent += `${scaleNotes[i]} ——${num[i].value === "" ? "—" : num[i].value}`;
             
@@ -29,17 +29,17 @@ export function addNotes(element, num) {
 
     } else {
         
-        $strings = document.querySelectorAll('.bass-strings');
+        $strings = document.querySelectorAll(`.${id}`);
     
         for (let i = 0; i < $strings.length; i++) {
             
-            if ($strings[i].textContent.length === 41) {
+            if ($strings[i].textContent.length === 41) {//<--  aca esta el problema
                 console.log('%cNo more tabs on this div', 'background-color:yellow; color:#000; font-size:20px;');
                 break;
             } else {
                 $strings[i].textContent += `——${num[i].value === "" ? "—" : num[i].value}`;
             }
-    
+            
         }
     }
 

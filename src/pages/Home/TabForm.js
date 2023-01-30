@@ -29,7 +29,10 @@ export function BassTabForm() {
             addNotes($bassTab, strings, 'A');//<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
         }
 
-        /* -- Optimizar desde aca hacia abajo para la creacion de multiples <article> -- */
+
+        /*
+            TODO: Optimizar desde aca hacia abajo para la creacion de multiples <article>
+        */
         
         if ($bassStrings.textContent.length >= 41) {//<-- if true, create a second article
             if (count === 1) {
@@ -67,7 +70,9 @@ export function BassTabForm() {
             addNotes(secondTab, strings, 'D');
         }
 
-        /* -- Hasta aca se debed e optimizar -- */
+        /* 
+            TODO: Hasta aca se debed e optimizar 
+        */
 
 
         // Clean the inputs .strings

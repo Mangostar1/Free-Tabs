@@ -23,20 +23,25 @@ export function BassTabForm() {
             setCount(1)
         }
         
-        $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab()
+        $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab() in scripts/createBassTab.js
         
         if (count === 1) {
             addNotes($bassTab, strings, 'A');//<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
         }
+
+        /* -- Optimizar desde aca hacia abajo para la creacion de multiples <article> -- */
+        
         if ($bassStrings.textContent.length >= 41) {
             if (count === 1) {
                 createBassTab($tabRoot, 2);
                 setCount(2)
             }
             
-            let test = document.getElementById('2');//<-- testeando una nueva forma de incertar un segundo articulo con nuevas tab dentro
-            addNotes(test, strings, 'B');
+            let secondTab = document.getElementById('2');
+            addNotes(secondTab, strings, 'B');
         }
+
+        /* -- Hasta aca se debed e optimizar -- */
 
 
         // Clean the inputs .strings

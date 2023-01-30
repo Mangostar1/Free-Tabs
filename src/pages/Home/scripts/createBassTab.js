@@ -28,6 +28,7 @@ export function addNotes(element, num, idClass) {
 
     } else {
         
+        // Select second class to work without bugs when you have more than one ".bass-tab" article
         $strings = document.querySelectorAll(`.${idClass}`);
     
         for (let i = 0; i < $strings.length; i++) {

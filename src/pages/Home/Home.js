@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-//components
+//Components
 import { BassTabForm, GuitarTabForm } from "pages/Home/TabForm";
 
-//styles
+//Styles
 import './styles/chooseIns.css'
 
 export default function Home() {
@@ -22,9 +22,12 @@ export default function Home() {
         $tabRoot.innerHTML = '';
     }
 
+    const save = () => {
+        console.log('%cSe guarda la tablatura', 'font-size: 20px; background-color: blue;');
+    }
+
     return(
         <>
-            <h1>Home</h1>
             <form className='chooseIns'>
                 <label id='chooseBass' htmlFor="bass">Bass</label>
                 <input onChange={bass} type="radio" defaultValue="bass" name="instrument" className="choose-instrument" id="bass" defaultChecked />
@@ -33,7 +36,8 @@ export default function Home() {
                 <input onChange={guitar} type="radio" defaultValue="guitar" name="instrument" className="choose-instrument" id="guitar" />
             </form>
 
-            {count === 0 ? BassTabForm() : GuitarTabForm()}
+            {count === 0 ? <BassTabForm/> : <GuitarTabForm/>}
+            <button onClick={save} className='bg-orange-200 px-4 py-2 rounded hover:bg-orange-100'>Save</button>
         </>
     )
 }

@@ -1,16 +1,15 @@
 import React,{ useState } from 'react'
 
-//scripts
+//Scripts
 import { createBassTab, addNotes } from "./scripts/createBassTab";
 import { createGuitarTab } from "./scripts/createGuitarTab";
 
-//styles
+//Styles
 import './styles/tabsContent.css'
 
 export function BassTabForm() {
 
     const [count, setCount] = useState(0);
-    const [id, setId] = useState('A');
 
     const sendNotes = () => {
         const strings = document.querySelectorAll('.strings');
@@ -31,9 +30,7 @@ export function BassTabForm() {
         }
 
 
-        /*
-            TODO: Optimizar desde aca hacia abajo para la creacion de multiples <article>
-        */
+        //TODO: Optimizar desde aca hacia abajo para la creacion de multiples <article>
         
         if ($bassStrings.textContent.length >= 41) {//<-- if true, create a second article
             if (count === 1) {
@@ -71,9 +68,7 @@ export function BassTabForm() {
             addNotes(secondTab, strings, 'D');
         }
 
-        /* 
-            TODO: Hasta aca se debed e optimizar 
-        */
+        //TODO: Hasta aca se debed e optimizar
 
 
         // Clean the inputs .strings
@@ -84,7 +79,7 @@ export function BassTabForm() {
 
     return(
         <>
-            <form id="create-bass-tab" className="from-create-tab flex gap-2">
+            <form id="create-bass-tab" className="from-create-tab flex gap-2 my-5 justify-center">
                 <input placeholder="G" type="number" name="G" className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-4" min="0" max="24" />
                 <input placeholder="D" type="number" name="D" className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-3" min="0" max="24" />
                 <input placeholder="A" type="number" name="A" className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-2" min="0" max="24" />
@@ -111,7 +106,7 @@ export function GuitarTabForm() {
 
     return(
         <>
-            <form id="create-guitar-tab" className="from-create-tab flex gap-2">
+            <form id="create-guitar-tab" className="from-create-tab flex gap-2 my-5 justify-center">
                 <input placeholder="E" type="number" name="e" className="strings border-solid border-x border-y border-black" id="string-6" min="0" max="24" />
                 <input placeholder="B" type="number" name="B" className="strings border-solid border-x border-y border-black" id="string-5" min="0" max="24" />
                 <input placeholder="G" type="number" name="G" className="strings border-solid border-x border-y border-black" id="string-4" min="0" max="24" />

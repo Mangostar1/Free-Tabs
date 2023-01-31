@@ -1,11 +1,11 @@
-.bass-tab{
+.bass-tab, .guitar-tab{
     margin: 1rem 0;
 }
 
-.bass-tab:first-child{
+.bass-tab:first-child, .guitar-tab:first-child{
     margin-top: 0px;
 }
 
-.bass-tab:last-child{
+.bass-tab:last-child, .guitar-tab:first-child{
     margin-bottom: 0px;
 }

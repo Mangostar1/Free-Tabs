@@ -11,7 +11,7 @@ export function createBassTab(element, id) {
 
 }
 
-export function addNotes(element, num, idClass) {
+export function addBassNotes(element, num, idClass) {
     
     if (!element.hasChildNodes()) {//<-- first print on screen
         

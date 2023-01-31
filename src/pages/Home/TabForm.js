@@ -119,7 +119,7 @@ export function GuitarTabForm() {
     return(
         <>
             <form id="create-guitar-tab" className="from-create-tab flex gap-2 my-5 justify-center">
-                <input placeholder="E" type="number" name="e" className="strings  w-16 h-8 border-solid border-x border-y border-black" id="string-6" min="0" max="24" />
+                <input placeholder="e" type="number" name="e" className="strings  w-16 h-8 border-solid border-x border-y border-black" id="string-6" min="0" max="24" />
                 <input placeholder="B" type="number" name="B" className="strings  w-16 h-8 border-solid border-x border-y border-black" id="string-5" min="0" max="24" />
                 <input placeholder="G" type="number" name="G" className="strings  w-16 h-8 border-solid border-x border-y border-black" id="string-4" min="0" max="24" />
                 <input placeholder="D" type="number" name="D" className="strings  w-16 h-8 border-solid border-x border-y border-black" id="string-3" min="0" max="24" />

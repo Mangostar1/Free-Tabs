@@ -1,5 +1,5 @@
 let $guitarStrings;
-const scaleNotes = ['E', 'B' ,'G', 'D', 'A', 'E'];
+const scaleNotes = ['e', 'B' ,'G', 'D', 'A', 'E'];
 
 export function createGuitarTab(element, id) {
     

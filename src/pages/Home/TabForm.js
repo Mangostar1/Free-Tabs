@@ -9,7 +9,8 @@ import './styles/tabsContent.css'
 
 export function BassTabForm() {
 
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(0);
+    const [id, setId] = useState('A');
 
     const sendNotes = () => {
         const strings = document.querySelectorAll('.strings');

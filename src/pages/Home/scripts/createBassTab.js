@@ -34,7 +34,7 @@ export function addNotes(element, num, idClass) {
         for (let i = 0; i < $strings.length; i++) {
             
             if ($strings[i].textContent.length >= 41) {
-                console.log('%cNo more tabs on this div', 'background-color:yellow; color:#000; font-size:20px;');
+                console.log('%cNo more tabs on this article .bass-tab', 'background-color:yellow; color:#000; font-size:20px;');
                 break;
             } else {
                 $strings[i].textContent += `——${num[i].value === "" ? "—" : num[i].value}`;

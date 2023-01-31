@@ -7,6 +7,28 @@ import { createGuitarTab } from "./scripts/createGuitarTab";
 //Styles
 import './styles/tabsContent.css'
 
+//Object for <BassTabForm/> and <GuitarTabForm/>
+const data = [//<-- used in sendNotes for create multiple articles .bass-tab from createBassTab() and .guitar-tab from createGuitarTab()
+        {
+            className: 'A',
+            nextClassName: 'B',
+            countState: 1,
+            id: 2
+        },
+        {
+            className: 'B',
+            nextClassName: 'C',
+            countState: 2,
+            id: 3
+        },
+        {
+            className: 'C',
+            nextClassName: 'D',
+            countState: 3,
+            id: 4
+        },
+    ];
+
 export function BassTabForm() {
 
     const [count, setCount] = useState(0);
@@ -15,7 +37,6 @@ export function BassTabForm() {
         const strings = document.querySelectorAll('.strings');
         const $tabRoot = document.querySelector('.tab-root');
 
-        let $bassStrings = document.querySelector('.bass-strings');//<-- create by addNotes() in scripts/createBassTab.js
         let $bassTab;
         
         if (count === 0) {//<-- create the first $tabRoot without duplicating them
@@ -29,47 +50,15 @@ export function BassTabForm() {
             addNotes($bassTab, strings, 'A');//<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
         }
 
-
-        //TODO: Optimizar desde aca hacia abajo para la creacion de multiples <article>
-        
-        if ($bassStrings.textContent.length >= 41) {//<-- if true, create a second article
-            if (count === 1) {
-                createBassTab($tabRoot, 2);
-                setCount(2)
+        data.forEach(({ className, nextClassName, countState, id }) => {
+            if (document.querySelector(`.${className}`).textContent.length >= 41) {
+                if (count === countState) {
+                createBassTab($tabRoot, id);
+                setCount(id)
+                }
+                addNotes(document.getElementById(id), strings, nextClassName);
             }
-            
-            let secondTab = document.getElementById('2');
-            addNotes(secondTab, strings, 'B');
-        }
-
-
-        let test = document.querySelector('.B')
-
-        if (test.textContent.length >= 41) {//<-- if true, create a third article
-            if (count === 2) {
-                createBassTab($tabRoot, 3);
-                setCount(3)
-            }
-            
-            let secondTab = document.getElementById('3');
-            addNotes(secondTab, strings, 'C');
-        }
-
-        let test2 = document.querySelector('.C');
-
-        if (test2.textContent.length >= 41) {//<-- if true, create a third article
-            if (count === 3) {
-                console.log('pasa por aca')
-                createBassTab($tabRoot, 4);
-                setCount(4)
-            }
-            
-            let secondTab = document.getElementById('4');
-            addNotes(secondTab, strings, 'D');
-        }
-
-        //TODO: Hasta aca se debed e optimizar
-
+        });
 
         // Clean the inputs .strings
         for (let e = 0; e < strings.length; e++) {

@@ -1,9 +1,54 @@
+:root{
+    --borderRadius: 1rem;
+}
+
 .chooseIns{
     margin: 20px 0 0 20px;
 }
 
+#bass, #guitar{
+    display: none;
+}
+
 #chooseBass ,#chooseGuitar{
     background-color: rgb(254 215 170);
-    padding: 5px 10px;
+    padding: 5px 10px 5px 10px;
     font-size: 1.1rem;
+    position: relative;
+}
+
+#chooseBass{
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+}
+#chooseGuitar{
+    border-top-right-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+}
+#bass:checked + label, #guitar:checked + label{
+    padding: 5px 40px 5px 10px;
+}
+#bass:checked + label::after{
+    content: url('../../../assets/icons/guitar-bass-head.svg');
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 -2px 10px;
+    position:absolute;
+    right: 10px;
+    top: 7px;
+}
+#guitar:checked + label::after{
+    content: url('../../../assets/icons/guitar-head.svg');
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 -2px 10px;
+    position:absolute;
+    right: 10px;
+    top: 7px;
+}
+
+#bass:checked + label, #guitar:checked + label {
+    background-color: rgb(255, 158, 47);
 }

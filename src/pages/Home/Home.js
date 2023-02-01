@@ -29,11 +29,11 @@ export default function Home() {
     return(
         <>
             <form className='chooseIns'>
-                <label id='chooseBass' htmlFor="bass">Bass</label>
                 <input onChange={bass} type="radio" defaultValue="bass" name="instrument" className="choose-instrument" id="bass" defaultChecked />
+                <label id='chooseBass' htmlFor="bass">Bass</label>
 
-                <label id='chooseGuitar' htmlFor="guitar">Guitar</label>
                 <input onChange={guitar} type="radio" defaultValue="guitar" name="instrument" className="choose-instrument" id="guitar" />
+                <label id='chooseGuitar' htmlFor="guitar">Guitar</label>
             </form>
 
             {count === 0 ? <BassTabForm/> : <GuitarTabForm/>}

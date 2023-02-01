@@ -32,8 +32,41 @@ const data = [//<-- used in sendNotes for create multiple articles .bass-tab fro
 export function BassTabForm() {
 
     const [count, setCount] = useState(0);
+    const [valueG, setValueG] = useState('');
+    const [valueD, setValueD] = useState('');
+    const [valueA, setValueA] = useState('');
+    const [valueE, setValueE] = useState('');
+
+    const handleChangeG = (e) => {
+        const valid = /^[0-9xXbph~\/—]*$/.test(e.target.value);
+        if (valid) {
+            setValueG(e.target.value);
+        }
+    }
+
+    const handleChangeD = (e) => {
+        const valid = /^[0-9xXbph~\/—]*$/.test(e.target.value);
+        if (valid) {
+            setValueD(e.target.value);
+        }
+    }
+
+    const handleChangeA = (e) => {
+        const valid = /^[0-9xXbph~\/—]*$/.test(e.target.value);
+        if (valid) {
+            setValueA(e.target.value);
+        }
+    }
+
+    const handleChangeE = (e) => {
+        const valid = /^[0-9xXbph~\/—]*$/.test(e.target.value);
+        if (valid) {
+            setValueE(e.target.value);
+        }
+    }
 
     const sendNotes = () => {
+
         try {
             const strings = document.querySelectorAll('.strings');
             const $tabRoot = document.querySelector('.tab-root');
@@ -58,23 +91,24 @@ export function BassTabForm() {
                     addBassNotes(document.getElementById(id), strings, nextClassName);
                 }
             });
-            // Clean the inputs .strings
-            for (let e = 0; e < strings.length; e++) {
-                strings[e].value = '';
-            }
         } catch (error) {
             console.error(error)
         }
+
+        setValueG('');
+        setValueD('');
+        setValueA('');
+        setValueE('');
 
     }
 
     return(
         <>
             <form id="create-bass-tab" className="from-create-tab flex gap-2 my-5 justify-center">
-                <input placeholder="G" type="text" name="G" className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-4" min="0" max="24" />
-                <input placeholder="D" type="text" name="D" className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-3" min="0" max="24" />
-                <input placeholder="A" type="text" name="A" className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-2" min="0" max="24" />
-                <input placeholder="E" type="text" name="E" className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-1" min="0" max="24" />
+                <input placeholder="G" type="text" name="G" value={valueG} onChange={handleChangeG} className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-4" />
+                <input placeholder="D" type="text" name="D" value={valueD} onChange={handleChangeD} className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-3" />
+                <input placeholder="A" type="text" name="A" value={valueA} onChange={handleChangeA} className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-2" />
+                <input placeholder="E" type="text" name="E" value={valueE} onChange={handleChangeE} className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-1" />
                 <input onClick={sendNotes} id="sendNote-bass" className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100" type="button" defaultValue="Send Tab" />
             </form>
             <section className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4"></section>

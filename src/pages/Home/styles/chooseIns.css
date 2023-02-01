@@ -1,5 +1,8 @@
 :root{
     --borderRadius: 1rem;
+    --orange100: #FFEDD5;
+    --orange200: #fed7aa;
+    --orange400: #fb923c;
 }
 
 .chooseIns{
@@ -11,10 +14,14 @@
 }
 
 #chooseBass ,#chooseGuitar{
-    background-color: rgb(254 215 170);
+    background-color: var(--orange200);
     padding: 5px 10px 5px 10px;
     font-size: 1.1rem;
     position: relative;
+}
+
+#chooseBass:hover ,#chooseGuitar:hover{
+    background-color: var(--orange100);
 }
 
 #chooseBass{
@@ -50,5 +57,5 @@
 }
 
 #bass:checked + label, #guitar:checked + label {
-    background-color: rgb(255, 158, 47);
+    background-color: var(--orange400)
 }

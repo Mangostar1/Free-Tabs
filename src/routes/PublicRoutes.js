@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 import Home from "pages/Home/Home";
+import YourTabs from "pages/YourTabs/YourTabs"
 import Error404Page from "pages/404/404";
 
 export default function PublicRoutes() {
@@ -11,6 +12,7 @@ export default function PublicRoutes() {
             <nav>
                 <ul className='flex justify-start gap-10'>
                     <Link className='text-xl text-white hover:text-orange-300' to='/'>Home</Link>
+                    <Link className='text-xl text-white hover:text-orange-300' to='/tabs'>Your Tabs</Link>
                     <Link className='text-xl text-white hover:text-orange-300' to='/asdasd'>404 Page</Link>
                 </ul>
             </nav>
@@ -18,6 +20,7 @@ export default function PublicRoutes() {
 
             <Routes>
                 <Route path='/' element={<Home />}/>
+                <Route path='/tabs' element={<YourTabs />}/>
                 <Route path='*' element={<Error404Page />} />
             </Routes>
         </BrowserRouter>

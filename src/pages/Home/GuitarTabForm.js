@@ -80,7 +80,7 @@ export function GuitarTabForm() {
                 }
             });
         } catch (error) {
-            console.error(error)
+            //console.error(error)
         }
 
         setValueEm('');
@@ -89,6 +89,16 @@ export function GuitarTabForm() {
         setValueD('');
         setValueA('');
         setValueE('');
+    }
+
+    const clean = () => {
+        /* let tabRoot = document.querySelector('.tab-root');
+        let lasChild = tabRoot.lastChild;
+
+        tabRoot.removeChild(lasChild); */
+
+        document.querySelector('.tab-root').innerHTML = '';
+        setCount(0);
     }
 
     return(
@@ -102,6 +112,7 @@ export function GuitarTabForm() {
                 <input placeholder="E" type="text" name="E" value={valueE} onChange={handleChangeE} className="strings  w-16 h-8 border-solid border-x border-y border-black" id="string-1" min="0" max="24" />
                 <input onClick={sendNotes} id="sendNote-guitar" className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100" type="button" defaultValue="Send Tab" />
             </form>
+            <button onClick={clean} className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100">Clean Tab</button>
             <section className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4"></section>
         </>
     )

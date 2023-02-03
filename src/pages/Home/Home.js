@@ -11,24 +11,26 @@ export default function Home() {
 
     const [count, setCount] = useState(0);
     
-    const bass = () => {
+    const [tab, setTab] = useState();
+    const [html, setHtml] = useState();
+    
+    const bass = () => {//<-- show Bass Tab
         setCount(0);
-        let $tabRoot = document.querySelector('.tab-root');//<-- Tab Root come from TabForm.js line 29
-        $tabRoot.innerHTML = '';
+        document.querySelector('.tab-root').innerHTML = '';//<-- Tab Root come from TabForm.js line 29
     }
 
-    const guitar = () => {
+    const guitar = () => {//<-- show Guitar Tab
         setCount(1);
-        let $tabRoot = document.querySelector('.tab-root');//<-- Tab Root come from TabForm.js line 29
-        $tabRoot.innerHTML = '';
+        document.querySelector('.tab-root').innerHTML = '';//<-- Tab Root come from TabForm.js line 29
     }
 
     const save = () => {
-        console.log('%cSe guarda la tablatura', 'font-size: 20px; background-color: blue;');
+        setTab(document.querySelector('.tab-root').outerHTML);
+        setHtml(<div dangerouslySetInnerHTML={{ __html: tab }} />);
     }
 
     return(
-        <>
+        <main>
             <form className='chooseIns'>
                 <input onChange={bass} type="radio" defaultValue="bass" name="instrument" className="choose-instrument" id="bass" defaultChecked />
                 <label id='chooseBass' htmlFor="bass">Bass</label>
@@ -38,7 +40,19 @@ export default function Home() {
             </form>
 
             {count === 0 ? <BassTabForm/> : <GuitarTabForm/>}
-            <button onClick={save} className='bg-orange-200 px-4 py-2 rounded hover:bg-orange-100'>Save</button>
-        </>
+            <div className='mt-5 ml-5'>
+                <h2 className=''>Glossary</h2>
+                <ul className=''>
+                    <li className=''>x  Dead note</li>
+                    <li className=''>h  Hammer-on</li>
+                    <li className=''>p  Pull-off</li>
+                    <li className=''>b  Bend</li>
+                    <li className=''>/  Slide up</li>
+                    <li className=''>~  Vibrato</li>
+                </ul>
+            </div>
+            <button onClick={save} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
+            {html}
+        </main>
     )
 }

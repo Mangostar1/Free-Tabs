@@ -26,7 +26,7 @@ export default function Home() {
 
     const save = () => {
         setTab(document.querySelector('.tab-root').outerHTML);
-        setHtml(<div dangerouslySetInnerHTML={{ __html: tab }} />);
+        setHtml(<div className='test' dangerouslySetInnerHTML={{ __html: tab }} />);//!<-- Quiza tenga que reemplazar el uso de dangerouslySetInnerHTML() en un futuro.
     }
 
     return(

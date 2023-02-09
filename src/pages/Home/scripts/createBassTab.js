@@ -3,7 +3,7 @@ const scaleNotes = ['G', 'D', 'A', 'E'];
 
 export function createBassTab(element, id) {
     
-    const $bassTab = document.createElement('article');
+    const $bassTab = document.createElement('div');
     $bassTab.classList.add("bass-tab");//<-- main class
     $bassTab.id = id;
 

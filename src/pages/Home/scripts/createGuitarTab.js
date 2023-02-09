@@ -3,7 +3,7 @@ const scaleNotes = ['e', 'B' ,'G', 'D', 'A', 'E'];
 
 export function createGuitarTab(element, id) {
     
-    const $guitarTab = document.createElement('article');
+    const $guitarTab = document.createElement('div');
     $guitarTab.classList.add('guitar-tab');
     $guitarTab.id = id;
 

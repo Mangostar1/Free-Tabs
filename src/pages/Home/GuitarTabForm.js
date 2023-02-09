@@ -92,17 +92,12 @@ export function GuitarTabForm() {
     }
 
     const clean = () => {
-        /* let tabRoot = document.querySelector('.tab-root');
-        let lasChild = tabRoot.lastChild;
-
-        tabRoot.removeChild(lasChild); */
-
         document.querySelector('.tab-root').innerHTML = '';
         setCount(0);
     }
 
     return(
-        <>
+        <section>
             <form id="create-guitar-tab" className="from-create-tab flex gap-2 my-5 justify-center">
                 <input placeholder="e" type="text" name="e" value={valueEm} onChange={handleChangeEm} className="strings  w-16 h-8 border-solid border-x border-y border-black" id="string-6" min="0" max="24" />
                 <input placeholder="B" type="text" name="B" value={valueB} onChange={handleChangeB} className="strings  w-16 h-8 border-solid border-x border-y border-black" id="string-5" min="0" max="24" />
@@ -113,7 +108,7 @@ export function GuitarTabForm() {
                 <input onClick={sendNotes} id="sendNote-guitar" className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100" type="button" defaultValue="Send Tab" />
             </form>
             <button onClick={clean} className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100">Clean Tab</button>
-            <section className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4"></section>
-        </>
+            <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4"></article>
+        </section>
     )
 }

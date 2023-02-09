@@ -1,10 +1,14 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 import Home from "pages/Home/Home";
-import YourTabs from "pages/YourTabs/YourTabs"
+import YourTabs from "pages/User/YourTabs/YourTabs"
 import Error404Page from "pages/404/404";
 import LogIn from "pages/User/LogIn";
 import SignUp from "pages/User/SignUp";
+
+import LoginBtn from 'component/LoginBtn';
+
+import PrivateRoutes from 'routes/PrivateRoutes';
 
 export default function PublicRoutes() {
     return(
@@ -14,18 +18,18 @@ export default function PublicRoutes() {
             <nav className='flex justify-between'>
                 <ul className='flex justify-start gap-10'>
                     <Link className='text-xl text-white hover:text-orange-300' to='/'>Home</Link>
-                    <Link className='text-xl text-white hover:text-orange-300' to='/tabs'>Your Tabs</Link>
+                    <Link className='text-xl text-white hover:text-orange-300' to='/user/tabs'>Your Tabs</Link>
                 </ul>
                 <ul className='flex justify-start gap-3'>
                     <Link className='text-slate-600 hover:text-slate-900 bg-orange-300 hover:bg-orange-400 px-2 rounded' to='/user/signup'>Sign up</Link>
-                    <Link className='text-slate-600 hover:text-slate-900 bg-orange-300 hover:bg-orange-400 px-2 rounded' to='/user/login'>Log in</Link>
+                    <LoginBtn />
                 </ul>
             </nav>
         </header>
 
             <Routes>
                 <Route path='/' element={<Home />}/>
-                <Route path='/tabs' element={<YourTabs />}/>
+                <Route path='/user/tabs' element={<PrivateRoutes> <YourTabs /> </PrivateRoutes>}/>
                 <Route path='/user/signup' element={<SignUp />} />
                 <Route path='/user/login' element={<LogIn />} />
                 <Route path='*' element={<Error404Page />} />

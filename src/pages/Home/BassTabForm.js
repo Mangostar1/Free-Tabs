@@ -92,7 +92,7 @@ export function BassTabForm() {
     }
 
     return(
-        <section>
+        <>
             <form id="create-bass-tab" className="from-create-tab flex gap-2 my-5 justify-center">
                 <input placeholder="G" type="text" name="G" value={valueG} onChange={handleChangeG} className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-4" />
                 <input placeholder="D" type="text" name="D" value={valueD} onChange={handleChangeD} className="strings w-16 h-8 border-solid border-x border-y border-black" id="string-3" />
@@ -102,17 +102,6 @@ export function BassTabForm() {
             </form>
             <button onClick={clean} className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100">Clean Tab</button>
             <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4"></article>
-            <div className='mt-5 ml-5'>
-                <h2 className=''>Glossary</h2>
-                <ul className=''>
-                    <li className=''>x  Dead note</li>
-                    <li className=''>h  Hammer-on</li>
-                    <li className=''>p  Pull-off</li>
-                    <li className=''>b  Bend</li>
-                    <li className=''>/  Slide up</li>
-                    <li className=''>~  Vibrato</li>
-                </ul>
-            </div>
-        </section>
+        </>
     )
 }

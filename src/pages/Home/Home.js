@@ -40,17 +40,6 @@ export default function Home() {
             </form>
 
             {count === 0 ? <BassTabForm/> : <GuitarTabForm/>}
-            <div className='mt-5 ml-5'>
-                <h2 className=''>Glossary</h2>
-                <ul className=''>
-                    <li className=''>x  Dead note</li>
-                    <li className=''>h  Hammer-on</li>
-                    <li className=''>p  Pull-off</li>
-                    <li className=''>b  Bend</li>
-                    <li className=''>/  Slide up</li>
-                    <li className=''>~  Vibrato</li>
-                </ul>
-            </div>
             <button onClick={save} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
             {html}
         </main>

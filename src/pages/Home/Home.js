@@ -11,6 +11,7 @@ import './styles/chooseIns.css' //<-- For <from> line 30
 export default function Home() {
 
     const [view, setView] = useState(0);
+    const [tabSabed, setTabSabed] = useState();
     
     const viewBassTab = () => {//<-- show Bass Tab
         setView(0);
@@ -26,6 +27,10 @@ export default function Home() {
         console.log('Se entra en modo edicion en la tab guardada');
     }
 
+    const handleDataChange = (newData) => {
+        setTabSabed(newData);
+    };
+
     return(
         <main className='grid grid-cols-2'>
             <form className='chooseIns'>
@@ -37,12 +42,13 @@ export default function Home() {
             </form>
 
             <section className='test1'>
-                {view === 0 ? <BassTabForm/> : <GuitarTabForm/>}
+                {view === 0 ? <BassTabForm onDataChange={handleDataChange} /> : <GuitarTabForm onDataChange={handleDataChange} />}
             </section>
             <section id='Tab-Saved'>
                 <button onClick={editTab} className="mt-2">
                     <AiFillSetting></AiFillSetting>
                 </button>
+                <div dangerouslySetInnerHTML={{ __html: tabSabed }} />
             </section>
         </main>
     )

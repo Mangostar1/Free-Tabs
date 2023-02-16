@@ -28,7 +28,7 @@ const data = [//<-- used in sendNotes for create multiple articles .bass-tab fro
         },
     ];
 
-export function GuitarTabForm() {
+export function GuitarTabForm({onDataChange}) {
 
     const [count, setCount] = useState(0);
     const [valueEm, setValueEm] = useState('');
@@ -96,6 +96,11 @@ export function GuitarTabForm() {
         setCount(0);
     }
 
+    const saveNotes = () => {
+        const tabRootSaved = document.querySelector('.tab-root').outerHTML;
+        onDataChange(tabRootSaved);
+    }
+
     return(
         <>
             <form id="create-guitar-tab" className="from-create-tab flex gap-2 my-5 justify-center">
@@ -120,7 +125,7 @@ export function GuitarTabForm() {
                         <li className='list-disc'>~  Vibrato</li>
                     </ul>
                 </div>
-                <button className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
+                <button onClick={saveNotes} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
         </>
     )
 }

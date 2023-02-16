@@ -6,9 +6,6 @@ import { createBassTab, addBassNotes } from "./scripts/createBassTab";
 //Styles
 import './styles/tabsContent.css'
 
-//Context
-import TabContext from 'contexts/tabContext'
-
 //Object for <BassTabForm/>
 const data = [//<-- used in sendNotes for create multiple articles .bass-tab from createBassTab() and .guitar-tab from createGuitarTab()
         {
@@ -31,7 +28,7 @@ const data = [//<-- used in sendNotes for create multiple articles .bass-tab fro
         },
     ];
 
-export function BassTabForm() {
+export function BassTabForm({onDataChange}) {
 
     const [count, setCount] = useState(0);
     const [valueG, setValueG] = useState('');
@@ -93,10 +90,10 @@ export function BassTabForm() {
         document.querySelector('.tab-root').innerHTML = '';
         setCount(0);
     }
-
+    
     const saveNotes = () => {
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
-        console.log(tabRootSaved);
+        onDataChange(tabRootSaved);
     }
 
     return(

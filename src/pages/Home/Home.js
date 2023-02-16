@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { AiFillSetting } from "react-icons/ai";
+
 //Components
 import { BassTabForm } from "pages/Home/BassTabForm";
 import { GuitarTabForm } from "pages/Home/GuitarTabForm";
 
 //Styles
-import './styles/chooseIns.css'
+import './styles/chooseIns.css' //<-- For <from> line 30
 
 export default function Home() {
 
     const [view, setView] = useState(0);
-    const [tab, setTab] = useState();
     
     const viewBassTab = () => {//<-- show Bass Tab
         setView(0);
@@ -22,14 +22,13 @@ export default function Home() {
         document.querySelector('.tab-root').innerHTML = '';//<-- Tab Root come from TabForm.js line 29
     }
 
-    const saveCurrentTab = () => {
-        setTab(document.querySelector('.tab-root').outerHTML);
-        document.getElementById('Tab-Saved').innerHTML = tab;
+    const editTab = () => {
+        console.log('Se entra en modo edicion en la tab guardada');
     }
 
     return(
         <main className='grid grid-cols-2'>
-            <form className='chooseIns'>{/* This form have custom styles in Home/styles/chooseIns.css */}
+            <form className='chooseIns'>
                 <input onChange={viewBassTab} type="radio" defaultValue="bass" name="instrument" className="choose-instrument" id="bass" defaultChecked />
                 <label id='chooseBass' htmlFor="bass">Bass</label>
 
@@ -39,20 +38,12 @@ export default function Home() {
 
             <section className='test1'>
                 {view === 0 ? <BassTabForm/> : <GuitarTabForm/>}
-                <div className='mt-5 ml-5'>
-                    <h2 className='font-bold'>Glossary:</h2>
-                    <ul className='ml-6'>
-                        <li className='list-disc'>x  Dead note</li>
-                        <li className='list-disc'>h  Hammer-on</li>
-                        <li className='list-disc'>p  Pull-off</li>
-                        <li className='list-disc'>b  Bend</li>
-                        <li className='list-disc'>/  Slide up</li>
-                        <li className='list-disc'>~  Vibrato</li>
-                    </ul>
-                </div>
-                <button onClick={saveCurrentTab} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
             </section>
-            <section id='Tab-Saved'></section>
+            <section id='Tab-Saved'>
+                <button onClick={editTab} className="mt-2">
+                    <AiFillSetting></AiFillSetting>
+                </button>
+            </section>
         </main>
     )
 }

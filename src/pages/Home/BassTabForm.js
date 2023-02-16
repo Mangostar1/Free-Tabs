@@ -6,7 +6,10 @@ import { createBassTab, addBassNotes } from "./scripts/createBassTab";
 //Styles
 import './styles/tabsContent.css'
 
-//Object for <BassTabForm/> and <GuitarTabForm/>
+//Context
+import TabContext from 'contexts/tabContext'
+
+//Object for <BassTabForm/>
 const data = [//<-- used in sendNotes for create multiple articles .bass-tab from createBassTab() and .guitar-tab from createGuitarTab()
         {
             className: 'A',
@@ -91,6 +94,11 @@ export function BassTabForm() {
         setCount(0);
     }
 
+    const saveNotes = () => {
+        const tabRootSaved = document.querySelector('.tab-root').outerHTML;
+        console.log(tabRootSaved);
+    }
+
     return(
         <>
             <form id="create-bass-tab" className="from-create-tab flex gap-2 my-5 justify-center">
@@ -102,6 +110,18 @@ export function BassTabForm() {
             </form>
             <button onClick={clean} className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100">Clean Tab</button>
             <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4"></article>
+            <div className='mt-5 ml-5'>
+                    <h2 className='font-bold'>Glossary:</h2>
+                    <ul className='ml-6'>
+                        <li className='list-disc'>x  Dead note</li>
+                        <li className='list-disc'>h  Hammer-on</li>
+                        <li className='list-disc'>p  Pull-off</li>
+                        <li className='list-disc'>b  Bend</li>
+                        <li className='list-disc'>/  Slide up</li>
+                        <li className='list-disc'>~  Vibrato</li>
+                    </ul>
+                </div>
+                <button onClick={saveNotes} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
         </>
     )
 }

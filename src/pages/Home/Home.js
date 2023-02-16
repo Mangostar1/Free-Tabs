@@ -23,10 +23,6 @@ export default function Home() {
         document.querySelector('.tab-root').innerHTML = '';//<-- Tab Root come from TabForm.js line 29
     }
 
-    const editTab = () => {
-        console.log('Se entra en modo edicion en la tab guardada');
-    }
-
     const handleDataChange = (newData) => {
         setTabSabed(newData);
     };
@@ -44,10 +40,7 @@ export default function Home() {
             <section className='test1'>
                 {view === 0 ? <BassTabForm onDataChange={handleDataChange} /> : <GuitarTabForm onDataChange={handleDataChange} />}
             </section>
-            <section id='Tab-Saved'>
-                <button onClick={editTab} className="mt-2">
-                    <AiFillSetting></AiFillSetting>
-                </button>
+            <section id='Tab-Saved' className='bg-gray-100'>
                 <div dangerouslySetInnerHTML={{ __html: tabSabed }} />
             </section>
         </main>

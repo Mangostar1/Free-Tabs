@@ -39,7 +39,7 @@ export function GuitarTabForm({onDataChange}) {
     const [valueE, setValueE] = useState('');
 
 
-    const handleChange = (e, setValue) => {
+    const handleChange = (e, setValue) => {//<-- Regular expression to validate the form.
         const valid = /^[0-9xXbph~/—]*$/.test(e.target.value);
         if (valid) {
             setValue(e.target.value);
@@ -54,7 +54,7 @@ export function GuitarTabForm({onDataChange}) {
     const handleChangeE = (e) => handleChange(e, setValueE);
 
 
-    const sendNotes = () => {
+    const sendNotes = () => {//<-- Send notes on input text to the "tap-root" element.
         try {
             let strings = document.querySelectorAll('.strings');
             let $tabRoot = document.querySelector('.tab-root');
@@ -79,8 +79,7 @@ export function GuitarTabForm({onDataChange}) {
                     addGuitarNotes(document.getElementById(id), strings, nextClassName);
                 }
             });
-        } catch (error) {
-            //console.error(error)
+        } catch (error) {//<-- It's empty because don't need send the error on console.
         }
 
         setValueEm('');
@@ -91,12 +90,12 @@ export function GuitarTabForm({onDataChange}) {
         setValueE('');
     }
 
-    const clean = () => {
+    const clean = () => {//<-- Clear input text from create bass tab.
         document.querySelector('.tab-root').innerHTML = '';
         setCount(0);
     }
 
-    const saveNotes = () => {
+    const saveNotes = () => {//<-- Send the tab created to <Home /> Component.
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
         onDataChange(tabRootSaved);
     }

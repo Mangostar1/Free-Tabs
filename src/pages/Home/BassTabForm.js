@@ -76,8 +76,7 @@ export function BassTabForm({onDataChange}) {
                     addBassNotes(document.getElementById(id), strings, nextClassName);
                 }
             });
-        } catch (error) {//<-- It's empty because don't need send the error on console.
-        }
+        } catch (error) {}//<-- It's empty because don't need send the error on console.
 
         setValueG('');
         setValueD('');
@@ -93,6 +92,10 @@ export function BassTabForm({onDataChange}) {
     const saveNotes = () => {//<-- Send the tab created to <Home /> Component.
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
         onDataChange(tabRootSaved);
+    }
+
+    const edit = () => {
+        
     }
 
     return(
@@ -117,6 +120,7 @@ export function BassTabForm({onDataChange}) {
                         <li className='list-disc'>~  Vibrato</li>
                     </ul>
                 </div>
+                <button onClick={edit} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Edit</button>
                 <button onClick={saveNotes} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
         </>
     )

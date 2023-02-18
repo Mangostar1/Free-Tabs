@@ -1,13 +1,15 @@
 import React,{ useState } from 'react'
+import { useEffect } from 'react';
 
 //Scripts
 import { createBassTab, addBassNotes } from "./scripts/createBassTab";
 
 //Styles
-import './styles/tabsContent.css'
+import './styles/tabsContent.css';
+import './styles/editTabStiles.css';
 
 //Object for <BassTabForm/>
-const data = [//<-- used in sendNotes for create multiple articles .bass-tab from createBassTab() and .guitar-tab from createGuitarTab()
+const data = [//<-- used in sendNotes for create multiple articles .bass-tab from createBassTab().
         {
             className: 'A',
             nextClassName: 'B',
@@ -35,6 +37,7 @@ export function BassTabForm({onDataChange}) {
     const [valueD, setValueD] = useState('');
     const [valueA, setValueA] = useState('');
     const [valueE, setValueE] = useState('');
+    const [canEdit, setCanEdit] = useState(false);
 
 
     const handleChange = (e, setValue) => {//<-- Regular expression to validate the form.
@@ -78,6 +81,7 @@ export function BassTabForm({onDataChange}) {
             });
         } catch (error) {}//<-- It's empty because don't need send the error on console.
 
+        //To clear the inputs
         setValueG('');
         setValueD('');
         setValueA('');
@@ -95,8 +99,17 @@ export function BassTabForm({onDataChange}) {
     }
 
     const edit = () => {
-        
+        if (canEdit === false) {
+            setCanEdit(true);
+            document.querySelector('.bass-tab p').classList.add('selected')
+        }
+
+        if (canEdit === true) {
+            setCanEdit(false);
+            document.querySelector('.bass-tab p').classList.remove('selected');
+        }
     }
+
 
     return(
         <>

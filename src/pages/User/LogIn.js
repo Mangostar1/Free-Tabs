@@ -22,7 +22,7 @@ export default function LogIn() {
             navigate('/user/tabs');
         })
         .catch(({response}) => {
-            console.error(response.data)
+            console.error(response.data, 'error!!')
         })
     }
     

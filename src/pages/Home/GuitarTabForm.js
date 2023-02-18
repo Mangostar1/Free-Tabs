@@ -7,7 +7,7 @@ import { createGuitarTab, addGuitarNotes } from "./scripts/createGuitarTab";
 import './styles/tabsContent.css'
 
 //Object for <GuitarTabForm/>
-const data = [//<-- used in sendNotes for create multiple articles .bass-tab from createBassTab() and .guitar-tab from createGuitarTab()
+const data = [//<-- used in sendNotes for create multiple articles .guitar-tab from createGuitarTab().
         {
             className: 'A',
             nextClassName: 'B',
@@ -79,9 +79,9 @@ export function GuitarTabForm({onDataChange}) {
                     addGuitarNotes(document.getElementById(id), strings, nextClassName);
                 }
             });
-        } catch (error) {//<-- It's empty because don't need send the error on console.
-        }
+        } catch (error) {}//<-- It's empty because don't need send the error on console.
 
+        //To clear the inputs.
         setValueEm('');
         setValueB('');
         setValueG('');

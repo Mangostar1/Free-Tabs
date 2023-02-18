@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { AiFillSetting } from "react-icons/ai";
 
 //Components
 import { BassTabForm } from "pages/Home/BassTabForm";
@@ -28,7 +27,7 @@ export default function Home() {
     };
 
     return(
-        <main className='grid grid-cols-2'>
+        <main className=''>
             <form className='chooseIns'>
                 <input onChange={viewBassTab} type="radio" defaultValue="bass" name="instrument" className="choose-instrument" id="bass" defaultChecked />
                 <label id='chooseBass' htmlFor="bass">Bass</label>

@@ -25,7 +25,7 @@ export default function PublicRoutes() {
                     <UserTabs />
                 </ul>
                 <ul className='flex justify-start gap-3'>
-                    <Link className='text-slate-600 hover:text-slate-900 bg-orange-300 hover:bg-orange-400 px-2 rounded' to='/user/signup'>Sign up</Link>
+                    <Link className='text-slate-700 hover:text-slate-900 bg-orange-300 hover:bg-orange-400 px-2 rounded' to='/user/signup'>Sign up</Link>
                     <LoginBtn />
                 </ul>
             </nav>

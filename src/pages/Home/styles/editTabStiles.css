@@ -1,3 +1,7 @@
 .selected:hover{
     background-color: blueviolet;
 }
+
+.editing{
+    background-color: red;
+}

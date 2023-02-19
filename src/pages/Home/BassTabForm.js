@@ -1,5 +1,4 @@
 import React,{ useState } from 'react'
-import { useEffect } from 'react';
 
 //Scripts
 import { createBassTab, addBassNotes } from "./scripts/createBassTab";
@@ -99,16 +98,34 @@ export function BassTabForm({onDataChange}) {
     }
 
     const edit = () => {
+        let bassTab = document.querySelectorAll('.bass-tab');
+
         if (canEdit === false) {
+
             setCanEdit(true);
-            document.querySelector('.bass-tab p').classList.add('selected')
+            
+            for (let i = 0; i < bassTab.length; i++) {
+                bassTab[i].classList.add('selected');
+            }
         }
 
         if (canEdit === true) {
+
             setCanEdit(false);
-            document.querySelector('.bass-tab p').classList.remove('selected');
+
+            for (let i = 0; i < bassTab.length; i++) {
+                bassTab[i].classList.remove('selected');
+            }
         }
     }
+
+    document.addEventListener('click', (e) => {
+
+        if (e.target.matches('.selected')) {
+            e.target.classList.add('editing');
+        }
+
+    })
 
 
     return(

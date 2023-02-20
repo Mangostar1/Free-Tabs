@@ -99,7 +99,7 @@ export function BassTabForm({onDataChange}) {
 
     const edit = () => {
         let bassTab = document.querySelectorAll('.bass-tab');
-
+        
         if (canEdit === false) {
 
             setCanEdit(true);

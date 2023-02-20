@@ -1,5 +1,11 @@
+.bass-tab{
+    border: 2px solid transparent;
+    transition: all .1s ease;
+}
+
 .selected:hover{
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
+    border: 2px solid red;
 }
 
 .editing{

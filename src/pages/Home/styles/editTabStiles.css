@@ -4,7 +4,7 @@
 }
 
 .selected:hover{
-    /* background-color: blueviolet; */
+    background-color: rgba(137, 43, 226, 0.164);
     border: 2px solid red;
 }
 

@@ -31,6 +31,7 @@ const data = [//<-- used in sendNotes for create multiple articles .bass-tab fro
 
 export function BassTabForm({onDataChange}) {
 
+    //States
     const [count, setCount] = useState(0);
     const [valueG, setValueG] = useState('');
     const [valueD, setValueD] = useState('');
@@ -39,10 +40,10 @@ export function BassTabForm({onDataChange}) {
     const [canEdit, setCanEdit] = useState(false);
 
 
-    const handleChange = (e, setValue) => {//<-- Regular expression to validate the form.
-        const valid = /^[0-9xXbph~/—]*$/.test(e.target.value);
+    const handleChange = ({target}, setValue) => {//<-- Regular expression to validate the form.
+        const valid = /^[0-9xXbph~/—]*$/.test(target.value);
         if (valid) {
-            setValue(e.target.value);
+            setValue(target.value);
         }
     };
 
@@ -119,10 +120,12 @@ export function BassTabForm({onDataChange}) {
         }
     }
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', ({target}) => {
 
-        if (e.target.matches('.selected')) {
-            e.target.classList.add('editing');
+        if (target.matches('.selected')) {
+            target.classList.add('editing');
+        } else if (target.matches('.selected p')) {
+            target.parentNode.classList.add('editing');
         }
 
     })
@@ -140,18 +143,18 @@ export function BassTabForm({onDataChange}) {
             <button onClick={clean} className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100">Clean Tab</button>
             <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4"></article>
             <div className='mt-5 ml-5'>
-                    <h2 className='font-bold'>Glossary:</h2>
-                    <ul className='ml-6'>
-                        <li className='list-disc'>x  Dead note</li>
-                        <li className='list-disc'>h  Hammer-on</li>
-                        <li className='list-disc'>p  Pull-off</li>
-                        <li className='list-disc'>b  Bend</li>
-                        <li className='list-disc'>/  Slide up</li>
-                        <li className='list-disc'>~  Vibrato</li>
-                    </ul>
-                </div>
-                <button onClick={edit} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Edit</button>
-                <button onClick={saveNotes} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
+                <h2 className='font-bold'>Glossary:</h2>
+                <ul className='ml-6'>
+                    <li className='list-disc'>x  Dead note</li>
+                    <li className='list-disc'>h  Hammer-on</li>
+                    <li className='list-disc'>p  Pull-off</li>
+                    <li className='list-disc'>b  Bend</li>
+                    <li className='list-disc'>/  Slide up</li>
+                    <li className='list-disc'>~  Vibrato</li>
+                </ul>
+            </div>
+            <button onClick={edit} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Edit</button>
+            <button onClick={saveNotes} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Save</button>
         </>
     )
 }

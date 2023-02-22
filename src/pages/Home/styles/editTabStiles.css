@@ -3,11 +3,14 @@
     transition: all .1s ease;
 }
 
-.selected:hover{
-    background-color: rgba(137, 43, 226, 0.164);
+.selected{
     border: 2px solid red;
 }
 
+.selected:hover{
+    border: 2px solid gray;
+}
+
 .editing{
-    background-color: red;
+    background-color: #fff;
 }

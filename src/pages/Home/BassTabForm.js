@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 
 //Scripts
 import { createBassTab, addBassNotes } from "./scripts/createBassTab";
@@ -37,7 +37,8 @@ export function BassTabForm({onDataChange}) {
     const [valueD, setValueD] = useState('');
     const [valueA, setValueA] = useState('');
     const [valueE, setValueE] = useState('');
-    const [canEdit, setCanEdit] = useState(false);
+    const [isSelected, setIsSelected] = useState(false);
+    const [editing, setEditing] = useState(false);
 
 
     const handleChange = ({target}, setValue) => {//<-- Regular expression to validate the form.
@@ -101,18 +102,18 @@ export function BassTabForm({onDataChange}) {
     const edit = () => {
         let bassTab = document.querySelectorAll('.bass-tab');
         
-        if (canEdit === false) {
+        if (isSelected === false) {
 
-            setCanEdit(true);
+            setIsSelected(true);
             
             for (let i = 0; i < bassTab.length; i++) {
                 bassTab[i].classList.add('selected');
             }
         }
 
-        if (canEdit === true) {
+        if (isSelected === true) {
 
-            setCanEdit(false);
+            setIsSelected(false);
 
             for (let i = 0; i < bassTab.length; i++) {
                 bassTab[i].classList.remove('selected');
@@ -120,15 +121,29 @@ export function BassTabForm({onDataChange}) {
         }
     }
 
-    document.addEventListener('click', ({target}) => {
-
-        if (target.matches('.selected')) {
-            target.classList.add('editing');
-        } else if (target.matches('.selected p')) {
-            target.parentNode.classList.add('editing');
+    useEffect(() => {
+        const handleEditClick = ({target}) => {
+            if (target.matches('.selected') && !editing) {
+                setEditing(true);
+                target.classList.add('editing');
+            }
+            if (target.matches('.selected p') && !editing) {
+                setEditing(true);
+                target.parentNode.classList.add('editing');
+            }
         }
 
-    })
+        document.addEventListener('click', handleEditClick);
+
+        return () => {
+            document.removeEventListener('click', handleEditClick);
+        }
+    }, [editing])
+
+    const handleState = () => {
+        setEditing(false);
+        document.querySelector('.selected').classList.remove('editing');
+    }
 
 
     return(
@@ -141,7 +156,10 @@ export function BassTabForm({onDataChange}) {
                 <input onClick={sendNotes} id="sendNote-bass" className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100" type="button" defaultValue="Send Tab" />
             </form>
             <button onClick={clean} className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100">Clean Tab</button>
-            <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4"></article>
+            <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4">
+                {editing === true ? <button name="Acept" className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100" onClick={handleState}> Acept </button> : ""}
+                {editing === true ? <button name="Cancel" className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100" onClick={handleState}> Cancel </button> : ""}
+            </article>
             <div className='mt-5 ml-5'>
                 <h2 className='font-bold'>Glossary:</h2>
                 <ul className='ml-6'>

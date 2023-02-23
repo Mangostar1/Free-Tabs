@@ -39,6 +39,7 @@ export function BassTabForm({onDataChange}) {
     const [valueE, setValueE] = useState('');
     const [isSelected, setIsSelected] = useState(false);
     const [editing, setEditing] = useState(false);
+    const [eleEditing, setEleEditing] = useState()
 
 
     const handleChange = ({target}, setValue) => {//<-- Regular expression to validate the form.
@@ -47,6 +48,13 @@ export function BassTabForm({onDataChange}) {
             setValue(target.value);
         }
     };
+
+    const handleEditState = () => {//<-- 
+        setEditing(false);
+        for (let i = 0; i < document.querySelectorAll('.selected').length; i++) {
+            document.querySelectorAll('.selected')[i].classList.remove('editing');
+        }
+    }
 
     const handleChangeG = (e) => handleChange(e, setValueG);
     const handleChangeD = (e) => handleChange(e, setValueD);
@@ -89,17 +97,20 @@ export function BassTabForm({onDataChange}) {
         setValueE('');
     }
 
+
     const clean = () => {//<-- Clear input text from create bass tab.
         document.querySelector('.tab-root').innerHTML = '';
         setCount(0);
     }
     
+
     const saveNotes = () => {//<-- Send the tab created to <Home /> Component.
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
         onDataChange(tabRootSaved);
     }
 
-    const edit = () => {
+
+    const edit = () => {//<-- Used to enter in edit mode.
         let bassTab = document.querySelectorAll('.bass-tab');
         
         if (isSelected === false) {
@@ -121,15 +132,23 @@ export function BassTabForm({onDataChange}) {
         }
     }
 
-    useEffect(() => {
+
+    useEffect(() => {//<-- Used for select tab to edit
         const handleEditClick = ({target}) => {
             if (target.matches('.selected') && !editing) {
                 setEditing(true);
                 target.classList.add('editing');
+                //Saves the current state of the element before editing.
+                let elementEditing = document.querySelector('.editing');
+                setEleEditing(elementEditing);
+
             }
             if (target.matches('.selected p') && !editing) {
                 setEditing(true);
                 target.parentNode.classList.add('editing');
+                //Saves the current state of the element before editing.
+                let elementEditing = document.querySelector('.editing');
+                setEleEditing(elementEditing);
             }
         }
 
@@ -140,9 +159,19 @@ export function BassTabForm({onDataChange}) {
         }
     }, [editing])
 
-    const handleState = () => {
-        setEditing(false);
-        document.querySelector('.selected').classList.remove('editing');
+
+    const saveEdit = () => {
+        handleEditState();
+    }
+
+
+    const cancelEdit = () => {
+        
+        let elementEditing = document.querySelector('.editing');
+        
+        elementEditing.innerHTML = eleEditing.innerHTML;
+        handleEditState();
+
     }
 
 
@@ -157,8 +186,8 @@ export function BassTabForm({onDataChange}) {
             </form>
             <button onClick={clean} className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100">Clean Tab</button>
             <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4">
-                {editing === true ? <button name="Acept" className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100" onClick={handleState}> Acept </button> : ""}
-                {editing === true ? <button name="Cancel" className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100" onClick={handleState}> Cancel </button> : ""}
+                {editing === true ? <button name="Acept" className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100" onClick={saveEdit}> Acept </button> : ""}
+                {editing === true ? <button name="Cancel" className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100" onClick={cancelEdit}> Cancel </button> : ""}
             </article>
             <div className='mt-5 ml-5'>
                 <h2 className='font-bold'>Glossary:</h2>

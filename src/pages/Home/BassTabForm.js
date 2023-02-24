@@ -39,7 +39,7 @@ export function BassTabForm({onDataChange}) {
     const [valueE, setValueE] = useState('');//<-- To control user input by expression regular.
     const [isSelected, setIsSelected] = useState(false);
     const [editing, setEditing] = useState(false);
-    const [eleEditing, setEleEditing] = useState();
+    const [originalContent, setOriginalContent] = useState("");
 
 
     const handleChange = ({target}, setValue) => {//<-- Regular expression to validate the form.
@@ -63,7 +63,7 @@ export function BassTabForm({onDataChange}) {
 
 
     const sendNotes = () => {//<-- Send notes on input text to the "tap-root" element.
-        const strings = document.querySelectorAll('.strings');
+        const strings = document.querySelectorAll('.strings');//<-- This className come from <form id="create-bass-tab">, it's on return of this component.
         const $tabRoot = document.querySelector('.tab-root');
         let $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab() in scripts/createBassTab.js
 
@@ -92,8 +92,11 @@ export function BassTabForm({onDataChange}) {
         }
 
         if (isSelected === true) {
-            console.log(eleEditing.children[0].innerText.length/* , strings, $tabRoot, $bassTab */);
+            //console.log(eleEditing, strings, $tabRoot, $bassTab);
             
+            for (let i = 0; i < 4; i++) {
+                document.querySelector('.editing').children[i].innerText += `—${strings[i].value === "" ? "—" : strings[i].value}`;
+            }
         }
 
     //To clear the inputs
@@ -145,16 +148,15 @@ export function BassTabForm({onDataChange}) {
                 setEditing(true);
                 target.classList.add('editing');
                 //Saves the current state of the element before editing.
-                let elementEditing = document.querySelector('.editing');
-                setEleEditing(elementEditing);
-
+                const elementEditing = document.querySelector('.editing');
+                setOriginalContent(elementEditing.innerHTML);
             }
             if (target.matches('.selected p') && !editing) {
                 setEditing(true);
                 target.parentNode.classList.add('editing');
                 //Saves the current state of the element before editing.
-                let elementEditing = document.querySelector('.editing');
-                setEleEditing(elementEditing);
+                const elementEditing = document.querySelector('.editing');
+                setOriginalContent(elementEditing.innerHTML);
             }
         }
 
@@ -167,18 +169,14 @@ export function BassTabForm({onDataChange}) {
 
 
     const saveEdit = () => {
-        //code
         handleEditState();
     }
 
 
     const cancelEdit = () => {
-        
         let elementEditing = document.querySelector('.editing');
-        
-        elementEditing.innerHTML = eleEditing.innerHTML;
+        elementEditing.innerHTML = originalContent;
         handleEditState();
-
     }
 
 

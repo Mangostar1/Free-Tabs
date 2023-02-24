@@ -11,6 +11,7 @@ export function createBassTab(element, id) {
 
 }
 
+/* This function create <p> element and insert tab notes inside */
 export function addBassNotes(element, num, idClass) {
     
     if (!element.hasChildNodes()) {//<-- first print on screen
@@ -43,4 +44,8 @@ export function addBassNotes(element, num, idClass) {
         }
     }
 
+}
+
+export function addEditNotes(element) {
+    
 }

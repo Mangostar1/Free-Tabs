@@ -33,13 +33,13 @@ export function BassTabForm({onDataChange}) {
 
     //States
     const [count, setCount] = useState(0);
-    const [valueG, setValueG] = useState('');
-    const [valueD, setValueD] = useState('');
-    const [valueA, setValueA] = useState('');
-    const [valueE, setValueE] = useState('');
+    const [valueG, setValueG] = useState('');//<-- To control user input by expression regular.
+    const [valueD, setValueD] = useState('');//<-- To control user input by expression regular.
+    const [valueA, setValueA] = useState('');//<-- To control user input by expression regular.
+    const [valueE, setValueE] = useState('');//<-- To control user input by expression regular.
     const [isSelected, setIsSelected] = useState(false);
     const [editing, setEditing] = useState(false);
-    const [eleEditing, setEleEditing] = useState()
+    const [eleEditing, setEleEditing] = useState();
 
 
     const handleChange = ({target}, setValue) => {//<-- Regular expression to validate the form.
@@ -48,53 +48,59 @@ export function BassTabForm({onDataChange}) {
             setValue(target.value);
         }
     };
-
-    const handleEditState = () => {//<-- 
-        setEditing(false);
-        for (let i = 0; i < document.querySelectorAll('.selected').length; i++) {
-            document.querySelectorAll('.selected')[i].classList.remove('editing');
-        }
-    }
-
     const handleChangeG = (e) => handleChange(e, setValueG);
     const handleChangeD = (e) => handleChange(e, setValueD);
     const handleChangeA = (e) => handleChange(e, setValueA);
     const handleChangeE = (e) => handleChange(e, setValueE);
 
 
+    const handleEditState = () => {//<-- To set in false the "editingState" after user change or not the tab selected to edit.
+        setEditing(false);
+        for (let i = 0; i < document.querySelectorAll('.selected').length; i++) {
+            document.querySelectorAll('.selected')[i].classList.remove('editing');
+        }
+    }
+
+
     const sendNotes = () => {//<-- Send notes on input text to the "tap-root" element.
+        const strings = document.querySelectorAll('.strings');
+        const $tabRoot = document.querySelector('.tab-root');
+        let $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab() in scripts/createBassTab.js
 
-        try {
-            const strings = document.querySelectorAll('.strings');
-            const $tabRoot = document.querySelector('.tab-root');
-            
-            if (count === 0) {//<-- create the first $tabRoot without duplicating them
-                createBassTab($tabRoot, 1);//<-- create an article and insert it inside $tabRoot
-                setCount(1)
-            }
-            
-            let $bassTab = document.querySelector('.bass-tab');//<-- create by createBassTab() in scripts/createBassTab.js
-            
-            if (count === 1) {
-                addBassNotes($bassTab, strings, 'A');//<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
-            }
-    
-            data.forEach(({ className, nextClassName, countState, id }) => {
-                if (document.querySelector(`.${className}`).textContent.length >= 41) {
-                    if (count === countState) {
-                    createBassTab($tabRoot, id);
-                    setCount(id)
-                    }
-                    addBassNotes(document.getElementById(id), strings, nextClassName);
+        if (isSelected === false) {
+            try {
+                
+                if (count === 0) {//<-- create the first $tabRoot without duplicating them
+                    createBassTab($tabRoot, 1);//<-- create an article and insert it inside $tabRoot
+                    setCount(1)
                 }
-            });
-        } catch (error) {}//<-- It's empty because don't need send the error on console.
+                
+                if (count === 1) {
+                    addBassNotes($bassTab, strings, 'A');//<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
+                }
+        
+                data.forEach(({ className, nextClassName, countState, id }) => {
+                    if (document.querySelector(`.${className}`).textContent.length >= 41) {
+                        if (count === countState) {
+                        createBassTab($tabRoot, id);
+                        setCount(id)
+                        }
+                        addBassNotes(document.getElementById(id), strings, nextClassName);
+                    }
+                });
+            } catch (error) {}//<-- It's empty because don't need send the error on console.
+        }
 
-        //To clear the inputs
-        setValueG('');
-        setValueD('');
-        setValueA('');
-        setValueE('');
+        if (isSelected === true) {
+            console.log(eleEditing.children[0].innerText.length/* , strings, $tabRoot, $bassTab */);
+            
+        }
+
+    //To clear the inputs
+    setValueG('');
+    setValueD('');
+    setValueA('');
+    setValueE('');
     }
 
 
@@ -161,6 +167,7 @@ export function BassTabForm({onDataChange}) {
 
 
     const saveEdit = () => {
+        //code
         handleEditState();
     }
 
@@ -195,9 +202,7 @@ export function BassTabForm({onDataChange}) {
                     <li className='list-disc'>x  Dead note</li>
                     <li className='list-disc'>h  Hammer-on</li>
                     <li className='list-disc'>p  Pull-off</li>
-                    <li className='list-disc'>b  Bend</li>
                     <li className='list-disc'>/  Slide up</li>
-                    <li className='list-disc'>~  Vibrato</li>
                 </ul>
             </div>
             <button onClick={edit} className='bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100'>Edit</button>

@@ -92,10 +92,12 @@ export function BassTabForm({onDataChange}) {
         }
 
         if (isSelected === true) {
-            //console.log(eleEditing, strings, $tabRoot, $bassTab);
-            
             for (let i = 0; i < 4; i++) {
-                document.querySelector('.editing').children[i].innerText += `—${strings[i].value === "" ? "—" : strings[i].value}`;
+                if (document.querySelector('.editing').children[i].textContent.length >= 41) {
+                    break;
+                } else {
+                    document.querySelector('.editing').children[i].innerText += `—${strings[i].value === "" ? "—" : strings[i].value}`;
+                }
             }
         }
 

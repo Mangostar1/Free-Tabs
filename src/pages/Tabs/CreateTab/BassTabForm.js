@@ -1,11 +1,11 @@
 import React,{ useEffect, useState } from 'react'
 
 //Scripts
-import { createBassTab, addBassNotes } from "./scripts/createBassTab";
+import { createBassTab, addBassNotes } from ".././scripts/createBassTab";
 
 //Styles
-import './styles/tabsContent.css';
-import './styles/editTabStiles.css';
+import '.././styles/tabsContent.css';
+import '.././styles/editTabStiles.css';
 
 //Object for <BassTabForm/>
 const data = [//<-- used in sendNotes for create multiple articles .bass-tab from createBassTab().

@@ -1,10 +1,10 @@
 import React,{ useState } from 'react'
 
 //Scripts
-import { createGuitarTab, addGuitarNotes } from "./scripts/createGuitarTab";
+import { createGuitarTab, addGuitarNotes } from ".././scripts/createGuitarTab";
 
 //Styles
-import './styles/tabsContent.css'
+import '.././styles/tabsContent.css'
 
 //Object for <GuitarTabForm/>
 const data = [//<-- used in sendNotes for create multiple articles .guitar-tab from createGuitarTab().

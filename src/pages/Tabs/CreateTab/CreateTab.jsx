@@ -37,6 +37,8 @@ export default function CreateTab() {
             </form>
 
             <section className='test1'>
+                <input placeholder='Band Name' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
+                <input placeholder='Song Name' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
                 {view === 0 ? <BassTabForm onDataChange={handleDataChange} /> : <GuitarTabForm onDataChange={handleDataChange} />}
             </section>
             <section id='Tab-Saved' className='bg-gray-100'>

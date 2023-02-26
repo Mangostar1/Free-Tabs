@@ -8,6 +8,7 @@ import Error404Page from "pages/404/404";
 import LogIn from "pages/User/LogIn";
 import SignUp from "pages/User/SignUp";
 import CreateTab from "pages/Tabs/CreateTab/CreateTab";
+import ViewTab from 'pages/Tabs/ViewTab/ViewTab';
 
 //Components
 import LoginBtn from 'component/LoginBtn';
@@ -24,6 +25,7 @@ export default function PublicRoutes() {
             <nav className='flex justify-between'>
                 <ul className='flex justify-start gap-10'>
                     <Link className='text-xl text-white hover:text-orange-300' to='/'>Home</Link>
+                    <Link className='text-xl text-white hover:text-orange-300' to='/tab/view'>View Tabs</Link>
                     <Link className='text-xl text-white hover:text-orange-300' to='/tab/create'>Create Tab</Link>
                     <UserTabs route='/user/mytabs' nameRoute='My Tabs' />
                     <UserTabs route='/user/profile' nameRoute='User Profile' />
@@ -37,6 +39,7 @@ export default function PublicRoutes() {
 
             <Routes>
                 <Route path='/' element={<Home />}/>
+                <Route path='/tab/view' element={<ViewTab />} />
                 <Route path='/tab/create' element={<CreateTab />} />
                 <Route path='/user/profile' element={<PrivateRoutes> <UserPprofile /> </PrivateRoutes>}/>
                 <Route path='/user/mytabs' element={<PrivateRoutes> <MyTabs /> </PrivateRoutes>}/>

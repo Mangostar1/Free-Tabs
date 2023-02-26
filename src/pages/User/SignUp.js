@@ -10,7 +10,7 @@ export default function SignUp() {
 
     return(
         <div className="flex justify-center items-center h-screen">
-            <form className="bg-slate-200 flex flex-col items-center justify-center gap-4 w-80 h-64 rounded">
+            <form className="bg-slate-200 flex flex-col items-center justify-center gap-4 w-80 h-72 rounded">
                 <input type="email" name="E-mail" placeholder="E-mail" className="bg-slate-100 w-64 h-8" />
                 <input type="text" name="username" placeholder="username" className="bg-slate-100 w-64 h-8" />
                 <input type="password" name="password" placeholder="Password" className="bg-slate-100 w-64 h-8" />

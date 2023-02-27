@@ -2,7 +2,7 @@ import React,{ useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 //Scripts
-import { createBassTab, addBassNotes } from ".././scripts/createBassTab";
+import { createBassTab, addBassNotes, scaleNotes } from ".././scripts/createBassTab";
 
 //Styles
 import '.././styles/tabsContent.css';
@@ -17,19 +17,20 @@ import { addHTML } from 'store/slice/tabCreated/tabCreatedSlice';
 export function BassTabForm({onDataChange}) {
 
     //States
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);//<-- Used to set unique ID on new tabs create by createBassTab() and more things.
     const [valueG, setValueG] = useState('');//<-- To control user input by expression regular.
     const [valueD, setValueD] = useState('');//<-- To control user input by expression regular.
     const [valueA, setValueA] = useState('');//<-- To control user input by expression regular.
     const [valueE, setValueE] = useState('');//<-- To control user input by expression regular.
-    const [isSelected, setIsSelected] = useState(false);
-    const [editing, setEditing] = useState(false);
-    const [originalContent, setOriginalContent] = useState("");
-    
+    const [isSelected, setIsSelected] = useState(false);//<-- Used to entry on editing mode.
+    const [editing, setEditing] = useState(false);//<-- Used to view on screen new buttons when the user select a tab to edit.
+    const [originalContent, setOriginalContent] = useState("");//<-- To save old content tab, useful when the user need go back the changes made on editing mode.
+    const [editFirstClick, setEditFirstClick] = useState(false);//<-- To know if the user did the first click on editing mode. It's used the logic of function.
+
     //Redux
     const dispatch = useDispatch();
 
-    const handleAddHTML = () => {//<-- Used in saveNotes();
+    const handleAddHTML = () => {//<-- Used in saveNotes(); | in construction.
         const newHTML = {
             id: 1,
             type: 'div',
@@ -89,12 +90,21 @@ export function BassTabForm({onDataChange}) {
         }
 
         if (isSelected === true) {
+            
             for (let i = 0; i < 4; i++) {
-                if (document.querySelector('.editing').children[i].textContent.length >= 41) {
-                    break;
-                } else {
-                    document.querySelector('.editing').children[i].innerText += `—${strings[i].value === "" ? "—" : strings[i].value}`;
+                if (editFirstClick === false) {
+                    document.querySelector('.editing').children[i].innerText = `${scaleNotes[i]} ${strings[i].value === "" ? "—" : "—" + strings[i].value}`;
+                    setEditFirstClick(true);
                 }
+
+                if (editFirstClick === true) {
+                    if (document.querySelector('.editing').children[i].textContent.length >= 41) {
+                        break;
+                    } else {
+                        document.querySelector('.editing').children[i].innerText += `—${strings[i].value === "" ? "—" : strings[i].value}`;
+                    }
+                }
+
             }
         }
 
@@ -169,6 +179,7 @@ export function BassTabForm({onDataChange}) {
 
 
     const saveEdit = () => {
+        setEditFirstClick(false);
         handleEditState();
     }
 
@@ -176,6 +187,7 @@ export function BassTabForm({onDataChange}) {
     const cancelEdit = () => {
         let elementEditing = document.querySelector('.editing');
         elementEditing.innerHTML = originalContent;
+        setEditFirstClick(false);
         handleEditState();
     }
 

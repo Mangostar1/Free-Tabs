@@ -1,5 +1,5 @@
 let $strings;
-const scaleNotes = ['G', 'D', 'A', 'E'];
+export const scaleNotes = ['G', 'D', 'A', 'E'];
 
 export function createBassTab(element, id) {
     

@@ -27,7 +27,7 @@ export default function CreateTab() {
 
     const handleDataChange = (newData) => {
         setTabSabed(newData);
-        navigate('/tab/created_view');
+        //navigate('/tab/created_view');
     };
 
     return(

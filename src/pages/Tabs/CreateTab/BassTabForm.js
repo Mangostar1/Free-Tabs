@@ -1,4 +1,5 @@
 import React,{ useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 //Scripts
 import { createBassTab, addBassNotes } from ".././scripts/createBassTab";
@@ -7,27 +8,11 @@ import { createBassTab, addBassNotes } from ".././scripts/createBassTab";
 import '.././styles/tabsContent.css';
 import '.././styles/editTabStiles.css';
 
-//Object for <BassTabForm/>
-const data = [//<-- used in sendNotes for create multiple articles .bass-tab from createBassTab().
-        {
-            className: 'A',
-            nextClassName: 'B',
-            countState: 1,
-            id: 2
-        },
-        {
-            className: 'B',
-            nextClassName: 'C',
-            countState: 2,
-            id: 3
-        },
-        {
-            className: 'C',
-            nextClassName: 'D',
-            countState: 3,
-            id: 4
-        },
-    ];
+//Others
+import data from '../scripts/data';
+
+//Redux
+import { addHTML } from 'store/slice/tabCreated/tabCreatedSlice';
 
 export function BassTabForm({onDataChange}) {
 
@@ -40,6 +25,18 @@ export function BassTabForm({onDataChange}) {
     const [isSelected, setIsSelected] = useState(false);
     const [editing, setEditing] = useState(false);
     const [originalContent, setOriginalContent] = useState("");
+    
+    //Redux
+    const dispatch = useDispatch();
+
+    const handleAddHTML = () => {//<-- Used in saveNotes();
+        const newHTML = {
+            id: 1,
+            type: 'div',
+            content: 'Hello, world!',
+        };
+        dispatch(addHTML(newHTML));
+    };
 
 
     const handleChange = ({target}, setValue) => {//<-- Regular expression to validate the form.
@@ -118,6 +115,7 @@ export function BassTabForm({onDataChange}) {
     const saveNotes = () => {//<-- Send the tab created to <Home /> Component.
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
         onDataChange(tabRootSaved);
+        handleAddHTML()
     }
 
 

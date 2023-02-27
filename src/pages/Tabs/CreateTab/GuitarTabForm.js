@@ -6,27 +6,8 @@ import { createGuitarTab, addGuitarNotes } from ".././scripts/createGuitarTab";
 //Styles
 import '.././styles/tabsContent.css'
 
-//Object for <GuitarTabForm/>
-const data = [//<-- used in sendNotes for create multiple articles .guitar-tab from createGuitarTab().
-        {
-            className: 'A',
-            nextClassName: 'B',
-            countState: 1,
-            id: 2
-        },
-        {
-            className: 'B',
-            nextClassName: 'C',
-            countState: 2,
-            id: 3
-        },
-        {
-            className: 'C',
-            nextClassName: 'D',
-            countState: 3,
-            id: 4
-        },
-    ];
+//Others
+import data from '../scripts/data';
 
 export function GuitarTabForm({onDataChange}) {
 

@@ -7,6 +7,7 @@ import { GuitarTabForm } from "pages/Tabs/CreateTab/GuitarTabForm";
 //Styles
 import '.././styles/chooseIns.css' //<-- For <from> line 30
 
+
 export default function CreateTab() {
 
     const [view, setView] = useState(0);

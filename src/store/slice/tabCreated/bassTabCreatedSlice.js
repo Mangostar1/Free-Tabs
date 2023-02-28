@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const tabCreatedSlice = createSlice({
-    name: 'html',
+const bassTabCreatedSlice = createSlice({
+    name: 'bass',
     initialState: {},
     reducers: {
-        addHTML: (state, action) => {
+        addBassHTML: (state, action) => {
             const { id, type, content } = action.payload;
             state[id] = { type, content };
         },
     },
 });
 
-export const { addHTML } = tabCreatedSlice.actions;
+export const { addBassHTML } = bassTabCreatedSlice.actions;
 
-export default tabCreatedSlice.reducer;
+export default bassTabCreatedSlice.reducer;

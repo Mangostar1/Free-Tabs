@@ -13,9 +13,9 @@ import '.././styles/editTabStiles.css';
 import data from '../scripts/data';
 
 //Redux
-import { addHTML } from 'store/slice/tabCreated/tabCreatedSlice';
+import { addBassHTML } from 'store/slice/tabCreated/bassTabCreatedSlice';
 
-export function BassTabForm({onDataChange}) {
+export function BassTabForm() {
 
     //States
     const [count, setCount] = useState(0);//<-- Used to set unique ID on new tabs create by createBassTab() and more things.
@@ -114,15 +114,14 @@ export function BassTabForm({onDataChange}) {
     }
     
 
-    const saveNotes = () => {//!<-- Send the tab created to <Home /> Component.
+    const saveNotes = () => {//<-- Send the tab created to <CreatedView /> Component.
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
-        onDataChange(tabRootSaved);
         const newHTML = {
             id: 1,
             type: 'div',
             content: `${tabRootSaved}`,
         };
-        dispatch(addHTML(newHTML));
+        dispatch(addBassHTML(newHTML));
         navigate('/tab/created_view');
     }
 

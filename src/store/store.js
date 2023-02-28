@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import tabCreatedSlice from 'store/slice/tabCreated/tabCreatedSlice' 
-import counterSlice from 'store/slice/counter/counterSlice'
+import bassTabCreatedSlice from 'store/slice/tabCreated/bassTabCreatedSlice' 
+import bandInfoSlice from 'store/slice/bandInfo/bandInfoSlice'
+import bandSongInfoSlice from 'store/slice/bandInfo/bandSongInfoSlice'
 
 export const store = configureStore({
     reducer: {
-        tabCreated: tabCreatedSlice,
-        counter: counterSlice,
+        bassTabCreated: bassTabCreatedSlice,
+        bandInfo: bandInfoSlice,
+        songBandInfo: bandSongInfoSlice,
     },
 })

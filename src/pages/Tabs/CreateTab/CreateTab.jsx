@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
 
 //Components
 import { BassTabForm } from "pages/Tabs/CreateTab/BassTabForm";
 import { GuitarTabForm } from "pages/Tabs/CreateTab/GuitarTabForm";
-import CreatedView from '../CreatedView/CreatedView';
 
 //Styles
 import '.././styles/chooseIns.css' //<-- For <from> line 30
@@ -12,8 +10,6 @@ import '.././styles/chooseIns.css' //<-- For <from> line 30
 export default function CreateTab() {
 
     const [view, setView] = useState(0);
-    const [tabSabed, setTabSabed] = useState('');
-    const navigate = useNavigate();
     
     const viewBassTab = () => {//<-- show Bass Tab
         setView(0);
@@ -24,11 +20,6 @@ export default function CreateTab() {
         setView(1);
         document.querySelector('.tab-root').innerHTML = '';//<-- Tab Root come from TabForm.js line 29
     }
-
-    const handleDataChange = (newData) => {
-        setTabSabed(newData);
-        //navigate('/tab/created_view');
-    };
 
     return(
         <main className=''>
@@ -43,9 +34,8 @@ export default function CreateTab() {
             <section className='test1'>
                 <input placeholder='Band Name' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
                 <input placeholder='Song Name' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
-                {view === 0 ? <BassTabForm onDataChange={handleDataChange} /> : <GuitarTabForm onDataChange={handleDataChange} />}
+                {view === 0 ? <BassTabForm /> : <GuitarTabForm />}
             </section>
-            {tabSabed === '' ? null : <CreatedView component={<div dangerouslySetInnerHTML={{ __html: tabSabed }} />} />}
         </main>
     )
 }

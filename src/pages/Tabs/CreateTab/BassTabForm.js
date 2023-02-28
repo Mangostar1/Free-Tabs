@@ -1,5 +1,6 @@
 import React,{ useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 
 //Scripts
 import { createBassTab, addBassNotes, scaleNotes } from ".././scripts/createBassTab";
@@ -26,19 +27,10 @@ export function BassTabForm({onDataChange}) {
     const [editing, setEditing] = useState(false);//<-- Used to view on screen new buttons when the user select a tab to edit.
     const [originalContent, setOriginalContent] = useState("");//<-- To save old content tab, useful when the user need go back the changes made on editing mode.
     const [editFirstClick, setEditFirstClick] = useState(false);//<-- To know if the user did the first click on editing mode. It's used the logic of function.
+    const navigate = useNavigate();
 
     //Redux
     const dispatch = useDispatch();
-
-    const handleAddHTML = () => {//<-- Used in saveNotes(); | in construction.
-        const newHTML = {
-            id: 1,
-            type: 'div',
-            content: 'Hello, world!',
-        };
-        dispatch(addHTML(newHTML));
-    };
-
 
     const handleChange = ({target}, setValue) => {//<-- Regular expression to validate the form.
         const valid = /^[0-9xXbph~/—]*$/.test(target.value);
@@ -122,10 +114,16 @@ export function BassTabForm({onDataChange}) {
     }
     
 
-    const saveNotes = () => {//<-- Send the tab created to <Home /> Component.
+    const saveNotes = () => {//!<-- Send the tab created to <Home /> Component.
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
         onDataChange(tabRootSaved);
-        handleAddHTML()
+        const newHTML = {
+            id: 1,
+            type: 'div',
+            content: `${tabRootSaved}`,
+        };
+        dispatch(addHTML(newHTML));
+        navigate('/tab/created_view');
     }
 
 

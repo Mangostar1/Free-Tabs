@@ -22,6 +22,7 @@ export default function CreateTab() {
         document.querySelector('.tab-root').innerHTML = '';//<-- Tab Root come from TabForm.js line 29
     }
 
+
     return(
         <main className=''>
             <form className='chooseIns'>
@@ -32,9 +33,11 @@ export default function CreateTab() {
                 <label id='chooseGuitar' htmlFor="guitar">Guitar</label>
             </form>
 
-            <section className='test1'>
-                <input placeholder='Band Name' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
-                <input placeholder='Song Name' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
+            <section className=''>
+                <form className='flex justify-center'>    
+                    <input placeholder='Band Name' id='bandName' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
+                    <input placeholder='Song Name' id='songName' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
+                </form>
                 {view === 0 ? <BassTabForm /> : <GuitarTabForm />}
             </section>
         </main>

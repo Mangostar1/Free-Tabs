@@ -14,9 +14,11 @@ import CreatedView from 'pages/Tabs/CreatedView/CreatedView';
 //Components
 import LoginBtn from 'component/LoginBtn';
 import UserTabs from 'component/UserLinks';
+import TabCreated from 'component/TabCreated'
 
 //Routes
 import PrivateRoutes from 'routes/PrivateRoutes';
+import TabControl from 'routes/TabControl'
 
 export default function PublicRoutes() {
     return(
@@ -28,6 +30,7 @@ export default function PublicRoutes() {
                     <Link className='text-xl text-white hover:text-orange-300' to='/'>Home</Link>
                     <Link className='text-xl text-white hover:text-orange-300' to='/tab/view'>View Tabs</Link>
                     <Link className='text-xl text-white hover:text-orange-300' to='/tab/create'>Create Tab</Link>
+                    <TabCreated />
                     <UserTabs route='/user/my_tabs' nameRoute='My Tabs' />
                     <UserTabs route='/user/profile' nameRoute='User Profile' />
                 </ul>
@@ -42,7 +45,7 @@ export default function PublicRoutes() {
                 <Route path='/' element={<Home />}/>
                 <Route path='/tab/view' element={<ViewTab />} />
                 <Route path='/tab/create' element={<CreateTab />} />
-                <Route path='/tab/created_view' element={<CreatedView />}/>
+                <Route path='/tab/created_view' element={<TabControl><CreatedView /></TabControl>}/>
                 <Route path='/user/profile' element={<PrivateRoutes> <UserPprofile /> </PrivateRoutes>}/>
                 <Route path='/user/my_tabs' element={<PrivateRoutes> <MyTabs /> </PrivateRoutes>}/>
                 <Route path='/user/sign_up' element={<SignUp />} />

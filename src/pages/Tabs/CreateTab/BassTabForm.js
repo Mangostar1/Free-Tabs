@@ -13,7 +13,9 @@ import '.././styles/editTabStiles.css';
 import data from '../scripts/data';
 
 //Redux
-import { addBassHTML } from 'store/slice/tabCreated/bassTabCreatedSlice';
+import { addBassHTML } from 'store/slice/tabCreated/bassTabCreatedSlice';//<-- To save bass tab created
+import { addBandName } from 'store/slice/bandInfo/bandInfoSlice';//<-- to save the band name
+import { addSongBandName } from 'store/slice/bandInfo/bandSongInfoSlice';//<-- to save the name song
 
 export function BassTabForm() {
 
@@ -115,6 +117,8 @@ export function BassTabForm() {
     
 
     const saveNotes = () => {//<-- Send the tab created to <CreatedView /> Component.
+        const bandNameInput = document.getElementById('bandName');
+        const songNameInput = document.getElementById('songName');
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
         const newHTML = {
             id: 1,
@@ -122,6 +126,9 @@ export function BassTabForm() {
             content: `${tabRootSaved}`,
         };
         dispatch(addBassHTML(newHTML));
+        dispatch(addBandName(bandNameInput.value));
+        dispatch(addSongBandName(songNameInput.value));
+        localStorage.setItem('tab', 'created');
         navigate('/tab/created_view');
     }
 

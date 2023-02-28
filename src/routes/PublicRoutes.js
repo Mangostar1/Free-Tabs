@@ -14,7 +14,7 @@ import CreatedView from 'pages/Tabs/CreatedView/CreatedView';
 //Components
 import LoginBtn from 'component/LoginBtn';
 import UserTabs from 'component/UserLinks';
-import TabCreated from 'component/TabCreated'
+import TabCreated from 'component/TabCreatedLink'
 
 //Routes
 import PrivateRoutes from 'routes/PrivateRoutes';

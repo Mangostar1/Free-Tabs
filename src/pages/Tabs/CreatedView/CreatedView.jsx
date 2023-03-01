@@ -11,6 +11,7 @@ export default function CreatedView() {
 
     //redux states
     const bassTabElements = useSelector(state => state.bassTabCreated);
+    const guitarTabCreated = useSelector(state => state.guitarTabCreated);
     const bandName = useSelector(state => state.bandInfo);
     const songName = useSelector(state => state.songBandInfo);
 
@@ -33,7 +34,7 @@ export default function CreatedView() {
             <section id='Tab-Saved' className='bg-gray-100 col-start-2 col-end-5'>
                 <h1 className='font-bold text-center'>{`${bandName} - ${songName}`}</h1>
                 {tabView === 1 ? <div dangerouslySetInnerHTML={{ __html: bassTabElements.bass.content }} /> : null}
-                {tabView === 2 ? <h1>guitar Tab</h1> : null}
+                {tabView === 2 ? <div dangerouslySetInnerHTML={{ __html: guitarTabCreated.guitar.content }} />: null}
             </section>
         </main>
         

@@ -1,15 +1,18 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 //Scripts
-import { createGuitarTab, addGuitarNotes } from ".././scripts/createGuitarTab";
+import { createGuitarTab, addGuitarNotes, scaleNotes } from ".././scripts/createGuitarTab";
 
 //Styles
-import '.././styles/tabsContent.css'
+import '.././styles/tabsContent.css';
+import '.././styles/editTabStiles.css';
 
 //Others
 import data from '../scripts/data';
 
-export function GuitarTabForm({onDataChange}) {
+export function GuitarTabForm() {
 
     const [count, setCount] = useState(0);
     const [valueEm, setValueEm] = useState('');
@@ -78,7 +81,6 @@ export function GuitarTabForm({onDataChange}) {
 
     const saveNotes = () => {//<-- Send the tab created to <Home /> Component.
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
-        onDataChange(tabRootSaved);
     }
 
     return(

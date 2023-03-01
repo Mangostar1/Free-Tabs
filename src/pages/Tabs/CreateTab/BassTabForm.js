@@ -101,12 +101,12 @@ export function BassTabForm() {
 
             }
         }
-
+    
     //To clear the inputs
-    setValueG('');
-    setValueD('');
-    setValueA('');
-    setValueE('');
+        setValueG('');
+        setValueD('');
+        setValueA('');
+        setValueE('');
     
     }
 

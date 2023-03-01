@@ -15,6 +15,8 @@ export default function CreatedView() {
     const bandName = useSelector(state => state.bandInfo);
     const songName = useSelector(state => state.songBandInfo);
 
+    console.log(guitarTabCreated)
+
     //scripts
     const handleBassTabView = () => {
         setTabView(1);

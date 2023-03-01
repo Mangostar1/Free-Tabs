@@ -122,14 +122,14 @@ export function BassTabForm() {
         const songNameInput = document.getElementById('songName');
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
         const newHTML = {
-            id: 1,
+            id: 'bass',
             type: 'div',
             content: `${tabRootSaved}`,
         };
         dispatch(addBassHTML(newHTML));
         dispatch(addBandName(bandNameInput.value));
         dispatch(addSongBandName(songNameInput.value));
-        localStorage.setItem('tab', 'created');
+        sessionStorage.setItem('tab', 'created');
         navigate('/tab/created_view');
     }
 

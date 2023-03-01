@@ -14,7 +14,7 @@ import CreatedView from 'pages/Tabs/CreatedView/CreatedView';
 //Components
 import LoginBtn from 'component/LoginBtn';
 import UserTabs from 'component/UserLinks';
-import TabCreated from 'component/TabCreatedLink'
+import TabCreatedLink from 'component/TabCreatedLink'
 
 //Routes
 import PrivateRoutes from 'routes/PrivateRoutes';
@@ -30,7 +30,7 @@ export default function PublicRoutes() {
                     <Link className='text-xl text-white hover:text-orange-300' to='/'>Home</Link>
                     <Link className='text-xl text-white hover:text-orange-300' to='/tab/view'>View Tabs</Link>
                     <Link className='text-xl text-white hover:text-orange-300' to='/tab/create'>Create Tab</Link>
-                    <TabCreated />
+                    <TabCreatedLink />
                     <UserTabs route='/user/my_tabs' nameRoute='My Tabs' />
                     <UserTabs route='/user/profile' nameRoute='User Profile' />
                 </ul>

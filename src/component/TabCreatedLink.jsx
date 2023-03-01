@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-export default function TabCreated() {
+export default function TabCreatedLink() {
 
-    if (localStorage.getItem('tab') === "created") {
+    if (sessionStorage.getItem('tab') === "created") {
         return(
             <Link className='text-xl text-white hover:text-orange-300' to='/tab/created_view'>Tab Created</Link>
         )

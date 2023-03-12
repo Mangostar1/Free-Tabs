@@ -1,9 +1,11 @@
+import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 export default function LoginBtn() {
 
     const logOut = () => {
         localStorage.clear();
+        /* axios.post() */
     }
 
     if (localStorage.getItem('auth') === "yes") {

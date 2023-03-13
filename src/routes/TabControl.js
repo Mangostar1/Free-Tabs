@@ -2,11 +2,9 @@ import { Navigate } from "react-router-dom";
 
 export default function TabControl({children}) {
 
-    if (sessionStorage.getItem('tab') === "created") {
+    if (localStorage.hasOwnProperty('tab') === true) {
         return children
     } else {
         return <Navigate to="/tab/create" />
     }
-
-
 }

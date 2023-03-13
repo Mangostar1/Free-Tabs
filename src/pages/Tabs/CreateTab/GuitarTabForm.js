@@ -133,8 +133,9 @@ export function GuitarTabForm() {
         dispatch(addGuitarHTML(newHTML));
         dispatch(addBandName(bandNameInput.value));
         dispatch(addSongBandName(songNameInput.value));
-        sessionStorage.setItem('tab', 'created');
+        localStorage.setItem('tab', 'created');
         navigate('/tab/created_view');
+        window.location.reload();
     }
 
     const edit = () => {//<-- Used to enter in edit mode.

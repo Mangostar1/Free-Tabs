@@ -24,7 +24,7 @@ export default function PublicRoutes() {
     return(
         <BrowserRouter>
 
-        <header className='bg-transparent text-neutral-50 px-8 py-3'>
+        <header className='bg-gray-100 text-neutral-50 px-8 py-3'>
             <nav className='flex justify-between'>
                 <ul className='flex justify-start gap-10'>
                     <Link className='text-xl text-gray-700 hover:text-orange-300' to='/'>Home</Link>

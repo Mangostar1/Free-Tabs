@@ -24,7 +24,7 @@ export default function CreateTab() {
 
 
     return(
-        <main className=''>
+        <main className='bg-slate-50 min-h-screen'>
             <form className='chooseIns'>
                 <input onChange={viewBassTab} type="radio" defaultValue="bass" name="instrument" className="choose-instrument" id="bass" defaultChecked />
                 <label id='chooseBass' htmlFor="bass">Bass</label>

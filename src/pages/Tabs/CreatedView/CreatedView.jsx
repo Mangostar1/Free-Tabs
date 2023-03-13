@@ -27,7 +27,7 @@ export default function CreatedView() {
     }
 
     return(
-        <main className='grid grid-cols-4'>
+        <main className='grid grid-cols-4 bg-slate-50'>
             <aside className='col-span-1 flex flex-col'>
                 <h2 className='text-center'>Instrument</h2>
                 <AsideBtns instrument="Bass" onClick={handleBassTabView}/>

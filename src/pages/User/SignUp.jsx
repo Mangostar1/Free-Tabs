@@ -47,13 +47,13 @@ export default function SignUp() {
     }
 
     return(
-        <div className="flex justify-center items-center h-screen">
+        <main className="flex justify-center items-center bg-slate-50 min-h-screen">
             <form className="bg-slate-200 flex flex-col items-center justify-center gap-4 w-80 h-72 rounded">
                 <input type="email" value={body.email} onChange={handler} name="email" placeholder="E-mail" className="pass bg-slate-100 w-64 h-8" required/>
                 <input type="password" value={body.password} onChange={handler} name="password" placeholder="Password" className="bg-slate-100 w-64 h-8" required/>
                 <input type="password" onChange={handleEqual} name="R-password" placeholder="R Password" className="bg-slate-100 w-64 h-8" required/>
                 <input type="button" onClick={signup} name="send" className="bg-orange-200 w-64 px-4 py-2 mt-2 rounded hover:bg-orange-100" value="Sign up"/>{/* add disabled */}
             </form>
-        </div>
+        </main>
     )
 }

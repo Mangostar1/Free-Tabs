@@ -19,7 +19,7 @@ export default function Home() {
     }
 
     return(
-        <main className="bg-slate-200">
+        <main className="bg-slate-50">
             <section className="bg-[url('assets/imgs/background-img-main-page.png')] bg-cover bg-no-repeat bg-cente h-136 flex flex-col items-center">
                 <h1 className='text-gray-500 text-8xl font-bold text-center mt-32'>Free Tabs</h1>
                 <div className='mt-10 flex flex-row gap-4'>
@@ -36,9 +36,6 @@ export default function Home() {
                 </div>
             </section>
             <section className=''>
-                <div className=''>
-
-                </div>
                 <h2 className='text-center'>Hola</h2>
             </section>
         </main>

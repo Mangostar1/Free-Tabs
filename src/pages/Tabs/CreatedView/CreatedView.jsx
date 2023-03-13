@@ -35,8 +35,8 @@ export default function CreatedView() {
             </aside>
             <section id='Tab-Saved' className='bg-gray-100 col-start-2 col-end-5'>
                 <h1 className='font-bold text-center'>{`${bandName} - ${songName}`}</h1>
-                {tabView === 1 ? <div dangerouslySetInnerHTML={{ __html: bassTabElements.bass.content }} /> : null}
-                {tabView === 2 ? <div dangerouslySetInnerHTML={{ __html: guitarTabCreated.guitar.content }} />: null}
+                {tabView === 1 ? <div dangerouslySetInnerHTML={{ __html: bassTabElements.bass?.content }} /> : null}
+                {tabView === 2 ? <div dangerouslySetInnerHTML={{ __html: guitarTabCreated.guitar?.content }} />: null}
             </section>
         </main>
         

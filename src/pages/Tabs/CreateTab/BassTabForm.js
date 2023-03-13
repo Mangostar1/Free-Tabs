@@ -129,7 +129,7 @@ export function BassTabForm() {
         dispatch(addBassHTML(newHTML));
         dispatch(addBandName(bandNameInput.value));
         dispatch(addSongBandName(songNameInput.value));
-        localStorage.setItem('tab', 'created');
+        sessionStorage.setItem('tab', 'created');
         navigate('/tab/created_view');
     }
 

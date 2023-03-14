@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 //components
 import AsideBtns from 'component/AsideBtns'
@@ -10,12 +9,10 @@ export default function CreatedView() {
     const [tabView, setTabView] = useState(0);
 
     //redux states
-    const bassTabElements = useSelector(state => state.bassTabCreated);
-    const guitarTabCreated = useSelector(state => state.guitarTabCreated);
-    const bandName = useSelector(state => state.bandInfo);
-    const songName = useSelector(state => state.songBandInfo);
-
-    console.log(guitarTabCreated)
+    const bassTabElements = localStorage.newBassTab;
+    const guitarTabCreated = localStorage.newGuitarTab;
+    const bandName = localStorage.bandName;
+    const songName = localStorage.songName;
 
     //scripts
     const handleBassTabView = () => {
@@ -35,8 +32,8 @@ export default function CreatedView() {
             </aside>
             <section id='Tab-Saved' className='bg-gray-100 col-start-2 col-end-5'>
                 <h1 className='font-bold text-center'>{`${bandName} - ${songName}`}</h1>
-                {tabView === 1 ? <div dangerouslySetInnerHTML={{ __html: bassTabElements.bass?.content }} /> : null}
-                {tabView === 2 ? <div dangerouslySetInnerHTML={{ __html: guitarTabCreated.guitar?.content }} />: null}
+                {tabView === 1 ? <div dangerouslySetInnerHTML={{ __html: bassTabElements }} /> : null}
+                {tabView === 2 ? <div dangerouslySetInnerHTML={{ __html: guitarTabCreated }} />: null}
             </section>
         </main>
         

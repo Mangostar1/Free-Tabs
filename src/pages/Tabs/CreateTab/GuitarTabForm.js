@@ -1,5 +1,4 @@
 import React,{ useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 //Scripts
@@ -11,11 +10,6 @@ import '.././styles/editTabStiles.css';
 
 //Others
 import data from '../scripts/data';
-
-//Redux
-import { addGuitarHTML } from 'store/slice/tabCreated/guitarTabCreatedSlice';//<-- To save bass tab created
-import { addBandName } from 'store/slice/bandInfo/bandInfoSlice';//<-- to save the band name
-import { addSongBandName } from 'store/slice/bandInfo/bandSongInfoSlice';//<-- to save the name song
 
 export function GuitarTabForm() {
 
@@ -31,9 +25,6 @@ export function GuitarTabForm() {
     const [originalContent, setOriginalContent] = useState("");//<-- To save old content tab, useful when the user need go back the changes made on editing mode.
     const [editFirstClick, setEditFirstClick] = useState(false);//<-- To know if the user did the first click on editing mode. It's used the logic of function.
     const navigate = useNavigate();
-
-    //Redux
-    const dispatch = useDispatch();
 
     const handleChange = (e, setValue) => {//<-- Regular expression to validate the form.
         const valid = /^[0-9xXbph~/—]*$/.test(e.target.value);
@@ -124,15 +115,10 @@ export function GuitarTabForm() {
         const bandNameInput = document.getElementById('bandName');
         const songNameInput = document.getElementById('songName');
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
-        console.log(tabRootSaved);
-        const newHTML = {
-            id: 'guitar',
-            type: 'div',
-            content: `${tabRootSaved}`,
-        };
-        dispatch(addGuitarHTML(newHTML));
-        dispatch(addBandName(bandNameInput.value));
-        dispatch(addSongBandName(songNameInput.value));
+
+        localStorage.setItem('newGuitarTab', tabRootSaved);
+        localStorage.setItem('bandName', bandNameInput.value);
+        localStorage.setItem('songName', songNameInput.value);
         sessionStorage.setItem('tab', 'created');
         navigate('/tab/created_view', window.location.reload());
     }

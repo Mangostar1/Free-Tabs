@@ -36,6 +36,7 @@ export default function CreateTab() {
             <section className=''>
                 <form className='flex justify-center'>    
                     <input placeholder='Band Name' id='bandName' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
+                    <p className='font-bold text-2xl px-2'>-</p>
                     <input placeholder='Song Name' id='songName' className='w-48 h-8 border-solid border-x border-y border-black' type='text'/>
                 </form>
                 {view === 0 ? <BassTabForm /> : <GuitarTabForm />}

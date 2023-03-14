@@ -27,9 +27,9 @@ export default function PublicRoutes() {
         <header className='bg-gray-100 text-neutral-50 px-8 py-3'>
             <nav className='flex justify-between'>
                 <ul className='flex justify-start gap-10'>
-                    <Link className='text-xl text-gray-700 hover:text-orange-300' to='/'>Home</Link>
-                    <Link className='text-xl text-gray-700 hover:text-orange-300' to='/tab/view'>View Tabs</Link>
-                    <Link className='text-xl text-gray-700 hover:text-orange-300' to='/tab/create'>Create Tab</Link>
+                    <Link className='text-xl text-gray-700 hover:text-orange-500' to='/'>Home</Link>
+                    <Link className='text-xl text-gray-700 hover:text-orange-500' to='/tab/view'>View Tabs</Link>
+                    <Link className='text-xl text-gray-700 hover:text-orange-500' to='/tab/create'>Create Tab</Link>
                     <TabCreatedLink />
                     <UserTabs route='/user/my_tabs' nameRoute='My Tabs' />
                     <UserTabs route='/user/profile' nameRoute='User Profile' />

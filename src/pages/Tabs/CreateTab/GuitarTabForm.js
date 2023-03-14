@@ -116,11 +116,12 @@ export function GuitarTabForm() {
         const songNameInput = document.getElementById('songName');
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
 
-        localStorage.setItem('newGuitarTab', tabRootSaved);
-        localStorage.setItem('bandName', bandNameInput.value);
-        localStorage.setItem('songName', songNameInput.value);
+        sessionStorage.setItem('newGuitarTab', tabRootSaved);
+        sessionStorage.setItem('bandName', bandNameInput.value);
+        sessionStorage.setItem('songName', songNameInput.value);
         sessionStorage.setItem('tab', 'created');
-        navigate('/tab/created_view', window.location.reload());
+        navigate('/tab/created_view');
+        window.location.reload()
     }
 
     const edit = () => {//<-- Used to enter in edit mode.

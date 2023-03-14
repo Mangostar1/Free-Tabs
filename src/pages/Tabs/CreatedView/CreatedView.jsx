@@ -9,10 +9,10 @@ export default function CreatedView() {
     const [tabView, setTabView] = useState(0);
 
     //redux states
-    const bassTabElements = localStorage.newBassTab;
-    const guitarTabCreated = localStorage.newGuitarTab;
-    const bandName = localStorage.bandName;
-    const songName = localStorage.songName;
+    const bassTabElements = sessionStorage.newBassTab;
+    const guitarTabCreated = sessionStorage.newGuitarTab;
+    const bandName = sessionStorage.bandName;
+    const songName = sessionStorage.songName;
 
     //scripts
     const handleBassTabView = () => {

@@ -4,7 +4,7 @@ export default function TabCreatedLink() {
 
     if (sessionStorage.getItem('tab') === "created") {
         return(
-            <Link className='text-xl text-gray-700 hover:text-orange-300' to='/tab/created_view'>Tab Created</Link>
+            <Link className='text-xl text-gray-700 hover:text-orange-500' to='/tab/created_view'>Tab Created</Link>
         )
     } else {
         return(

@@ -113,11 +113,12 @@ export function BassTabForm() {
         const songNameInput = document.getElementById('songName');
         const tabRootSaved = document.querySelector('.tab-root').outerHTML;
     
-        localStorage.setItem('newBassTab', tabRootSaved);
-        localStorage.setItem('bandName', bandNameInput.value);
-        localStorage.setItem('songName', songNameInput.value);
+        sessionStorage.setItem('newBassTab', tabRootSaved);
+        sessionStorage.setItem('bandName', bandNameInput.value);
+        sessionStorage.setItem('songName', songNameInput.value);
         sessionStorage.setItem('tab', 'created');
         navigate('/tab/created_view');
+        window.location.reload()
     }
 
 

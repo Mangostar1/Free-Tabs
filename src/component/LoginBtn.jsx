@@ -4,8 +4,24 @@ import { Link } from 'react-router-dom'
 export default function LoginBtn() {
 
     const logOut = () => {
+
+        //<-- For dev http://localhost:5001/api/logout
+        //<-- For pro https://my-backend-expressjs.up.railway.app/api/logout
+
+        axios.get("https://my-backend-expressjs.up.railway.app/api/logout")
+        .then((response) => {
+            if (response.status === 200) {
+                console.log("La sesión se cerró correctamente");
+            } else {
+                console.log("Ocurrió un error al intentar cerrar la sesión");
+            }
+        })
+        .catch((error) => {
+            console.log("Ocurrió un error de red al intentar cerrar la sesión", error);
+        })
+
         localStorage.clear();
-        /* axios.post() */
+
     }
 
     if (localStorage.getItem('auth') === "yes") {

@@ -16,6 +16,10 @@ export default function LogIn() {
     }
 
     const login = async() => {
+
+        //<-- For dev http://localhost:5001/api/login
+        //<-- For pro https://my-backend-expressjs.up.railway.app/api/login
+
         axios.post('https://my-backend-expressjs.up.railway.app/api/login', body)
         .then(() => {
             localStorage.setItem("auth", "yes");
@@ -24,6 +28,7 @@ export default function LogIn() {
         .catch(({response}) => {
             console.error(response.data, 'error!!')
         })
+        
     }
     
     return(

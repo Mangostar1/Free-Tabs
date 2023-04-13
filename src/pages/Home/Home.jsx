@@ -40,7 +40,7 @@ export default function Home() {
                 </div>
             </section>
             <section className=''>
-                <h2 className='text-center'>Hola</h2>
+                <h2 className='text-center'>Aca se mostraran tablaturas creadas a modo de ejemplo</h2>
             </section>
         </main>
     )

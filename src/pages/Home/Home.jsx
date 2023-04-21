@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 //components
 import CommonBtn from 'component/CommonBtn'
+import ImgMain from 'component/ImgMain'
+
 
 
 export default function Home() {
@@ -40,7 +42,9 @@ export default function Home() {
                 </div>
             </section>
             <section className=''>
-                <h2 className='text-center'>Aca se mostraran tablaturas creadas a modo de ejemplo</h2>
+                <h2 className='text-center'>Tus Tabs</h2>
+                <ImgMain src="https://picsum.photos/600/200" alt="Lorem-Image" />
+                <ImgMain src="https://picsum.photos/600/200" alt="Lorem-Image" />
             </section>
         </main>
     )

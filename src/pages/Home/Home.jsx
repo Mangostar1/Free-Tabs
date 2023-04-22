@@ -43,8 +43,10 @@ export default function Home() {
             </section>
             <section className=''>
                 <h2 className='text-center'>Tus Tabs</h2>
-                <ImgMain src="https://picsum.photos/600/200" alt="Lorem-Image" />
-                <ImgMain src="https://picsum.photos/600/200" alt="Lorem-Image" />
+                <div className='flex justify-center gap-4 m-8'>
+                    <ImgMain src="https://picsum.photos/600/200" alt="tab-guitar" classCss=""/>
+                    <ImgMain src="https://picsum.photos/600/200" alt="tab-bass" classCss=""/>
+                </div>
             </section>
         </main>
     )

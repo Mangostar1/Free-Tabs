@@ -1,5 +1,5 @@
 export default function ImgMain(props) {
     return(
-        <img src={props.src} alt={props.alt} />
+        <img src={props.src} alt={props.alt} className={props.classCss} />
     )
 }

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 //components
 import CommonBtn from 'component/CommonBtn'
 import ImgMain from 'component/ImgMain'
+import HomeArticle from 'component/HomeArticle'
 
 
 
@@ -43,10 +44,33 @@ export default function Home() {
             </section>
             <section className=''>
                 <h2 className='text-center'>Tus Tabs</h2>
-                <div className='flex justify-center gap-4 m-8'>
-                    <ImgMain src="https://picsum.photos/600/200" alt="tab-guitar" classCss=""/>
-                    <ImgMain src="https://picsum.photos/600/200" alt="tab-bass" classCss=""/>
+                <div className='flex justify-center gap-4 m-8 bg-red-400 relative p-44'>
+                    <ImgMain src="https://picsum.photos/600/200" alt="tab-guitar" classCss="absolute top-1/4 left-1/4"/>
+                    <ImgMain src="https://picsum.photos/600/200" alt="tab-bass" classCss="absolute bottom-1/4 right-1/4"/>
                 </div>
+            </section>
+            <section className='flex flex-row justify-center items-center'>
+                <HomeArticle 
+                    title="Some Title 1" 
+                    text="Some Text 1"
+                    cssArticle="flex flex-col m-4 p-4 rounded-md bg-indigo-100"
+                    cssTitle="text-xl font-semibold"
+                    cssText="" 
+                />
+                <HomeArticle 
+                    title="Some Title 2" 
+                    text="Some Text 2"
+                    cssArticle="flex flex-col m-4 p-4 rounded-md bg-indigo-100"
+                    cssTitle="text-xl font-semibold"
+                    cssText="" 
+                />
+                <HomeArticle 
+                    title="Some Title 3" 
+                    text="Some Text 3"
+                    cssArticle="flex flex-col m-4 p-4 rounded-md bg-indigo-100"
+                    cssTitle="text-xl font-semibold"
+                    cssText="" 
+                />
             </section>
         </main>
     )

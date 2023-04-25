@@ -42,11 +42,19 @@ export default function Home() {
                     />
                 </div>
             </section>
-            <section className=''>
-                <h2 className='text-center'>Tus Tabs</h2>
-                <div className='flex justify-center gap-4 m-8 bg-red-400 relative p-44'>
-                    <ImgMain src="https://picsum.photos/600/200" alt="tab-guitar" classCss="absolute top-1/4 left-1/4"/>
-                    <ImgMain src="https://picsum.photos/600/200" alt="tab-bass" classCss="absolute bottom-1/4 right-1/4"/>
+            <section className='flex justify-center gap-4 m-8 bg-red-100 p-20'>
+                <ImgMain src="https://picsum.photos/800/400" alt="tab-guitar" classCss=""/>
+                <div className=''>
+                    <h2 className='text-center text-xl font-semibold'>Tus Tabs</h2>
+                    <p className='text-center m-auto'>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
+                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                        Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
+                        Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, 
+                        venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus 
+                        elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend 
+                        ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, 
+                    </p>
                 </div>
             </section>
             <section className='flex flex-row justify-center items-center'>

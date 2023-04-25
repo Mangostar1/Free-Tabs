@@ -42,7 +42,7 @@ export default function Home() {
                     />
                 </div>
             </section>
-            <section className='flex justify-center gap-4 m-8 bg-red-100 p-20'>
+            <section className='flex justify-center gap-4 bg-red-100 p-20'>
                 <ImgMain src="https://picsum.photos/800/400" alt="tab-guitar" classCss=""/>
                 <div className=''>
                     <h2 className='text-center text-xl font-semibold'>Tus Tabs</h2>
@@ -60,21 +60,30 @@ export default function Home() {
             <section className='flex flex-row justify-center items-center'>
                 <HomeArticle 
                     title="Some Title 1" 
-                    text="Some Text 1"
+                    text="
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam deserunt nam fugit dolorem labore commodi, 
+                    et velit eaque possimus. Architecto illum rerum veniam ipsam beatae dolore odio pariatur doloribus repellendus.
+                    "
                     cssArticle="flex flex-col m-4 p-4 rounded-md bg-indigo-100"
                     cssTitle="text-xl font-semibold"
                     cssText="" 
                 />
                 <HomeArticle 
                     title="Some Title 2" 
-                    text="Some Text 2"
+                    text="
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam deserunt nam fugit dolorem labore commodi, 
+                    et velit eaque possimus. Architecto illum rerum veniam ipsam beatae dolore odio pariatur doloribus repellendus.
+                    "
                     cssArticle="flex flex-col m-4 p-4 rounded-md bg-indigo-100"
                     cssTitle="text-xl font-semibold"
                     cssText="" 
                 />
                 <HomeArticle 
                     title="Some Title 3" 
-                    text="Some Text 3"
+                    text="
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam deserunt nam fugit dolorem labore commodi, 
+                    et velit eaque possimus. Architecto illum rerum veniam ipsam beatae dolore odio pariatur doloribus repellendus.
+                    "
                     cssArticle="flex flex-col m-4 p-4 rounded-md bg-indigo-100"
                     cssTitle="text-xl font-semibold"
                     cssText="" 

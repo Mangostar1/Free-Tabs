@@ -1,8 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { getCookie } from "utils/cookieUtils";
+import Cookies from "js-cookie";
 
 export default function PrivateRoutes({ children }) {
-  const isAuthenticated = getCookie("jwtToken"); // Obtén el token de la cookie o realiza la validación que consideres necesaria
+  const token = Cookies.get("jwtToken");
+  const isAuthenticated = token !== undefined && token !== null && token !== "";
 
   if (isAuthenticated) {
     return children;

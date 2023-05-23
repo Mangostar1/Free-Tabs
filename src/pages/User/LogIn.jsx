@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
-import { setCookie, getCookie } from "utils/cookieUtils";
+import Cookies from "js-cookie";
+import api from "utils/api";
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -16,34 +15,18 @@ export default function LogIn() {
     });
   };
 
-  axios.interceptors.request.use(
-    (config) => {
-      const token = getCookie("jwtToken");
-
-      if (token) {
-        config.headers["Authorization"] = `Bearer ${token}`;
-      }
-
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
-
   const loginHandler = async () => {
     try {
       //<-- For dev http://localhost:5001/api/login
       //<-- For prod https://my-backend-expressjs.up.railway.app/api/login
-      await axios.post(
+      const response = await api.post(
         "https://my-backend-expressjs.up.railway.app/api/login",
         body
       );
 
-      setCookie("jwtToken", "valor-de-la-cookie", {
-        sameSite: "None",
-        secure: true,
-      });
+      const { token } = response.data;
+
+      Cookies.set("jwtToken", token, { sameSite: "none", secure: true });
 
       navigate("/user/profile");
     } catch (error) {

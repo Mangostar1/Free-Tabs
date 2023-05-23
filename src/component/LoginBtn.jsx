@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { getCookie } from "utils/cookieUtils";
+import Cookies from "js-cookie";
 
 export default function LoginBtn() {
   //<-- For dev http://localhost:5001/api/logout
@@ -10,24 +10,22 @@ export default function LoginBtn() {
       .get("https://my-backend-expressjs.up.railway.app/api/logout")
       .then((response) => {
         if (response.status === 200) {
+          // Eliminar la cookie "jwtToken"
+          Cookies.remove("jwtToken", { path: "/" });
           console.log("La sesión se cerró correctamente");
         } else {
-          console.log("Ocurrió un error al intentar cerrar la sesión");
+          console.error("Ocurrió un error al intentar cerrar la sesión");
         }
       })
       .catch((error) => {
-        console.log(
+        console.error(
           "Ocurrió un error de red al intentar cerrar la sesión",
           error
         );
       });
-
-    // Eliminar la cookie "jwtToken"
-    document.cookie =
-      "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=None; Secure;";
   };
 
-  const isAuthenticated = getCookie("jwtToken"); // Obtén el token de la cookie o realiza la validación que consideres necesaria
+  const isAuthenticated = Cookies.get("jwtToken");
 
   if (isAuthenticated) {
     return (

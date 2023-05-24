@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { endpoint } from "utils/urlApi";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -33,11 +34,9 @@ export default function SignUp() {
   };
 
   const signup = () => {
-    //<-- For dev http://localhost:5001/api/signup
-    //<-- For pro https://my-backend-expressjs.up.railway.app/api/signup
     if (isEqual === true) {
       axios
-        .post("https://my-backend-expressjs.up.railway.app/api/signup", body)
+        .post(endpoint.signUp, body)
         .then(() => {
           navigate("/");
         })

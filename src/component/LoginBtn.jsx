@@ -1,18 +1,16 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { endpoint } from "utils/urlApi";
 
 export default function LoginBtn() {
-  //<-- For dev http://localhost:5001/api/logout
-  //<-- For prod https://my-backend-expressjs.up.railway.app/api/logout
   const logOut = () => {
     axios
-      .get("https://my-backend-expressjs.up.railway.app/api/logout")
+      .get(endpoint.logout)
       .then((response) => {
         if (response.status === 200) {
-          // Eliminar la cookie "jwtToken"
           Cookies.remove("jwtToken", { path: "/" });
-          console.log("La sesión se cerró correctamente");
+          console.log("La sesión se cerró correctamente"); //? Modificar este log por algun mensaje en el DOM para que el usuario pueda leerlo
         } else {
           console.error("Ocurrió un error al intentar cerrar la sesión");
         }

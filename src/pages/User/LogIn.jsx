@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import api from "utils/api";
+import { endpoint } from "utils/urlApi";
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -17,12 +18,7 @@ export default function LogIn() {
 
   const loginHandler = async () => {
     try {
-      //<-- For dev http://localhost:5001/api/login
-      //<-- For prod https://my-backend-expressjs.up.railway.app/api/login
-      const response = await api.post(
-        "https://my-backend-expressjs.up.railway.app/api/login",
-        body
-      );
+      const response = await api.post(endpoint.login, body);
 
       const { token } = response.data;
 

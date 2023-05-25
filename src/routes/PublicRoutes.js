@@ -12,7 +12,7 @@ import ViewTab from "pages/Tabs/ViewTab/ViewTab";
 import CreatedView from "pages/Tabs/CreatedView/CreatedView";
 
 //Components
-import LoginBtn from "component/LoginBtn";
+import LoginBtn from "pages/session/LoginBtn";
 import UserTabs from "component/UserLinks";
 import TabCreatedLink from "component/TabCreatedLink";
 

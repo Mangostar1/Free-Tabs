@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+//URLs from API
 import { endpoint } from "utils/urlApi";
 
 //Loader
@@ -10,7 +12,8 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const [body, setBody] = useState({ email: "", password: "" });
-  const [isEqual, setIsEqual] = useState(false);
+  const [isEqual, setIsEqual] = useState(false); //<-- If both fields are equal, validate to true
+  const [isLoading, setIsLoading] = useState(false);
 
   const valid = /^[a-zA-Z0-9_@.-]{6,}$/;
 
@@ -36,15 +39,21 @@ export default function SignUp() {
     }
   };
 
-  const signup = () => {
+  const signup = async () => {
     if (isEqual === true) {
+      setIsLoading(true);
       axios
         .post(endpoint.signUp, body)
-        .then(() => {
-          navigate("/"); //? --> Cuando el usuario se registra en la web, se le enviara un correo para autenticar que su correo electronico sea real antes de poder concretar el registro de usuario
+        .then((response) => {
+          if (response.status === 200) {
+            navigate("/");
+          }
         })
         .catch(({ response }) => {
-          console.error(response.data, "error!!");
+          console.error(response.data, response.message, "error!!");
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
   };
@@ -94,7 +103,7 @@ export default function SignUp() {
                     "
           value="Sign up"
         />
-        {/* <Loader /> */}
+        {isLoading === true ? <Loader /> : null}
       </form>
     </main>
   );

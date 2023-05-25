@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { endpoint } from "utils/urlApi";
 
+//Loader
+import Loader from "component/Loader";
+
 export default function SignUp() {
   const navigate = useNavigate();
 
@@ -38,7 +41,7 @@ export default function SignUp() {
       axios
         .post(endpoint.signUp, body)
         .then(() => {
-          navigate("/");
+          navigate("/"); //? --> Cuando el usuario se registra en la web, se le enviara un correo para autenticar que su correo electronico sea real antes de poder concretar el registro de usuario
         })
         .catch(({ response }) => {
           console.error(response.data, "error!!");
@@ -91,7 +94,7 @@ export default function SignUp() {
                     "
           value="Sign up"
         />
-        {/* add disabled */}
+        {/* <Loader /> */}
       </form>
     </main>
   );

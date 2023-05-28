@@ -9,5 +9,5 @@ export default function PrivateRoutes({ children }) {
     return children;
   }
 
-  return <Navigate to="/user/login" />; // Redirige al usuario a la página de inicio de sesión si no está autenticado
+  return <Navigate to="/" />; // Redirige al usuario a la página de inicio de sesión si no está autenticado
 }

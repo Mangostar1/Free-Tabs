@@ -89,7 +89,6 @@ export default function PublicRoutes() {
           }
         />
         <Route path="/user/sign_up" element={<SignUp />} />
-        <Route path="/user/login" element={<LogIn />} />
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </BrowserRouter>

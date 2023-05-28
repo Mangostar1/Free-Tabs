@@ -1,9 +1,19 @@
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { endpoint } from "utils/urlApi";
 
+//component
+import Login from "pages/session/LogIn";
+
 export default function LoginBtn() {
+  const [view, setView] = useState(false);
+
+  const handleModal = () => {
+    setView(!view);
+  };
+
   const logOut = () => {
     axios
       .get(endpoint.logout)
@@ -37,12 +47,15 @@ export default function LoginBtn() {
     );
   } else {
     return (
-      <Link
-        className="text-slate-700 hover:text-slate-900 bg-orange-300 hover:bg-orange-400 px-2 rounded"
-        to="/user/login"
-      >
-        Log in
-      </Link>
+      <>
+        <button
+          className="text-slate-700 hover:text-slate-900 bg-orange-300 hover:bg-orange-400 px-2 rounded"
+          onClick={handleModal}
+        >
+          Log in
+        </button>
+        {view && <Login />}
+      </>
     );
   }
 }

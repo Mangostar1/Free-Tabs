@@ -31,22 +31,27 @@ export default function LogIn() {
   };
 
   return (
-    <form className="bg-slate-200 flex flex-col items-center justify-center gap-4 w-80 h-56 rounded absolute right-4 top-12">
+    <form className="bg-slate-200 flex flex-col items-center justify-center gap-4 px-2 py-4 rounded absolute right-4 top-12">
       <input
         type="text"
         name="email"
         placeholder="E-mail"
         value={body.email}
         onChange={handler}
-        className="bg-slate-100 w-64 h-8 text-black"
+        className="bg-slate-100 
+            w-52 h-8 
+            text-black"
       />
       <input
         type="password"
         name="password"
         placeholder="Password"
+        autoComplete="off"
         value={body.password}
         onChange={handler}
-        className="bg-slate-100 w-64 h-8 text-black"
+        className="bg-slate-100 
+            w-52 h-8 
+            text-black"
       />
       <input
         type="button"
@@ -54,9 +59,8 @@ export default function LogIn() {
         name="send"
         className="
             bg-orange-400 
-            w-64 
-            px-4 py-2 
-            mt-2 
+            w-52 
+            py-2  
             rounded 
             ease-out duration-500 
             text-xl 

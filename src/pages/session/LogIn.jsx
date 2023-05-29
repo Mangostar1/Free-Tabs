@@ -31,41 +31,39 @@ export default function LogIn() {
   };
 
   return (
-    <main className="flex justify-center items-center bg-slate-50 min-h-screen">
-      <form className="bg-slate-200 flex flex-col items-center justify-center gap-4 w-80 h-56 rounded">
-        <input
-          type="text"
-          name="email"
-          placeholder="E-mail"
-          value={body.email}
-          onChange={handler}
-          className="bg-slate-100 w-64 h-8"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={body.password}
-          onChange={handler}
-          className="bg-slate-100 w-64 h-8"
-        />
-        <input
-          type="button"
-          onClick={loginHandler}
-          name="send"
-          className="
-                        bg-orange-200 
-                        w-64 
-                        px-4 py-2 
-                        mt-2 
-                        rounded 
-                        ease-out duration-500 
-                        text-xl 
-                        hover:bg-orange-600 hover:text-gray-100
-                    "
-          value="Login"
-        />
-      </form>
-    </main>
+    <form className="bg-slate-200 flex flex-col items-center justify-center gap-4 w-80 h-56 rounded absolute right-4 top-12">
+      <input
+        type="text"
+        name="email"
+        placeholder="E-mail"
+        value={body.email}
+        onChange={handler}
+        className="bg-slate-100 w-64 h-8 text-black"
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={body.password}
+        onChange={handler}
+        className="bg-slate-100 w-64 h-8 text-black"
+      />
+      <input
+        type="button"
+        onClick={loginHandler}
+        name="send"
+        className="
+            bg-orange-400 
+            w-64 
+            px-4 py-2 
+            mt-2 
+            rounded 
+            ease-out duration-500 
+            text-xl 
+            hover:bg-orange-600 hover:text-gray-100
+        "
+        value="Login"
+      />
+    </form>
   );
 }

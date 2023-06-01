@@ -7,7 +7,10 @@ export default function UserLinks({ route, nameRoute }) {
 
   if (isAuthenticated) {
     return (
-      <Link className="text-xl text-gray-700 hover:text-orange-500" to={route}>
+      <Link
+        className="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600 lg:ml-auto"
+        to={route}
+      >
         {nameRoute}
       </Link>
     );

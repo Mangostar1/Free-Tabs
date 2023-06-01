@@ -39,20 +39,20 @@ export default function LoginBtn() {
     return (
       <Link
         onClick={logOut}
-        className="text-slate-700 hover:text-slate-900 bg-orange-300 hover:bg-orange-400 px-2 rounded"
+        className="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline"
         to="/"
       >
-        Log out
+        Sign out
       </Link>
     );
   } else {
     return (
       <>
         <button
-          className="text-slate-700 hover:text-slate-900 bg-orange-300 hover:bg-orange-400 px-2 rounded"
+          className="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline"
           onClick={handleModal}
         >
-          Log in
+          Sign in
         </button>
         {view && <Login />}
       </>

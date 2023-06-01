@@ -31,16 +31,14 @@ export default function LogIn() {
   };
 
   return (
-    <form className="bg-slate-200 flex flex-col items-center justify-center gap-4 px-2 py-4 rounded absolute right-4 top-12">
+    <form className="bg-neutral-50 flex flex-col items-center justify-center gap-4 px-2 py-4 rounded absolute right-4 top-12">
       <input
         type="text"
         name="email"
         placeholder="E-mail"
         value={body.email}
         onChange={handler}
-        className="bg-slate-100 
-            w-52 h-8 
-            text-black"
+        className="block w-52 px-3 py-3 text-black bg-white border border-gray-200 rounded-full appearance-none placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
       />
       <input
         type="password"
@@ -49,23 +47,13 @@ export default function LogIn() {
         autoComplete="off"
         value={body.password}
         onChange={handler}
-        className="bg-slate-100 
-            w-52 h-8 
-            text-black"
+        className="block w-52 px-3 py-3 text-black bg-white border border-gray-200 rounded-full appearance-none placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
       />
       <input
         type="button"
         onClick={loginHandler}
         name="send"
-        className="
-            bg-orange-400 
-            w-52 
-            py-2  
-            rounded 
-            ease-out duration-500 
-            text-xl 
-            hover:bg-orange-600 hover:text-gray-100
-        "
+        className="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-orange-400 border-2 border-orange-400 rounded-full inline-flex hover:bg-orange-200 hover:border-orange-400 hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"
         value="Login"
       />
     </form>

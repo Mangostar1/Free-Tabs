@@ -67,7 +67,7 @@ export function BassTabForm() {
         }
 
         if (count === 1) {
-          addBassNotes($bassTab, strings, "A"); //<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
+          addBassNotes($bassTab, strings, data[0].className); //<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
         }
 
         data.forEach(({ className, nextClassName, countState, id }) => {

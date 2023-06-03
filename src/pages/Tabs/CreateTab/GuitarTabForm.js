@@ -68,7 +68,7 @@ export function GuitarTabForm() {
         }
 
         if (count === 1) {
-          addGuitarNotes($guitarTab, strings, "A"); //<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
+          addGuitarNotes($guitarTab, strings, data[0].className); //<-- article inside of section ".tab-root", "strings", "second class" (important for create a second article and continue adding more notes on the tab)
         }
 
         data.forEach(({ className, nextClassName, countState, id }) => {

@@ -1,47 +1,45 @@
+import MAX_TAB from "utils/constants";
+
 let $guitarStrings;
-export const scaleNotes = ['e', 'B' ,'G', 'D', 'A', 'E'];
+export const scaleNotes = ["e", "B", "G", "D", "A", "E"];
 
 export function createGuitarTab(element, id) {
-    
-    const $guitarTab = document.createElement('div');
-    $guitarTab.classList.add('guitar-tab');
-    $guitarTab.id = id;
+  const $guitarTab = document.createElement("div");
+  $guitarTab.classList.add("guitar-tab");
+  $guitarTab.id = id;
 
-    element.appendChild($guitarTab);
-
+  element.appendChild($guitarTab);
 }
 
 export function addGuitarNotes(element, num, idClass) {
-    
-    if (!element.hasChildNodes()) {
+  if (!element.hasChildNodes()) {
+    for (let i = 0; i < scaleNotes.length; i++) {
+      const guitarStrings = document.createElement("p"); //<-- create <p> the element
+      guitarStrings.classList.add("guitar-strings", idClass); //<-- add class
 
-        for (let i = 0; i < scaleNotes.length; i++) {
+      guitarStrings.textContent += `${scaleNotes[i]} ——${
+        num[i].value === "" ? "—" : num[i].value
+      }`;
 
-            const guitarStrings = document.createElement('p');//<-- create <p> the element
-            guitarStrings.classList.add('guitar-strings', idClass);//<-- add class
-
-            guitarStrings.textContent += `${scaleNotes[i]} ——${num[i].value === "" ? "—" : num[i].value}`;
-
-            element.appendChild(guitarStrings);
-        }
-
+      element.appendChild(guitarStrings);
     }
+  }
 
-    if (element.hasChildNodes()) {
+  if (element.hasChildNodes()) {
+    $guitarStrings = document.querySelectorAll(`.${idClass}`);
 
-        $guitarStrings = document.querySelectorAll(`.${idClass}`);
-
-        for (let i = 0; i < $guitarStrings.length; i++) {
-            
-            if ($guitarStrings[i].textContent.length >= 41) {
-                console.log('%cNo more tabs on this article .bass-tab', 'background-color:yellow; color:#000; font-size:20px;');
-                break;
-            } else {
-                $guitarStrings[i].textContent += `——${num[i].value === "" ? "—" : num[i].value}`;
-            }
-            
-        }
-        
+    for (let i = 0; i < $guitarStrings.length; i++) {
+      if ($guitarStrings[i].textContent.length >= MAX_TAB) {
+        console.log(
+          "%cNo more tabs on this article .bass-tab",
+          "background-color:yellow; color:#000; font-size:20px;"
+        );
+        break;
+      } else {
+        $guitarStrings[i].textContent += `——${
+          num[i].value === "" ? "—" : num[i].value
+        }`;
+      }
     }
-    
+  }
 }

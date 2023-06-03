@@ -1,3 +1,5 @@
+import MAX_TAB from "utils/constants";
+
 let $strings;
 export const scaleNotes = ["G", "D", "A", "E"];
 
@@ -29,7 +31,7 @@ export function addBassNotes(element, num, idClass) {
     $strings = document.querySelectorAll(`.${idClass}`);
 
     for (let i = 0; i < $strings.length; i++) {
-      if ($strings[i].textContent.length > 40) {
+      if ($strings[i].textContent.length >= MAX_TAB) {
         console.log(
           "%cNo more tabs on this article .bass-tab",
           "background-color:yellow; color:#000; font-size:20px;"

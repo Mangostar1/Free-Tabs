@@ -14,6 +14,7 @@ import ".././styles/editTabStiles.css";
 
 //Others
 import data from "../scripts/data";
+import MAX_TAB from "utils/constants";
 
 export function BassTabForm() {
   //States
@@ -70,7 +71,10 @@ export function BassTabForm() {
         }
 
         data.forEach(({ className, nextClassName, countState, id }) => {
-          if (document.querySelector(`.${className}`).textContent.length > 20) {
+          if (
+            document.querySelector(`.${className}`).textContent.length >=
+            MAX_TAB
+          ) {
             if (count === countState) {
               createBassTab($tabRoot, id);
               setCount(id);
@@ -93,7 +97,7 @@ export function BassTabForm() {
         if (editFirstClick === true) {
           if (
             document.querySelector(".editing").children[i].textContent.length >=
-            41
+            MAX_TAB
           ) {
             break;
           } else {

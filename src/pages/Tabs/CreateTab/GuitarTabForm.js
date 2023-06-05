@@ -131,11 +131,13 @@ export function GuitarTabForm() {
     const songNameInput = document.getElementById("songName");
     const tabRootSaved = document.querySelector(".tab-root").outerHTML;
 
-    sessionStorage.setItem("newGuitarTab", tabRootSaved);
-    sessionStorage.setItem("bandName", bandNameInput.value);
-    sessionStorage.setItem("songName", songNameInput.value);
-    sessionStorage.setItem("tab", "created");
-    navigate("/tab/created_view");
+    navigate("/tab/created_view", {
+      state: {
+        newGuitarTab: tabRootSaved,
+        bandName: bandNameInput.value,
+        songName: songNameInput.value,
+      },
+    });
     window.location.reload();
   };
 

@@ -126,13 +126,55 @@ export function BassTabForm() {
     //<-- Send the tab created to <CreatedView /> Component.
     const bandNameInput = document.getElementById("bandName");
     const songNameInput = document.getElementById("songName");
-    const tabRootSaved = document.querySelector(".tab-root").outerHTML;
 
-    sessionStorage.setItem("newBassTab", tabRootSaved);
-    sessionStorage.setItem("bandName", bandNameInput.value);
-    sessionStorage.setItem("songName", songNameInput.value);
-    sessionStorage.setItem("tab", "created");
-    navigate("/tab/created_view");
+    //article className
+    const articleClassName =
+      document.querySelector(".tab-root").classList.value;
+
+    //div className
+    const divClassName = document.querySelector(".bass-tab").classList.value;
+
+    //div IDs
+    const divs = document.querySelectorAll(".bass-tab");
+    const divsID = Array.from(divs).map((div) => div.id);
+
+    //<p> className
+    const pgElementClassName = document
+      .querySelector(".bass-strings")
+      .classList.item(0);
+
+    //<p> unique className
+    const pgElement = document.querySelectorAll(".bass-tab p");
+    const pgUniqueClass = new Set();
+    pgElement.forEach((etiqueta) => {
+      const clase = etiqueta.classList.value.split(" ")[1];
+      pgUniqueClass.add(clase);
+    });
+
+    //<p> content
+    const pContent = document.querySelectorAll(".bass-tab p");
+    const valoresClase = Array.from(pContent).map(
+      (etiqueta) => etiqueta.textContent
+    );
+
+    navigate("/tab/created_view", {
+      state: {
+        bandName: bandNameInput.value, //string
+        songName: songNameInput.value, //string
+        bassArticle: {
+          className: articleClassName, //string
+          div: {
+            id: divsID, //array
+            className: divClassName, //string
+            etiquetasP: {
+              className: pgElementClassName, //string
+              uniqueClassName: pgUniqueClass, //Set
+              contenido: valoresClase, //array
+            },
+          },
+        },
+      },
+    });
     window.location.reload();
   };
 

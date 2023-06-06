@@ -6,7 +6,8 @@ import AsideBtns from "component/AsideBtns";
 
 export default function CreatedView() {
   //states
-  const [tabView, setTabView] = useState(0);
+  const [tabView, setTabView] = useState(0); //<-- To control which tab it's render on DOM
+  const [count, setCount] = useState(0);
 
   const location = useLocation();
   const { newGuitarTab, bassArticle, bandName, songName } = location.state;
@@ -14,7 +15,6 @@ export default function CreatedView() {
   //scripts
   const handleBassTabView = () => {
     setTabView(1);
-    console.log(bassArticle.div.etiquetasP.contenido.length);
   };
 
   const handleGuitarTabView = () => {
@@ -32,12 +32,18 @@ export default function CreatedView() {
         <h1 className="font-bold text-center">{`${bandName} - ${songName}`}</h1>
         {tabView === 1 ? (
           <article className={bassArticle.className}>
-            {bassArticle.div.id.map((id) => (
-              <div key={id} id={id} className={bassArticle.div.className}>
-                <p>test</p>
-                <p>test</p>
-                <p>test</p>
-                <p>test</p>
+            {bassArticle.div.id.map((item, index) => (
+              <div key={index} className={bassArticle.div.className}>
+                {bassArticle.div.ptag.content
+                  .slice(index * 4, index * 4 + 4)
+                  .map((element, innerIndex) => (
+                    <p
+                      key={innerIndex}
+                      className={bassArticle.div.ptag.className}
+                    >
+                      {element}
+                    </p>
+                  ))}
               </div>
             ))}
           </article>

@@ -166,10 +166,10 @@ export function BassTabForm() {
           div: {
             id: divsID, //array
             className: divClassName, //string
-            etiquetasP: {
+            ptag: {
               className: pgElementClassName, //string
               uniqueClassName: pgUniqueClass, //Set
-              contenido: valoresClase, //array
+              content: valoresClase, //array
             },
           },
         },

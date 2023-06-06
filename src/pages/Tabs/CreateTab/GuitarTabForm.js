@@ -129,13 +129,53 @@ export function GuitarTabForm() {
     //<-- Send the tab created to <CreatedView /> Component.
     const bandNameInput = document.getElementById("bandName");
     const songNameInput = document.getElementById("songName");
-    const tabRootSaved = document.querySelector(".tab-root").outerHTML;
+
+    //article className
+    const articleClassName =
+      document.querySelector(".tab-root").classList.value;
+
+    //div className
+    const divClassName = document.querySelector(".guitar-tab").classList.value;
+
+    //div IDs
+    const divs = document.querySelectorAll(".guitar-tab");
+    const divsID = Array.from(divs).map((div) => div.id);
+
+    //<p> className
+    const pgElementClassName = document
+      .querySelector(".guitar-strings")
+      .classList.item(0);
+
+    //<p> unique className
+    const pgElement = document.querySelectorAll(".guitar-tab p");
+    const pgUniqueClass = new Set();
+    pgElement.forEach((etiqueta) => {
+      const clase = etiqueta.classList.value.split(" ")[1];
+      pgUniqueClass.add(clase);
+    });
+
+    //<p> content
+    const pContent = document.querySelectorAll(".guitar-tab p");
+    const valoresClase = Array.from(pContent).map(
+      (etiqueta) => etiqueta.textContent
+    );
 
     navigate("/tab/created_view", {
       state: {
-        newGuitarTab: tabRootSaved,
-        bandName: bandNameInput.value,
-        songName: songNameInput.value,
+        bandName: bandNameInput.value, //string
+        songName: songNameInput.value, //string
+        guitarArticle: {
+          className: articleClassName, //string
+          div: {
+            id: divsID, //array
+            className: divClassName, //string
+            ptag: {
+              className: pgElementClassName, //string
+              uniqueClassName: pgUniqueClass, //Set
+              content: valoresClase, //array
+            },
+          },
+        },
       },
     });
     window.location.reload();

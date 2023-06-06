@@ -7,10 +7,9 @@ import AsideBtns from "component/AsideBtns";
 export default function CreatedView() {
   //states
   const [tabView, setTabView] = useState(0); //<-- To control which tab it's render on DOM
-  const [count, setCount] = useState(0);
 
   const location = useLocation();
-  const { newGuitarTab, bassArticle, bandName, songName } = location.state;
+  const { guitarArticle, bassArticle, bandName, songName } = location.state; //<-- Info com from navigate on "BassTabFrom.js" and "GuitarTabFrom.js"
 
   //scripts
   const handleBassTabView = () => {
@@ -49,7 +48,22 @@ export default function CreatedView() {
           </article>
         ) : null}
         {tabView === 2 ? (
-          <div dangerouslySetInnerHTML={{ __html: newGuitarTab }} />
+          <article className={guitarArticle.className}>
+            {guitarArticle.div.id.map((item, index) => (
+              <div key={index} className={guitarArticle.div.className}>
+                {guitarArticle.div.ptag.content
+                  .slice(index * 6, index * 6 + 6)
+                  .map((element, innerIndex) => (
+                    <p
+                      key={innerIndex}
+                      className={guitarArticle.div.ptag.className}
+                    >
+                      {element}
+                    </p>
+                  ))}
+              </div>
+            ))}
+          </article>
         ) : null}
       </section>
     </main>

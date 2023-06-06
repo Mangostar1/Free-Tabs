@@ -29,7 +29,7 @@ export default function CreatedView() {
       </aside>
       <section id="Tab-Saved" className="bg-gray-100 col-start-2 col-end-5">
         <h1 className="font-bold text-center">{`${bandName} - ${songName}`}</h1>
-        {tabView === 1 ? (
+        {tabView === 1 && bassArticle?.div?.id && (
           <article className={bassArticle.className}>
             {bassArticle.div.id.map((item, index) => (
               <div key={index} className={bassArticle.div.className}>
@@ -46,8 +46,8 @@ export default function CreatedView() {
               </div>
             ))}
           </article>
-        ) : null}
-        {tabView === 2 ? (
+        )}
+        {tabView === 2 && guitarArticle?.div?.id && (
           <article className={guitarArticle.className}>
             {guitarArticle.div.id.map((item, index) => (
               <div key={index} className={guitarArticle.div.className}>
@@ -64,7 +64,7 @@ export default function CreatedView() {
               </div>
             ))}
           </article>
-        ) : null}
+        )}
       </section>
     </main>
   );

@@ -111,14 +111,15 @@ export default function PublicRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/tab/view" element={<ViewTab />} />
         <Route path="/tab/create" element={<CreateTab />} />
-        <Route
+        {/* <Route
           path="/tab/created_view"
           element={
             <TabControl>
               <CreatedView />
             </TabControl>
           }
-        />
+        /> */}
+        <Route path="/tab/created_view" element={<CreatedView />} />
         <Route
           path="/user/profile"
           element={

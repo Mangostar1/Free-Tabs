@@ -14,7 +14,7 @@ export default function CreatedView() {
   //scripts
   const handleBassTabView = () => {
     setTabView(1);
-    console.log(bassArticle.div.etiquetasP.contenido);
+    console.log(bassArticle.div.etiquetasP.contenido.length);
   };
 
   const handleGuitarTabView = () => {
@@ -34,7 +34,10 @@ export default function CreatedView() {
           <article className={bassArticle.className}>
             {bassArticle.div.id.map((id) => (
               <div key={id} id={id} className={bassArticle.div.className}>
-                <p>{bassArticle.div.etiquetasP.contenido}</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
               </div>
             ))}
           </article>

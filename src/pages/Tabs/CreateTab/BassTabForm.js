@@ -175,6 +175,7 @@ export function BassTabForm() {
         },
       },
     });
+    sessionStorage.setItem("tab", "created");
     window.location.reload();
   };
 

@@ -178,6 +178,7 @@ export function GuitarTabForm() {
         },
       },
     });
+    sessionStorage.setItem("tab", "created");
     window.location.reload();
   };
 

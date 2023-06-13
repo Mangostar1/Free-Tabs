@@ -13,11 +13,11 @@ import CreatedView from "pages/Tabs/CreatedView/CreatedView";
 
 //Components
 import LoginBtn from "utils/auth/LoginBtn";
-import UserTabs from "component/UserLinks";
-import TabCreatedLink from "component/TabCreatedLink";
+import UserTabs from "utils/auth/UserLinks";
+import TabCreatedLink from "utils/TabCreatedLink";
 
 //Routes
-import PrivateRoutes from "routes/PrivateRoutes";
+import PrivateRoutes from "utils/auth/PrivateRoutes";
 import TabControl from "routes/TabControl";
 
 export default function PublicRoutes() {
@@ -73,16 +73,10 @@ export default function PublicRoutes() {
             }`}
           >
             <Link
-              className="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600 lg:ml-auto"
+              className="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600"
               to="/"
             >
               Home
-            </Link>
-            <Link
-              className="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600"
-              to="/tab/view"
-            >
-              View Tabs
             </Link>
             <Link
               className="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600"
@@ -93,8 +87,31 @@ export default function PublicRoutes() {
             <TabCreatedLink />
             <UserTabs route="/user/my_tabs" nameRoute="My Tabs" />
             <UserTabs route="/user/profile" nameRoute="User Profile" />
-
-            <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
+            <div className="hidden mx-10 md:block lg:ml-auto">
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <svg
+                    className="w-5 h-5 text-gray-400"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  className="w-full py-2 pl-10 pr-4 text-black bg-white border border-gray-200 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-500 sm:text-sm rounded-xl placeholder:text-gray-400 focus:border-blue-500"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+            <div className="inline-flex items-center gap-2 list-none">
               <LoginBtn />
               <Link
                 className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-black rounded-full group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:bg-gray-700 active:bg-gray-800 active:text-white focus-visible:outline-black"

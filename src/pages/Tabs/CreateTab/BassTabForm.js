@@ -9,8 +9,8 @@ import {
 } from ".././scripts/createBassTab";
 
 //Styles
-import ".././styles/tabsContent.css";
-import ".././styles/editTabStiles.css";
+import "styles/tabs/tabsContent.css";
+import "styles/tabs/editTabStiles.css";
 
 //Others
 import data from "../scripts/data";

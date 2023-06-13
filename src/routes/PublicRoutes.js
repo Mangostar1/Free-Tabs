@@ -6,13 +6,13 @@ import Home from "pages/Home/Home";
 import UserPprofile from "pages/User/UserPprofile/UserPprofile";
 import MyTabs from "pages/User/MyTabs/MyTabs";
 import Error404Page from "pages/404/404";
-import SignUp from "pages/session/SignUp";
+import SignUp from "utils/auth/SignUp";
 import CreateTab from "pages/Tabs/CreateTab/CreateTab";
 import ViewTab from "pages/Tabs/ViewTab/ViewTab";
 import CreatedView from "pages/Tabs/CreatedView/CreatedView";
 
 //Components
-import LoginBtn from "pages/session/LoginBtn";
+import LoginBtn from "utils/auth/LoginBtn";
 import UserTabs from "component/UserLinks";
 import TabCreatedLink from "component/TabCreatedLink";
 

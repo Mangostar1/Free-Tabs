@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { endpoint } from "utils/urlApi";
 
 //component
-import Login from "pages/session/LogIn";
+import Login from "utils/auth/LogIn";
 
 export default function LoginBtn() {
   const [view, setView] = useState(false);

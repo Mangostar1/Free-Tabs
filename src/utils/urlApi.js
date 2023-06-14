@@ -11,3 +11,12 @@ export const endpoint = {
   logoutTest: `${BASE_URL_TEST}/api/logout`,
   sendTabTest: `${BASE_URL_TEST}`,
 };
+
+/*
+
+used on:
+  Login.jsx line 21 on src/utils/Login.jsx
+  SignUp.jsx line 46 on src/utils/SignUp.jsx
+  LoginBtn.jsx line 19 on src/utils/LoginBtn.jsx
+
+*/

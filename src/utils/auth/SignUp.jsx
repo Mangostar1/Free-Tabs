@@ -11,7 +11,7 @@ import Loader from "component/Loader";
 export default function SignUp() {
   const navigate = useNavigate();
 
-  const [body, setBody] = useState({ email: "", password: "" });
+  const [body, setBody] = useState({ userName: "", email: "", password: "" });
   const [isEqual, setIsEqual] = useState(false); //<-- If both fields are equal, validate to true
   const [isLoading, setIsLoading] = useState(false);
 
@@ -69,6 +69,19 @@ export default function SignUp() {
           </div>
           <form>
             <div className="col-span-full">
+              <div className="col-span-full">
+                <label className="block mb-3 text-sm font-medium text-gray-600">
+                  Your Name
+                </label>
+                <input
+                  className="block w-full px-6 py-3 text-black bg-white border border-gray-200 rounded-full appearance-none placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                  placeholder="Your Name"
+                  type="text"
+                  name="userName"
+                  value={body.userName}
+                  onChange={handler}
+                />
+              </div>
               <label className="block mb-3 text-sm font-medium text-gray-600">
                 E-mail
               </label>
@@ -81,6 +94,7 @@ export default function SignUp() {
                 onChange={handler}
               />
             </div>
+
             <div className="mt-4 space-y-6">
               <div className="col-span-full">
                 <label className="block mb-3 text-sm font-medium text-gray-600">

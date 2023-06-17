@@ -10,7 +10,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const goToCreateNewAcount = () => {
-    navigate("/user/login");
+    navigate("/user/sign_up");
   };
 
   const goToCreateNewTab = () => {

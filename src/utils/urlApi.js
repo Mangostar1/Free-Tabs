@@ -2,8 +2,8 @@ const BASE_URL = "https://my-backend-expressjs.up.railway.app";
 const BASE_URL_TEST = "http://localhost:5001";
 
 export const endpoint = {
-  prodAPI: "https://my-backend-expressjs.up.railway.app/",
-  localAPI: "http://localhost:5001",
+  prodAPI: BASE_URL,
+  localAPI: BASE_URL_TEST,
   login: `${BASE_URL}/api/login`,
   signUp: `${BASE_URL}/api/signup`,
   logout: `${BASE_URL}/api/logout`,

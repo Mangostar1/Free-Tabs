@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { endpoint } from "utils/urlApi";
 
 export default function UserPprofile(props) {
@@ -32,6 +32,10 @@ export default function UserPprofile(props) {
       });
   };
 
+  useEffect(() => {
+    handleUserData();
+  }, []);
+
   return (
     <main className="bg-slate-50 min-h-screen">
       <h1>Aca se veran los datos del usuario cuando este este logeado</h1>
@@ -39,9 +43,6 @@ export default function UserPprofile(props) {
         <p>Nombre: {userdata.userName}</p>
         <p>Email: {userdata.email}</p>
         <img src="#" alt="profile_img" />
-        <button onClick={handleUserData}>
-          click me to test some functions
-        </button>
       </section>
     </main>
   );

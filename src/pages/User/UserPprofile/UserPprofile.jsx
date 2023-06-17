@@ -14,7 +14,6 @@ export default function UserPprofile(props) {
 
   const handleUserData = () => {
     axios.defaults.withCredentials = true;
-    axios.defaults.baseURL = endpoint.prodAPI;
 
     axios
       .get(endpoint.userInfo, {
@@ -29,6 +28,9 @@ export default function UserPprofile(props) {
           userImage: response.data.photoURL,
         });
         console.log(response.data, userdata);
+      })
+      .catch((error) => {
+        console.error(error, error.message);
       });
   };
 

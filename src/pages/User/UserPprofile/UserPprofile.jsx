@@ -27,7 +27,6 @@ export default function UserPprofile(props) {
           email: response.data.email,
           userImage: response.data.photoURL,
         });
-        console.log(response.data, userdata);
       })
       .catch((error) => {
         console.error(error, error.message);

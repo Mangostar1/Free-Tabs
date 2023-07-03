@@ -26,13 +26,9 @@ export default function UserPprofile(props) {
 
   const handleUserData = () => {
     axios.defaults.withCredentials = true;
-    console.log(cookieValue, "1");
+
     axios
-      .get(endpoint.userInfo, {
-        headers: {
-          Cookie: `jwtToken=${cookieValue}`,
-        },
-      })
+      .get(endpoint.userInfo)
       .then((response) => {
         setUserdata({
           userName: response.data.displayName,
@@ -42,7 +38,6 @@ export default function UserPprofile(props) {
       })
       .catch((error) => {
         console.error(error, error.message);
-        console.log(cookieValue, "2");
       });
   };
 

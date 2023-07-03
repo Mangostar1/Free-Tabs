@@ -14,7 +14,7 @@ export default function UserPprofile(props) {
   const [editMode, setEditMode] = useState(false);
 
   //Cookie
-  const cookieValue = Cookies.get("jwtToken");
+  const jwtToken = Cookies.get("jwtToken");
 
   const handleAvatar = () => {
     console.log("Hace algo");
@@ -26,6 +26,10 @@ export default function UserPprofile(props) {
 
   const handleUserData = () => {
     axios.defaults.withCredentials = true;
+    axios.interceptors.request.use((config) => {
+      config.headers.Authorization = `Bearer ${jwtToken}`;
+      return config;
+    });
 
     axios
       .get(endpoint.userInfo)

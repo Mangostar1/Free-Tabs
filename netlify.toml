@@ -5,7 +5,25 @@
     Access-Control-Allow-Origin = "https://free-tabs.netlify.app"
 
 [[redirects]]
-  from = "/api/*"
-  to = "https://my-backend-expressjs.up.railway.app/:splat"
+  from = "/api/login"
+  to = "https://my-backend-expressjs.up.railway.app/api/login"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/signup"
+  to = "https://my-backend-expressjs.up.railway.app/api/signup"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/logout"
+  to = "https://my-backend-expressjs.up.railway.app/api/logout"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/user-data"
+  to = "https://my-backend-expressjs.up.railway.app/user-data"
   status = 200
   force = true

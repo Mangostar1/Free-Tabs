@@ -6,6 +6,7 @@ import { endpoint } from "utils/urlApi";
 import cameraSvg from "assets/icons/camera.svg";
 
 export default function UserPprofile(props) {
+  //States
   const [userdata, setUserdata] = useState({
     userName: undefined,
     email: undefined,
@@ -16,12 +17,18 @@ export default function UserPprofile(props) {
   //Cookie
   const jwtToken = Cookies.get("jwtToken");
 
+  //Functions
+  const handler = ({ target }) => {
+    const { name, value } = target;
+    setUserdata({ ...userdata, [name]: value });
+  };
+
   const handleAvatar = () => {
-    console.log("Hace algo");
+    console.log("Hace algo Avatar");
   };
 
   const handleEdit = () => {
-    console.log("Edita algo");
+    setEditMode(true);
   };
 
   const handleUserData = () => {
@@ -45,6 +52,26 @@ export default function UserPprofile(props) {
       });
   };
 
+  const saveChanges = () => {
+    setEditMode(false);
+    axios.defaults.withCredentials = true;
+    axios.interceptors.request.use((config) => {
+      config.headers.Authorization = `Bearer ${jwtToken}`;
+      return config;
+    });
+    axios
+      .put(endpoint.userInfoPut, userdata)
+      .then((response) => {
+        setUserdata({
+          ...userdata,
+          userName: response.data.displayName,
+        });
+      })
+      .catch((error) => {
+        console.error(error, error.message);
+      });
+  };
+
   useEffect(() => {
     handleUserData();
   }, []);
@@ -61,9 +88,21 @@ export default function UserPprofile(props) {
       <section className="flex flex-col gap-5">
         <div className="">
           <h2 className="text-gray-700 font-bold">USER NAME</h2>
-          <p className="text-gray-900 font-medium tracking-widest">
-            {userdata.userName || "Some Name"}
-          </p>
+          {editMode === false ? (
+            <p className="text-gray-900 font-medium tracking-widest">
+              {userdata.userName || "Some Name"}
+            </p>
+          ) : (
+            <input
+              type="text"
+              name="userName"
+              placeholder={userdata.userName}
+              value={userdata.userName}
+              className="w-full tracking-widest"
+              onChange={handler}
+            />
+          )}
+
           <div className="w-full h-0.5 bg-gray-400"></div>
         </div>
         <div className="">
@@ -73,6 +112,15 @@ export default function UserPprofile(props) {
           </p>
           <div className="w-full h-0.5 bg-gray-400"></div>
         </div>
+        {editMode === true ? (
+          <button
+            className="transition bg-orange-300 w-16 mt-4 px-4 py-2 rounded hover:bg-orange-200"
+            title="save changes"
+            onClick={saveChanges}
+          >
+            Save
+          </button>
+        ) : null}
       </section>
       <section className="relative">
         <img
@@ -80,13 +128,15 @@ export default function UserPprofile(props) {
           alt="profile_img"
           className="rounded-full"
         />
-        <button
-          onClick={handleAvatar}
-          title="change avatar"
-          className="transition absolute bottom-0 right-4 w-11 h-11 shadow-md bg-white rounded-full flex justify-center items-center hover:bg-gray-100"
-        >
-          <img src={cameraSvg} alt="change_avatar" className="w-7 h-7" />
-        </button>
+        {editMode === true ? (
+          <button
+            onClick={handleAvatar}
+            title="change avatar"
+            className="transition absolute bottom-0 right-4 w-11 h-11 shadow-md bg-white rounded-full flex justify-center items-center hover:bg-gray-100"
+          >
+            <img src={cameraSvg} alt="change_avatar" className="w-7 h-7" />
+          </button>
+        ) : null}
       </section>
     </main>
   );

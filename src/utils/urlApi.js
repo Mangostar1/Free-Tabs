@@ -9,11 +9,13 @@ export const endpoint = {
   logout: `${BASE_URL}/api/logout`,
   sendTab: `${BASE_URL}`,
   userInfo: `${BASE_URL}/user-data`,
+  userInfoPut: `${BASE_URL}/user-data-update`,
   loginTest: `${BASE_URL_TEST}/api/login`,
   signUpTest: `${BASE_URL_TEST}/api/signup`,
   logoutTest: `${BASE_URL_TEST}/api/logout`,
   sendTabTest: `${BASE_URL_TEST}`,
   userInfoTest: `${BASE_URL_TEST}/user-data`,
+  userInfoPutTest: `${BASE_URL_TEST}/user-data-update`,
 };
 
 /*

@@ -30,6 +30,9 @@ export default function LoginBtn() {
           "Ocurrió un error de red al intentar cerrar la sesión",
           error
         );
+      })
+      .finally(() => {
+        window.location.reload();
       });
   };
 

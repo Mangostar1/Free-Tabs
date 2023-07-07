@@ -103,7 +103,11 @@ export default function UserPprofile(props) {
             />
           )}
 
-          <div className="w-full h-0.5 bg-gray-400"></div>
+          {editMode === false ? (
+            <div className="w-full h-0.5 bg-gray-400"></div>
+          ) : (
+            <div className="w-full h-0.5 bg-orange-400"></div>
+          )}
         </div>
         <div className="">
           <h2 className="text-gray-700 font-bold">E-MAIL</h2>

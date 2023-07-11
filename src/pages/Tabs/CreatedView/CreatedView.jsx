@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { endpoint } from "utils/urlApi";
 
 //components
 import AsideBtns from "component/AsideBtns";
 
+//utils
+import { getObjInSessionStoraje } from "utils/objToStr";
+
 export default function CreatedView() {
+  const location = useLocation();
   //states
   const [tabView, setTabView] = useState(0); //<-- To control which tab it's render on DOM
+  const [userTab, setUserTab] = useState({
+    userName: undefined,
+    bandName: undefined,
+    songName: undefined,
+    bassArticle: undefined,
+    guitarArticle: undefined,
+  });
 
-  const location = useLocation();
-  const { guitarArticle, bassArticle, bandName, songName } = location.state; //<-- Info com from navigate on "BassTabFrom.js" and "GuitarTabFrom.js"
+  //sessionStoraje tab info
+  const { bandName, songName } = getObjInSessionStoraje("bandInfo") || {};
+
+  const { bassArticle } = getObjInSessionStoraje("bassTab") || {};
+
+  const { guitarArticle } = getObjInSessionStoraje("guitarTab") || {};
+
+  //Cookie
+  const jwtToken = Cookies.get("jwtToken");
 
   //scripts
   const handleBassTabView = () => {
@@ -19,6 +40,42 @@ export default function CreatedView() {
   const handleGuitarTabView = () => {
     setTabView(2);
   };
+
+  const sendTab = () => {
+    try {
+      axios.defaults.withCredentials = true;
+      axios.interceptors.request.use((config) => {
+        config.headers.Authorization = `Bearer ${jwtToken}`;
+        return config;
+      });
+      axios.post(endpoint.sendUserTab, userTab);
+      console.info("Tablatures successfully sent to the server.");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    setUserTab({
+      userName: localStorage.getItem("user_email"),
+      bandName: bandName,
+      songName: songName,
+      bassArticle: bassArticle,
+      guitarArticle: guitarArticle,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (location.pathname === "/tab/created_view") {
+      setUserTab((prevUserTab) => ({
+        ...prevUserTab,
+        bandName: bandName,
+        songName: songName,
+        bassArticle: bassArticle,
+        guitarArticle: guitarArticle,
+      }));
+    }
+  }, [location]);
 
   return (
     <main className="grid grid-cols-4 bg-slate-50">
@@ -65,6 +122,15 @@ export default function CreatedView() {
             ))}
           </article>
         )}
+      </section>
+      <section>
+        <input
+          type="button"
+          onClick={sendTab}
+          className="transition bg-orange-300 mt-4 px-4 py-2 rounded-xl hover:bg-orange-200"
+          name="submit-tab"
+          value="Send Tab"
+        />
       </section>
     </main>
   );

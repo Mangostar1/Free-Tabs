@@ -15,6 +15,7 @@ import "styles/tabs/editTabStiles.css";
 //Others
 import data from "../scripts/data";
 import MAX_TAB from "utils/constants";
+import { saveObjInSessionStoraje } from "utils/objToStr";
 
 export function BassTabForm() {
   //States
@@ -157,24 +158,27 @@ export function BassTabForm() {
       (etiqueta) => etiqueta.textContent
     );
 
-    navigate("/tab/created_view", {
-      state: {
-        bandName: bandNameInput.value, //string
-        songName: songNameInput.value, //string
-        bassArticle: {
-          className: articleClassName, //string
-          div: {
-            id: divsID, //array
-            className: divClassName, //string
-            ptag: {
-              className: pgElementClassName, //string
-              uniqueClassName: pgUniqueClass, //Set
-              content: valoresClase, //array
-            },
+    saveObjInSessionStoraje("bandInfo", {
+      bandName: bandNameInput.value, //string
+      songName: songNameInput.value, //string
+    });
+
+    saveObjInSessionStoraje("bassTab", {
+      bassArticle: {
+        className: articleClassName, //string
+        div: {
+          id: divsID, //array
+          className: divClassName, //string
+          ptag: {
+            className: pgElementClassName, //string
+            uniqueClassName: pgUniqueClass, //Set
+            content: valoresClase, //array
           },
         },
       },
     });
+
+    navigate("/tab/created_view");
     sessionStorage.setItem("tab", "created");
     window.location.reload();
   };

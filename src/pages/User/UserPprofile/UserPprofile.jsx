@@ -46,6 +46,7 @@ export default function UserPprofile(props) {
           email: response.data.email,
           userImage: response.data.photoURL,
         });
+        localStorage.setItem("user_email", response.data.email);
       })
       .catch((error) => {
         console.error(error, error.message);

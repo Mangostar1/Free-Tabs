@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { endpoint } from "utils/urlApi";
 
 //component
-import Login from "utils/auth/LogIn";
 
 export default function LoginBtn() {
-  const [view, setView] = useState(false);
-
-  const handleModal = () => {
-    setView(!view);
-  };
-
   const logOut = () => {
     axios
       .get(endpoint.logout)
@@ -51,13 +44,12 @@ export default function LoginBtn() {
   } else {
     return (
       <>
-        <button
+        <Link
           className="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline"
-          onClick={handleModal}
+          to="/login"
         >
           Sign in
-        </button>
-        {view && <Login />}
+        </Link>
       </>
     );
   }

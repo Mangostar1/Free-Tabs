@@ -7,6 +7,7 @@ import UserPprofile from "pages/User/UserPprofile/UserPprofile";
 import MyTabs from "pages/User/MyTabs/MyTabs";
 import Error404Page from "pages/404/404";
 import SignUp from "utils/auth/SignUp";
+import LogIn from "utils/auth/LogIn";
 import CreateTab from "pages/Tabs/CreateTab/CreateTab";
 import ViewTab from "pages/Tabs/ViewTab/ViewTab";
 import CreatedView from "pages/Tabs/CreatedView/CreatedView";
@@ -152,6 +153,7 @@ export default function PublicRoutes() {
             </PrivateRoutes>
           }
         />
+        <Route path="/login" element={<LogIn />} />
         <Route path="/user/sign_up" element={<SignUp />} />
         <Route path="*" element={<Error404Page />} />
       </Routes>

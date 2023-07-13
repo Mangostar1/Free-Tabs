@@ -48,8 +48,9 @@ export default function CreatedView() {
         config.headers.Authorization = `Bearer ${jwtToken}`;
         return config;
       });
-      axios.post(endpoint.sendUserTab, userTab);
-      console.info("Tablatures successfully sent to the server.");
+      axios.post(endpoint.sendUserTab, userTab).then((response) => {
+        console.info(response.data.message, response.data.id);
+      });
     } catch (error) {
       console.error(error);
     }

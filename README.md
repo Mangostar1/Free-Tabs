@@ -1,6 +1,6 @@
-# Free Tab
+# Free Tab Creator
 
-Free Tabs es un proyecto en desarrollo que tiene como objetivo proporcionar una plataforma en línea donde los usuarios puedan crear y guardar tablaturas de guitarra y bajo. La plataforma permite organizar las tablaturas por artista y canción, facilitando su búsqueda y acceso.
+Free Tab Creator es un proyecto en desarrollo que tiene como objetivo proporcionar una plataforma en línea donde los usuarios puedan crear y guardar tablaturas de guitarra y bajo. La plataforma permite organizar las tablaturas por artista y canción, facilitando su búsqueda y acceso.
 
 ## Características principales
 

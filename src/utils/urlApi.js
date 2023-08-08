@@ -1,4 +1,4 @@
-const BASE_URL = "https://free-tab-backend.onrender.com/";
+const BASE_URL = "https://free-tab-backend.onrender.com";
 const BASE_URL_TEST = "http://localhost:5001";
 
 export const endpoint = {

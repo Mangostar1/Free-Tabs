@@ -153,7 +153,7 @@ export function BassTabForm() {
     });
 
     //<p> content
-    const pContent = document.querySelectorAll(".bass-tab p");
+    const pContent = document.querySelectorAll(".bass-tab p");//? toma todos los elementos <p> que esten dentro de .bass-tab y los enlista dentro de un array
     const valoresClase = Array.from(pContent).map(
       (etiqueta) => etiqueta.textContent
     );

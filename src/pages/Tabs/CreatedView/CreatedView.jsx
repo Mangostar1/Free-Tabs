@@ -15,7 +15,6 @@ export default function CreatedView() {
   //states
   const [tabView, setTabView] = useState(0); //<-- To control which tab it's render on DOM
   const [userTab, setUserTab] = useState({
-    userName: undefined,
     bandName: undefined,
     songName: undefined,
     bassArticle: undefined,
@@ -58,12 +57,12 @@ export default function CreatedView() {
 
   useEffect(() => {
     setUserTab({
-      userName: localStorage.getItem("user_email"),
       bandName: bandName,
       songName: songName,
       bassArticle: bassArticle,
       guitarArticle: guitarArticle,
     });
+    console.log(userTab);
   }, []);
 
   useEffect(() => {
@@ -76,6 +75,7 @@ export default function CreatedView() {
         guitarArticle: guitarArticle,
       }));
     }
+    console.log(userTab);
   }, [location]);
 
   return (

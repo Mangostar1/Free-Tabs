@@ -53,6 +53,7 @@ export default function CreatedView() {
     } catch (error) {
       console.error(error);
     }
+    console.log(userTab);
   };
 
   useEffect(() => {

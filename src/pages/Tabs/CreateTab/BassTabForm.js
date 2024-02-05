@@ -298,15 +298,14 @@ export function BassTabForm() {
       >
         Clean Tab
       </button>
-      <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4">
+      <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4">
         {editing === true ? (
           <button
             name="Acept"
             className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100"
             onClick={saveEdit}
           >
-            {" "}
-            Acept{" "}
+            {" "}Acept{" "}
           </button>
         ) : (
           ""
@@ -317,8 +316,7 @@ export function BassTabForm() {
             className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100"
             onClick={cancelEdit}
           >
-            {" "}
-            Cancel{" "}
+            {" "}Cancel{" "}
           </button>
         ) : (
           ""

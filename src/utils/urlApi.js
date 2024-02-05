@@ -3,24 +3,24 @@ const BASE_URL_TEST = "http://localhost:5001";
 
 export const endpoint = {
   prodAPI: BASE_URL,
-  login: `${BASE_URL}/api/login`,
-  signUp: `${BASE_URL}/api/signup`,
-  logout: `${BASE_URL}/api/logout`,
-  sendUserTab: `${BASE_URL}/api/new-tab`,
-  updateUserTab: (id) => `${BASE_URL}/api/user-tab/${id}/update`,
-  getUserTab: `${BASE_URL}/api/user-tab`,
+  login: `${BASE_URL}/auth/login`,
+  signUp: `${BASE_URL}/auth/signup`,
+  logout: `${BASE_URL}/auth/logout`,
+  sendUserTab: `${BASE_URL}/tab/new-tab`,
+  updateUserTab: (id) => `${BASE_URL}/tab/user-tab/${id}/update`,
+  getUserTab: `${BASE_URL}/tab/user-tab`,
   userInfo: `${BASE_URL}/user-data`,
   userInfoPut: `${BASE_URL}/user-data-update`,
 };
 
 /* export const endpoint = {
   localAPI: BASE_URL_TEST,
-  login: `${BASE_URL_TEST}/api/login`,
-  signUp: `${BASE_URL_TEST}/api/signup`,
-  logout: `${BASE_URL_TEST}/api/logout`,
-  sendUserTab: `${BASE_URL_TEST}/api/new-tab`,
-  updateUserTab: (id) => `${BASE_URL_TEST}/api/user-tab/${id}/update`,
-  getUserTab: `${BASE_URL_TEST}/api/user-tab`,
+  login: `${BASE_URL_TEST}/auth/login`,
+  signUp: `${BASE_URL_TEST}/auth/signup`,
+  logout: `${BASE_URL_TEST}/auth/logout`,
+  sendUserTab: `${BASE_URL_TEST}/tab/new-tab`,
+  updateUserTab: (id) => `${BASE_URL_TEST}/tab/user-tab/${id}/update`,
+  getUserTab: `${BASE_URL_TEST}/tab/user-tab`,
   userInfo: `${BASE_URL_TEST}/user-data`,
   userInfoPut: `${BASE_URL_TEST}/user-data-update`,
 }; */

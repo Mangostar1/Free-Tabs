@@ -338,8 +338,7 @@ export function GuitarTabForm() {
             className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100"
             onClick={saveEdit}
           >
-            {" "}
-            Acept{" "}
+            {" "}Acept{" "}
           </button>
         ) : (
           ""
@@ -350,8 +349,7 @@ export function GuitarTabForm() {
             className="bg-orange-200 px-4 py-2 ml-5 rounded hover:bg-orange-100"
             onClick={cancelEdit}
           >
-            {" "}
-            Cancel{" "}
+            {" "}Cancel{" "}
           </button>
         ) : (
           ""

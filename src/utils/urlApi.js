@@ -1,7 +1,7 @@
 const BASE_URL = "https://free-tab-backend-production.up.railway.app";
 const BASE_URL_TEST = "http://localhost:5001";
 
-export const endpoint = {
+/* export const endpoint = {
   prodAPI: BASE_URL,
   login: `${BASE_URL}/auth/login`,
   signUp: `${BASE_URL}/auth/signup`,
@@ -11,9 +11,9 @@ export const endpoint = {
   getUserTab: `${BASE_URL}/tab/user-tab`,
   userInfo: `${BASE_URL}/user-data`,
   userInfoPut: `${BASE_URL}/user-data-update`,
-};
+}; */
 
-/* export const endpoint = {
+export const endpoint = {
   localAPI: BASE_URL_TEST,
   login: `${BASE_URL_TEST}/auth/login`,
   signUp: `${BASE_URL_TEST}/auth/signup`,
@@ -23,7 +23,7 @@ export const endpoint = {
   getUserTab: `${BASE_URL_TEST}/tab/user-tab`,
   userInfo: `${BASE_URL_TEST}/user-data`,
   userInfoPut: `${BASE_URL_TEST}/user-data-update`,
-}; */
+};
 
 /*
 

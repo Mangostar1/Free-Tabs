@@ -7,6 +7,9 @@ import { GuitarTabForm } from "pages/Tabs/CreateTab/GuitarTabForm";
 //Styles
 import "styles/tabs/chooseIns.css"; //<-- For <from> line 30
 
+//utils
+import { getObjInSessionStoraje } from "utils/objToStr";
+
 export default function CreateTab() {
   const [view, setView] = useState(0);
 
@@ -21,6 +24,8 @@ export default function CreateTab() {
     setView(1);
     document.querySelector(".tab-root").innerHTML = ""; //<-- Tab Root come from TabForm.js line 29
   };
+
+  const { bandName, songName } = getObjInSessionStoraje("bandInfo") || '';
 
   return (
     <main className="bg-slate-50 min-h-screen">
@@ -58,6 +63,7 @@ export default function CreateTab() {
             id="bandName"
             className="w-48 h-8 border-solid border-x border-y border-black"
             type="text"
+            defaultValue={bandName}
           />
           <p className="font-bold text-2xl px-2">-</p>
           <input
@@ -65,6 +71,7 @@ export default function CreateTab() {
             id="songName"
             className="w-48 h-8 border-solid border-x border-y border-black"
             type="text"
+            defaultValue={songName}
           />
         </form>
         {view === 0 ? <BassTabForm /> : <GuitarTabForm />}

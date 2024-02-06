@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
+import Swal from 'sweetalert2';
+
 import { endpoint } from "utils/urlApi";
 
 //components
@@ -48,12 +50,17 @@ export default function CreatedView() {
         return config;
       });
       axios.post(endpoint.sendUserTab, userTab).then((response) => {
-        console.info(response.data.message, response.data.id);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: response.data.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
       });
     } catch (error) {
       console.error(error);
     }
-    console.log(userTab);
   };
 
   useEffect(() => {

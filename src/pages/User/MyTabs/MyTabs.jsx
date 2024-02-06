@@ -32,6 +32,7 @@ export default function MyTabs() {
         const response = await axios.get(endpoint.getUserTab);
         
         setResponseData([...response.data]);
+        console.log(responseData);
 
       } catch (err) {
         console.error(err);
@@ -68,23 +69,24 @@ export default function MyTabs() {
         <div className="absolute top-0 left-0 z-50 h-screen w-screen bg-black/50 flex justify-center items-center">
           <Loader />
         </div>
-      ) : responseData.map((data, index) => (
-        <aside className="mt-5 ml-4 mlr-4 mb-4 col-span-1 flex flex-col">
+      ) : <aside className="mt-5 ml-4 mlr-4 mb-4 col-span-1 flex flex-col">
+        {responseData.map((data, index) => (
           <CommonBtn
             key={index}
             handleBtn={() => showTab(index)}
             classCss="bg-orange-200 px-4 py-2 m-2 rounded hover:bg-orange-100"
             name={`${data.band_name} - ${data.song_name}`}
           />
-        </aside>
-      ))}
+        
+        ))}
+      </aside>}
 
       {
-        tabOnScreen === true ? <>
+        tabOnScreen === true ?
 
           <section className="p-5">
             <h2 className="font-bold text-center">{userTab.bandName + ' - ' + userTab.songName}</h2>
-            {userTab.bassArticle !== null ? <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4">
+            {userTab.bassArticle !== null ? <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4 mt-5">
               {userTab.bassArticle.div.id.map((item, index) => (
                   <div key={index} className={userTab.bassArticle.div.className}>
                     {userTab.bassArticle.div.ptag.content
@@ -101,11 +103,11 @@ export default function MyTabs() {
                 ))}
             </article> : null}
 
-            {userTab.guitarArticle !== null ? <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4">
+            {userTab.guitarArticle !== null ? <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4 mt-5">
               {userTab.guitarArticle.div.id.map((item, index) => (
                   <div key={index} className={userTab.guitarArticle.div.className}>
                     {userTab.guitarArticle.div.ptag.content
-                      .slice(index * 4, index * 4 + 4)
+                      .slice(index * 6, index * 6 + 6)
                       .map((element, innerIndex) => (
                         <p
                           key={innerIndex}
@@ -117,9 +119,7 @@ export default function MyTabs() {
                   </div>
                 ))}
             </article> : null}
-          </section>
-
-        </> : null
+          </section> : null
       }
     </main>
   );

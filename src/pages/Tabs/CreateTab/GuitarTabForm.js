@@ -131,13 +131,6 @@ export function GuitarTabForm() {
     const bandNameInput = document.getElementById("bandName");
     const songNameInput = document.getElementById("songName");
 
-    //article className
-    const articleClassName =
-      document.querySelector(".tab-root").classList.value;
-
-    //div className
-    const divClassName = document.querySelector(".guitar-tab").classList.value;
-
     //div IDs
     const divs = document.querySelectorAll(".guitar-tab");
     const divsID = Array.from(divs).map((div) => div.id);
@@ -168,10 +161,8 @@ export function GuitarTabForm() {
 
     saveObjInSessionStoraje("guitarTab", {
       guitarArticle: {
-        className: articleClassName, //string
         div: {
           id: divsID, //array
-          className: divClassName, //string
           ptag: {
             className: pgElementClassName, //string
             uniqueClassName: pgUniqueClass, //Set
@@ -181,7 +172,7 @@ export function GuitarTabForm() {
       },
     });
 
-    navigate("/tab/created_view");
+    navigate("/tab/view");
     sessionStorage.setItem("tab", "created");
     window.location.reload();
   };
@@ -331,7 +322,7 @@ export function GuitarTabForm() {
       >
         Clean Tab
       </button>
-      <article className="tab-root box-border border-solid border-x border-y border-black bg-slate-300 w-172 m-auto p-4">
+      <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4">
         {editing === true ? (
           <button
             name="Acept"

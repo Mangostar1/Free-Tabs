@@ -128,13 +128,6 @@ export function BassTabForm() {
     const bandNameInput = document.getElementById("bandName");
     const songNameInput = document.getElementById("songName");
 
-    //article className
-    const articleClassName =
-      document.querySelector(".tab-root").classList.value;
-
-    //div className
-    const divClassName = document.querySelector(".bass-tab").classList.value;
-
     //div IDs
     const divs = document.querySelectorAll(".bass-tab");
     const divsID = Array.from(divs).map((div) => div.id);
@@ -165,10 +158,8 @@ export function BassTabForm() {
 
     saveObjInSessionStoraje("bassTab", {
       bassArticle: {
-        className: articleClassName, //string
         div: {
           id: divsID, //array
-          className: divClassName, //string
           ptag: {
             className: pgElementClassName, //string
             uniqueClassName: pgUniqueClass, //Set
@@ -178,7 +169,7 @@ export function BassTabForm() {
       },
     });
 
-    navigate("/tab/created_view");
+    navigate("/tab/view");
     sessionStorage.setItem("tab", "created");
     window.location.reload();
   };

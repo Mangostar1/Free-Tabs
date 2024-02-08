@@ -1,9 +1,22 @@
 export default function HomeArticle(props) {
     return(
         <article className={props.cssArticle}>
-            <h2 className={props.cssTitle}>
-                {props.title}
-            </h2>
+
+            {
+                props.title ? 
+                    <h2 className={props.cssTitle}>
+                        {props.title}
+                    </h2> : null
+            }
+
+            {
+                props.imageIcon ? 
+                    <div className="icon-container flex justify-center items-center">
+                    {props.imageIcon}
+                    </div>
+                : null
+            }
+            
             <p className={props.cssText}>
                 {props.text}
             </p>

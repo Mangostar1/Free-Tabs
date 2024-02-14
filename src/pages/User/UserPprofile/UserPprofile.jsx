@@ -14,6 +14,9 @@ import cameraSvg from "assets/icons/camera.svg";
 import Footer from "component/Footer";
 import Loader from "component/Loader";
 
+//Image
+import userImage from 'assets/imgs/user-profile-default.png';
+
 export default function UserProfile(props) {
   //States
   const [userdata, setUserdata] = useState({
@@ -109,7 +112,7 @@ export default function UserProfile(props) {
 
   return (
     <>
-      <main className="bg-slate-50 flex flex-row justify-between py-14 px-10 mx-auto w-144 relative">
+      <main className="bg-slate-50">
         {!isLoaded ? (
           // Mostrar el loader mientras se carga la data
           <div className="absolute top-0 left-0 z-50 h-full w-full bg-black/10 flex justify-center items-center">
@@ -117,12 +120,12 @@ export default function UserProfile(props) {
           </div>
         ) : (
           // Mostrar el contenido una vez que la data se ha cargado
-          <>
-            <div className="absolute top-5 right-8">
+          <section className="flex flex-row justify-between py-14 px-10 m-auto w-144 relative">
+            <article className="absolute top-5 right-8">
               <Button variant="contained" onClick={handleEdit} size="small">Editar</Button>
-            </div>
+            </article>
 
-            <section className="flex flex-col gap-5">
+            <article className="flex flex-col gap-5">
               <div className="">
                 <h2 className="text-gray-700 font-bold">Nombre</h2>
                 {editMode === false ? (
@@ -159,10 +162,12 @@ export default function UserProfile(props) {
                   <Button variant="contained" onClick={cancelChanges} size="small">Cancelar</Button>
                 </div>
               ) : null}
-            </section>
-            <section className="relative">
+            </article>
+            <article className="relative">
               <img
-                src="https://picsum.photos/200/200"
+                src={userImage}
+                width='200'
+                height='200'
                 alt="profile_img"
                 className="rounded-full"
               />
@@ -175,8 +180,8 @@ export default function UserProfile(props) {
                   <img src={cameraSvg} alt="change_avatar" className="w-7 h-7" />
                 </button>
               ) : null}
-            </section>
-          </>
+            </article>
+          </section>
         )}
       </main>
       <Footer />

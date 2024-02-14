@@ -5,6 +5,8 @@ import theme from './theme';
 import PublicRoutes from "routes/PublicRoutes";
 
 import "./styles/index.css";
+import "./styles/main.css";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

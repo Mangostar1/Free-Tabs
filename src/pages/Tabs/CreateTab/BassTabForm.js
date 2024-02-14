@@ -283,12 +283,14 @@ export function BassTabForm() {
           defaultValue="Send Tab"
         />
       </form>
+
       <button
         onClick={clean}
         className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"
       >
         Clean Tab
       </button>
+
       <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4">
         {editing === true ? (
           <button
@@ -313,21 +315,14 @@ export function BassTabForm() {
           ""
         )}
       </article>
-      <div className="mt-5 ml-5">
-        <h2 className="font-bold">Glossary:</h2>
-        <ul className="ml-6">
-          <li className="list-disc">x Dead note</li>
-          <li className="list-disc">h Hammer-on</li>
-          <li className="list-disc">p Pull-off</li>
-          <li className="list-disc">/ Slide up</li>
-        </ul>
-      </div>
+
       <button
         onClick={edit}
         className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"
       >
         Edit
       </button>
+      
       <button
         onClick={saveNotes}
         className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"

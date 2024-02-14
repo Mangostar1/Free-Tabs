@@ -36,7 +36,6 @@ export default function MyTabs() {
         const response = await axios.get(endpoint.getUserTab);
         
         setResponseData([...response.data]);
-        console.log(responseData);
 
       } catch (err) {
         console.error(err);
@@ -73,7 +72,7 @@ export default function MyTabs() {
 
   return (
     <>
-      <main className="bg-slate-50 min-h-screen relative grid grid-cols-4">
+      <main className="bg-slate-50 relative grid grid-cols-4">
         
         {!isLoaded ? (//<-- Loader, tras cargar muestra el contenido de la vista
           <div className="absolute top-0 left-0 z-50 h-screen w-screen bg-black/50 flex justify-center items-center">

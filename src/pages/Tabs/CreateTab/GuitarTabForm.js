@@ -346,17 +346,6 @@ export function GuitarTabForm() {
           ""
         )}
       </article>
-      <div className="mt-5 ml-5">
-        <h2 className="font-bold">Glossary:</h2>
-        <ul className="ml-6">
-          <li className="list-disc">x Dead note</li>
-          <li className="list-disc">h Hammer-on</li>
-          <li className="list-disc">p Pull-off</li>
-          <li className="list-disc">b Bend</li>
-          <li className="list-disc">/ Slide up</li>
-          <li className="list-disc">~ Vibrato</li>
-        </ul>
-      </div>
       <button
         onClick={edit}
         className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"

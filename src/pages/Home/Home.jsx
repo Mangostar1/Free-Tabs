@@ -12,12 +12,15 @@ import ImgMain from "component/ImgMain";
 import HomeArticle from "component/HomeArticle";
 import Footer from "component/Footer";
 
+//assets
+import mainImage from 'assets/imgs/main-page.jpg';
+
 
 export default function Home() {
   const navigate = useNavigate();
 
   const goToCreateNewAcount = () => {
-    navigate("/user/sign_up");
+    navigate("/sign_up");
   };
 
   const goToCreateNewTab = () => {
@@ -26,7 +29,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="">
+      <main className="bg-slate-50 text-zinc-800 pb-2 main">
         <section
           className="
                   bg-[url('assets/imgs/op-2.jpg')] bg-cover bg-no-repeat bg-[center_top_1rem] 
@@ -44,9 +47,11 @@ export default function Home() {
         </section>
         <section className="flex justify-center gap-4 p-20">
           <ImgMain
-            src="https://picsum.photos/800/400"
+            src={mainImage}
             alt="tab-guitar"
-            classCss=""
+            width="800"
+            height="400"
+            classCss="rounded"
           />
           <div className="">
             <h2 className="text-center text-xl font-semibold">Tus Tabs</h2>
@@ -65,25 +70,25 @@ export default function Home() {
         <section className="flex flex-row justify-center items-center gap-4 mb-5">
           <HomeArticle
             text="Crea tablaturas de alta calidad en minutos con nuestro editor intuitivo y herramientas avanzadas."
-            cssArticle="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-            cssText="font-normal text-gray-700 dark:text-gray-400"
-            imageIcon={<EditIcon style={{ color: '#FFFFFF' }}/>}
+            cssArticle="block max-w-sm p-6 bg-slate-100 border border-zinc-400 rounded-lg shadow"
+            cssText="font-normal text-gray-700"
+            imageIcon={<EditIcon />}
           />
           <HomeArticle
             text="
                       Accede a una biblioteca de tablaturas actualizadas y populares para descubrir nuevas canciones para tocar.
                       "
-            cssArticle="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-            cssText="font-normal text-gray-700 dark:text-gray-400"
-            imageIcon={<MusicNoteIcon style={{ color: '#FFFFFF' }}/>}
+            cssArticle="block max-w-sm p-6 bg-slate-100 border border-zinc-400 rounded-lg shadow"
+            cssText="font-normal text-gray-700"
+            imageIcon={<MusicNoteIcon />}
           />
           <HomeArticle
             text="
                       Comparte tus tablaturas con otros músicos y colabora en proyectos musicales.
                       "
-            cssArticle="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-            cssText="font-normal text-gray-700 dark:text-gray-400"
-            imageIcon={<ShareIcon style={{ color: '#FFFFFF' }}/>}
+            cssArticle="block max-w-sm p-6 bg-slate-100 border border-zinc-400 rounded-lg shadow"
+            cssText="font-normal text-gray-700"
+            imageIcon={<ShareIcon />}
           />
         </section>
       </main>

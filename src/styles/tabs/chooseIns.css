@@ -1,8 +1,8 @@
 :root{
     --borderRadius: 1rem;
-    --orange100: #FFEDD5;
-    --orange200: #fed7aa;
-    --orange400: #fb923c;
+    --orange100: #FFB800;
+    --orange200: #ffac33;
+    --orange400: #ff9800;
 }
 
 .chooseIns{

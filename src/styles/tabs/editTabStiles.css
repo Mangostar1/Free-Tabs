@@ -8,7 +8,7 @@
 }
 
 .selected:hover{
-    border: 2px solid gray;
+    border: 2px solid #444;
 }
 
 .editing{

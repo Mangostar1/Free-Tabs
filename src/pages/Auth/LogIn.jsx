@@ -40,7 +40,7 @@ export default function LogIn() {
 
   return (
     <>
-      <main>
+      <main className="">
         <section className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
           <article className="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4">
             <div className="flex flex-col">

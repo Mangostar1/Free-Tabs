@@ -85,7 +85,6 @@ export default function CreatedView() {
       bassArticle: bassArticle,
       guitarArticle: guitarArticle,
     });
-    console.log(userTab);
   }, []);
 
   useEffect(() => {
@@ -98,7 +97,6 @@ export default function CreatedView() {
         guitarArticle: guitarArticle,
       }));
     }
-    console.log(userTab);
   }, [location]);
 
   return (

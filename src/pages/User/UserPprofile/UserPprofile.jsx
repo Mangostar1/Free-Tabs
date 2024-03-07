@@ -5,8 +5,7 @@ import { endpoint } from "utils/urlApi";
 import Swal from 'sweetalert2';
 
 //Material UI
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
+import { TextField, Button, Link } from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -30,7 +29,11 @@ export default function UserProfile(props) {
   });
   const [editMode, setEditMode] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const [socialFacebook, setSocialFacebook] = useState(undefined);
+  const [socialInstagram, setSocialInstagram] = useState(undefined);
+  const [socialTwitter, setSocialTwitter] = useState(undefined);
+  const [userDEscription, setUserDescription] = useState(undefined);
+  
   //Cookie
   const jwtToken = Cookies.get("jwtToken");
 
@@ -39,6 +42,26 @@ export default function UserProfile(props) {
     const { name, value } = target;
     setUserdata({ ...userdata, [name]: value });
   };
+
+  const handleData = ({target}) => {
+    const { id, value } = target;
+
+    if (id === 'user-description') {
+      setUserDescription(value);
+    }
+
+    if (id === 'social-media-facebook') {
+      setSocialFacebook(value);
+    }
+
+    if (id === 'social-media-instagram') {
+      setSocialInstagram(value);
+    }
+
+    if (id === 'social-media-twitter') {
+      setSocialTwitter(value);
+    }
+  }
 
   const handleAvatar = () => {
     console.log("Función deshabilitada");
@@ -64,6 +87,13 @@ export default function UserProfile(props) {
             email: response.data.email,
             userImage: response.data.photoURL,
           });
+
+          setSocialFacebook(response.data.facebook);
+          setSocialInstagram(response.data.instagram);
+          setSocialTwitter(response.data.twitter);
+          setUserDescription(response.data.description);
+
+          console.log(response.data);
         })
         .catch((error) => {
           console.error(error, error.message);
@@ -85,20 +115,24 @@ export default function UserProfile(props) {
       return config;
     });
     axios
-      .put(endpoint.userInfoPut, userdata)
+      .put(endpoint.userInfoPut, {userdata, userFacebook: socialFacebook, userInstagram: socialInstagram, userTwitter: socialTwitter, userDescription: userDEscription})
       .then((response) => {
         if (response.status === 200) {
-          Swal.fire({
+          setUserdata({
+            ...userdata,
+            userName: response.data.user_name,
+          });
+          setSocialFacebook(response.data.facebook);
+          setSocialInstagram(response.data.instagram);
+          setSocialTwitter(response.data.twitter);
+          setUserDescription(response.data.description);
+          /* Swal.fire({
             position: "top-end",
             icon: "success",
             title: "¡Tu perfil ha sido actualizado exitosamente!",
             showConfirmButton: false,
             timer: 1500
-          });
-          setUserdata({
-            ...userdata,
-            userName: response.data.user_name,
-          });
+          }); */
         }
       })
       .catch((error) => {
@@ -179,9 +213,14 @@ export default function UserProfile(props) {
                   </p>
 
                   <h2 className="text-gray-700 font-bold mt-5">Descripción</h2>
-                  <p className="text-gray-900 tracking-widest">
-                    Descripcion del usuario...
-                  </p>
+                  {editMode === false ? (
+                    <p className="text-gray-900 tracking-widest">
+                      {userDEscription}
+                    </p>
+                  ) : (
+                    <TextField defaultValue={userDEscription} id="user-description" onChange={handleData} fullWidth multiline maxRows={4}></TextField>
+                  )}
+                  
 
                 </div>
                 <div className="">
@@ -189,37 +228,41 @@ export default function UserProfile(props) {
                     ROL
                   </p>
                 </div>
-                {editMode === true ? (
-                  <div className="flex flex-row gap-4">
-                    <Button variant="contained" onClick={saveChanges} title="Guardar Cambios" size="small">Guardar</Button>
-                    <Button variant="contained" onClick={cancelChanges} size="small">Cancelar</Button>
-                  </div>
-                ) : null}
               </article>
             </section>
             <section className="flex flex-col gap-4 justify-between py-5 px-10 m-auto relative">
               {editMode === true ? (
-                  <div className="flex flex-row gap-4">
-                    <Button variant="contained" onClick={saveChanges} title="Guardar Cambios" size="small">Guardar</Button>
-                    <Button variant="contained" onClick={cancelChanges} size="small">Cancelar</Button>
-                  </div>
+                  <>
+                    <article className="">
+                      <form className="flex flex-col gap-3">
+                        <TextField label="Facebook" defaultValue={socialFacebook} onChange={handleData} id="social-media-facebook" variant="outlined"></TextField>
+                        <TextField label="Instagram" defaultValue={socialInstagram} onChange={handleData} id="social-media-instagram" variant="outlined"></TextField>
+                        <TextField label="Twitter" defaultValue={socialTwitter} onChange={handleData} id="social-media-twitter" variant="outlined"></TextField>
+                      </form>
+                    </article>
+                  
+                    <div className="flex flex-row gap-4">
+                      <Button variant="contained" onClick={saveChanges} title="Guardar Cambios" size="small">Guardar</Button>
+                      <Button variant="contained" onClick={cancelChanges} size="small">Cancelar</Button>
+                    </div>
+                  </>
                 ) : <>
                   <article>
-                    <Link target="_blank" href="https://www.facebook.com/" underline="hover" color="inherit">
+                    <Link target="_blank" href={"https://www.facebook.com/" + socialFacebook} underline="hover" color="inherit">
                       <FacebookIcon />
-                      <span className="pl-2">Some User</span>
+                      <span className="pl-2">{socialFacebook}</span>
                     </Link>
                   </article>
                   <article>
-                    <Link target="_blank" href="https://www.instagram.com/" underline="hover" color="inherit">
+                    <Link target="_blank" href={"https://www.instagram.com/" + socialInstagram} underline="hover" color="inherit">
                       <InstagramIcon />
-                      <span className="pl-2">Some User</span>
+                      <span className="pl-2">{socialInstagram}</span>
                     </Link>
                   </article>
                   <article>
-                    <Link target="_blank" href="https://twitter.com/" underline="hover" color="inherit">
+                    <Link target="_blank" href={"https://twitter.com/" + socialTwitter} underline="hover" color="inherit">
                       <XIcon />
-                      <span className="pl-2">Some User</span>
+                      <span className="pl-2">{socialTwitter}</span>
                     </Link>
                   </article>
                 </>

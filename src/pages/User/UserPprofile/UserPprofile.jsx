@@ -92,8 +92,6 @@ export default function UserProfile(props) {
           setSocialInstagram(response.data.instagram);
           setSocialTwitter(response.data.twitter);
           setUserDescription(response.data.description);
-
-          console.log(response.data);
         })
         .catch((error) => {
           console.error(error, error.message);
@@ -107,7 +105,8 @@ export default function UserProfile(props) {
     }
   };
 
-  const saveChanges = () => {
+  const saveChanges = (event) => {
+    event.preventDefault();
     setEditMode(false);
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use((config) => {
@@ -115,24 +114,24 @@ export default function UserProfile(props) {
       return config;
     });
     axios
-      .put(endpoint.userInfoPut, {userdata, userFacebook: socialFacebook, userInstagram: socialInstagram, userTwitter: socialTwitter, userDescription: userDEscription})
+      .put(endpoint.userInfoPut, {userdata: userdata, userFacebook: socialFacebook, userInstagram: socialInstagram, userTwitter: socialTwitter, userDescription: userDEscription})
       .then((response) => {
         if (response.status === 200) {
           setUserdata({
             ...userdata,
             userName: response.data.user_name,
           });
-          setSocialFacebook(response.data.facebook);
-          setSocialInstagram(response.data.instagram);
-          setSocialTwitter(response.data.twitter);
-          setUserDescription(response.data.description);
-          /* Swal.fire({
+          setSocialFacebook(response.data.user_facebook);
+          setSocialInstagram(response.data.user_instagram);
+          setSocialTwitter(response.data.user_twitter);
+          setUserDescription(response.data.user_description);
+          Swal.fire({
             position: "top-end",
             icon: "success",
             title: "¡Tu perfil ha sido actualizado exitosamente!",
             showConfirmButton: false,
             timer: 1500
-          }); */
+          });
         }
       })
       .catch((error) => {

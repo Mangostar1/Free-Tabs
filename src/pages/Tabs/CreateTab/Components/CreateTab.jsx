@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 //Components
 import { BassTabForm } from "pages/Tabs/CreateTab/BassTabForm";
-import { GuitarTabForm } from "pages/Tabs/CreateTab/GuitarTabForm";
+import { GuitarTabForm } from "pages/Tabs/CreateTab/Components/GuitarTabForm";
+import GlossaryBass from "pages/Tabs/CreateTab/Components/GlossaryBass";
+import GlossaryGuitar from "pages/Tabs/CreateTab/Components/GlossaryGuitar";
 import Footer from "component/Footer";
+
 
 //Material UI
 import Button from '@mui/material/Button';
@@ -17,48 +20,17 @@ import "styles/tabs/chooseIns.css"; //<-- For <from> line 30
 import { getObjInSessionStoraje } from "utils/objToStr";
 
 //Scripts
-import { createBassTab, addBassNotes, scaleNotes as scaleNotesBass } from ".././scripts/createBassTab";
-import { createGuitarTab, addGuitarNotes, scaleNotes as scaleNotesGuitar } from ".././scripts/createGuitarTab";
+import { createBassTab, addBassNotes, scaleNotes as scaleNotesBass } from "../../scripts/createBassTab";
+import { createGuitarTab, addGuitarNotes, scaleNotes as scaleNotesGuitar } from "../../scripts/createGuitarTab";
 
 //Styles
 import "styles/tabs/tabsContent.css";
 import "styles/tabs/editTabStiles.css";
 
 //Others
-import data from "../scripts/data";
+import data from "../../scripts/data";
 import MAX_TAB from "utils/constants";
 import { saveObjInSessionStoraje } from "utils/objToStr";
-
-
-function GlossaryBass() {
-  return(
-    <div className="">
-      <h2 className="font-bold">Glossary:</h2>
-      <ul className="ml-6">
-        <li className="list-disc">x Dead note</li>
-        <li className="list-disc">h Hammer-on</li>
-        <li className="list-disc">p Pull-off</li>
-        <li className="list-disc">/ Slide up</li>
-      </ul>
-    </div>
-  )
-}
-
-function GlossaryGuitar() {
-  return(
-    <div className="">
-      <h2 className="font-bold">Glossary:</h2>
-      <ul className="ml-6">
-        <li className="list-disc">x Dead note</li>
-        <li className="list-disc">h Hammer-on</li>
-        <li className="list-disc">p Pull-off</li>
-        <li className="list-disc">b Bend</li>
-        <li className="list-disc">/ Slide up</li>
-        <li className="list-disc">~ Vibrato</li>
-      </ul>
-    </div>
-  )
-}
 
 export default function CreateTab() {
   
@@ -67,16 +39,17 @@ export default function CreateTab() {
   const viewBassTab = () => {
     setView(0);
     setCount(0);
+    setTabCreated(false);
   };
 
   const viewGuitarTab = () => {
     setView(1);
     setCount(0);
+    setTabCreated(false);
   };
 
   const { bandName, songName } = getObjInSessionStoraje("bandInfo") || '';
 
-  //!PROBANDO MIGRACION ------------------------------------------
     //States
     const [count, setCount] = useState(0); //<-- Used to set unique ID on new tabs create by createBassTab() and more things.
 
@@ -87,6 +60,7 @@ export default function CreateTab() {
     const [valueA, setValueA] = useState(""); //<-- To control user input by expression regular.
     const [valueE, setValueE] = useState(""); //<-- To control user input by expression regular.
   
+    const [tabCreated, setTabCreated] = useState(false);
     const [isSelected, setIsSelected] = useState(false); //<-- Used to entry on editing mode.
     const [editing, setEditing] = useState(false); //<-- Used to view on screen new buttons when the user select a tab to edit.
     const [originalContent, setOriginalContent] = useState(""); //<-- To save old content tab, useful when the user need go back the changes made on editing mode.
@@ -118,6 +92,8 @@ export default function CreateTab() {
     };
   
     const sendNotesBass = () => {
+
+      setTabCreated(true);
       //<-- Send notes on input text to the "tap-root" element.
       const strings = document.querySelectorAll(".strings"); //<-- This className come from <form id="create-bass-tab">, it's on return of this component.
       const $tabRoot = document.querySelector(".tab-root");
@@ -185,6 +161,7 @@ export default function CreateTab() {
       //<-- Clear input text from create bass tab.
       document.querySelector(".tab-root").innerHTML = "";
       setCount(0);
+      setTabCreated(false);
     };
   
     const saveBassNotes = () => {
@@ -260,6 +237,8 @@ export default function CreateTab() {
     };
 
     const sendNotesGuitar = () => {
+
+      setTabCreated(true);
       //<-- Send notes on input text to the "tap-root" element.
       const strings = document.querySelectorAll(".strings");
       const $tabRoot = document.querySelector(".tab-root");
@@ -638,12 +617,12 @@ export default function CreateTab() {
 
           <Divider />
           
-          {view === 0 ? <article className="mb-2 pb-5">
+          {tabCreated === true ? view === 0 ? <article className="mb-2 pb-5">
             <button
               className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"
               onClick={editBass}
             >
-              Editar
+              Editar Bajo
             </button>
             
             <button
@@ -666,7 +645,8 @@ export default function CreateTab() {
             >
               Guardar
             </button>
-          </article>}
+          </article> : null}
+
           
 
         </aside>

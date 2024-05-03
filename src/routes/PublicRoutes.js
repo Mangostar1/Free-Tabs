@@ -8,7 +8,7 @@ import MyTabs from "pages/User/MyTabs/MyTabs";
 import Error404Page from "pages/404/404";
 import SignUp from "pages/Auth/SignUp";
 import LogIn from "pages/Auth/LogIn";
-import CreateTab from "pages/Tabs/CreateTab/CreateTab";
+import CreateTab from "pages/Tabs/CreateTab/Components/CreateTab";
 import ViewTab from "pages/Tabs/ViewTab/ViewTab";
 import CreatedView from "pages/Tabs/CreatedView/CreatedView";
 

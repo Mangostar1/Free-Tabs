@@ -77,30 +77,9 @@ export default function PublicRoutes() {
 
   return (
     <BrowserRouter>
-      <header className="w-full mx-auto bg-white border-b">
-        <div className="relative flex flex-col w-full p-5 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+      <header className="w-full mx-auto bg-transparent absolute top-0 left-0 z-10">
+        <div className="relative flex flex-col w-full p-5 mx-auto bg-transparent md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
           <div className="flex flex-row items-center justify-between lg:justify-start mr-5">
-            <Link
-              className="text-lg tracking-tight text-black uppercase focus:outline-none focus:ring lg:text-2xl"
-              to="/"
-            >
-              <Typography
-                variant="h6"
-                noWrap
-                href="#app-bar-with-responsive-menu"
-                sx={{
-                  mr: 2,
-                  display: { md: 'flex' },
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  letterSpacing: '.3rem',
-                  color: 'inherit',
-                  textDecoration: 'none',
-                }}
-              >
-                FREE-TABS
-              </Typography>
-            </Link>
             <button
               onClick={toggleOpen}
               className="inline-flex items-center justify-center p-2 text-gray-400 hover:text-black focus:outline-none focus:text-black md:hidden"
@@ -134,13 +113,13 @@ export default function PublicRoutes() {
             }`}
           >
             <Link
-              className="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-[#ff9800]"
+              className="px-2 py-2 text-sm text-gray-200 lg:px-6 md:px-3 hover:text-[#ff9800]"
               to="/"
             >
               Inicio
             </Link>
             <Link
-              className="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-[#ff9800]"
+              className="px-2 py-2 text-sm text-gray-200 lg:px-6 md:px-3 hover:text-[#ff9800]"
               to="/tab/create"
             >
               Crear Tab

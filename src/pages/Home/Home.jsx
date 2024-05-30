@@ -33,7 +33,7 @@ export default function Home() {
         <section
           className="
                   bg-[url('assets/imgs/op-2.jpg')] bg-cover bg-no-repeat bg-[center_top_1rem] 
-                  h-128 
+                  h-screen 
                   flex flex-col items-center 
                   xl:bg-[center_top_-8rem]"
         >

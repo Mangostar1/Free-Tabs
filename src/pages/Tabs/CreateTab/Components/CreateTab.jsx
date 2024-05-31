@@ -413,7 +413,6 @@ export default function CreateTab() {
       setEditFirstClick(false);
       handleEditState();
     };
-  //!FIN DE PRUEBAS DE MIGRACION ------------------------------------------
 
   return (
     <>

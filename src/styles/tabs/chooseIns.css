@@ -20,10 +20,12 @@
     padding: 5px 10px 5px 10px;
     font-size: 1.1rem;
     position: relative;
+    color: rgb(51 65 85);
 }
 
 #chooseBass:hover ,#chooseGuitar:hover{
     background-color: var(--orange100);
+    color: rgb(100 116 139);
 }
 
 #chooseBass{

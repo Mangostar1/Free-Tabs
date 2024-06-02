@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="bg-slate-50 text-zinc-800 pb-2 main">
+      <main className="bg-zinc-600 text-zinc-400 pb-2 main">
         <section
           className="
                   bg-[url('assets/imgs/op-2.jpg')] bg-cover bg-no-repeat bg-[center_top_1rem] 
@@ -70,7 +70,7 @@ export default function Home() {
         <section className="flex flex-row justify-center items-center gap-4 mb-5">
           <HomeArticle
             text="Crea tablaturas de alta calidad en minutos con nuestro editor intuitivo y herramientas avanzadas."
-            cssArticle="block max-w-sm p-6 bg-slate-100 border border-zinc-400 rounded-lg shadow"
+            cssArticle="block max-w-sm p-6 bg-zinc-300 border border-zinc-400 rounded-lg shadow"
             cssText="font-normal text-gray-700"
             imageIcon={<EditIcon />}
           />
@@ -78,7 +78,7 @@ export default function Home() {
             text="
                       Accede a una biblioteca de tablaturas actualizadas y populares para descubrir nuevas canciones para tocar.
                       "
-            cssArticle="block max-w-sm p-6 bg-slate-100 border border-zinc-400 rounded-lg shadow"
+            cssArticle="block max-w-sm p-6 bg-zinc-300 border border-zinc-400 rounded-lg shadow"
             cssText="font-normal text-gray-700"
             imageIcon={<MusicNoteIcon />}
           />
@@ -86,7 +86,7 @@ export default function Home() {
             text="
                       Comparte tus tablaturas con otros músicos y colabora en proyectos musicales.
                       "
-            cssArticle="block max-w-sm p-6 bg-slate-100 border border-zinc-400 rounded-lg shadow"
+            cssArticle="block max-w-sm p-6 bg-zinc-300 border border-zinc-400 rounded-lg shadow"
             cssText="font-normal text-gray-700"
             imageIcon={<ShareIcon />}
           />

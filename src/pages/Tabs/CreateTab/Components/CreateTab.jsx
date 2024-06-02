@@ -416,8 +416,8 @@ export default function CreateTab() {
 
   return (
     <>
-      <main className="bg-slate-50 text-zinc-800 main grid grid-cols-4">
-        <aside className="col-span-1 bg-slate-100">
+      <main className="bg-zinc-600 text-zinc-300 main grid grid-cols-4">
+        <aside className="col-span-1 bg-zinc-700">
           <article className="chooseIns">
             <input
               onChange={viewBassTab}
@@ -449,7 +449,7 @@ export default function CreateTab() {
               <input
                 placeholder="Band Name"
                 id="bandName"
-                className="w-48 h-8 border-solid border-x border-y border-black"
+                className="w-48 h-8 border-solid border-x border-y border-black text-zinc-700"
                 type="text"
                 defaultValue={bandName}
               />
@@ -457,7 +457,7 @@ export default function CreateTab() {
               <input
                 placeholder="Song Name"
                 id="songName"
-                className="w-48 h-8 border-solid border-x border-y border-black"
+                className="w-48 h-8 border-solid border-x border-y border-black text-zinc-700"
                 type="text"
                 defaultValue={songName}
               />
@@ -479,7 +479,7 @@ export default function CreateTab() {
                 name="G"
                 value={valueG}
                 onChange={handleChangeG}
-                className="strings w-16 h-8 border-solid border-x border-y border-black"
+                className="strings w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-4"
               />
               <input
@@ -488,7 +488,7 @@ export default function CreateTab() {
                 name="D"
                 value={valueD}
                 onChange={handleChangeD}
-                className="strings w-16 h-8 border-solid border-x border-y border-black"
+                className="strings w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-3"
               />
               <input
@@ -497,7 +497,7 @@ export default function CreateTab() {
                 name="A"
                 value={valueA}
                 onChange={handleChangeA}
-                className="strings w-16 h-8 border-solid border-x border-y border-black"
+                className="strings w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-2"
               />
               <input
@@ -506,20 +506,20 @@ export default function CreateTab() {
                 name="E"
                 value={valueE}
                 onChange={handleChangeE}
-                className="strings w-16 h-8 border-solid border-x border-y border-black"
+                className="strings w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-1"
               />
               <div className="flex gap-2 pt-4">
                 <input
                   id="clearNote-bass"
-                  className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100"
+                  className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100 text-zinc-700"
                   type="button"
                   onClick={clean}
                   defaultValue="Limpiar Tab"
                 />
                 <input
                   id="sendNote-bass"
-                  className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100"
+                  className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100 text-zinc-700"
                   type="button"
                   onClick={sendNotesBass}
                   defaultValue="Crear Tab"
@@ -535,7 +535,7 @@ export default function CreateTab() {
                 name="e"
                 value={valueEm}
                 onChange={handleChangeEm}
-                className="strings  w-16 h-8 border-solid border-x border-y border-black"
+                className="strings  w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-6"
                 min="0"
                 max="24"
@@ -546,7 +546,7 @@ export default function CreateTab() {
                 name="B"
                 value={valueB}
                 onChange={handleChangeB}
-                className="strings  w-16 h-8 border-solid border-x border-y border-black"
+                className="strings  w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-5"
                 min="0"
                 max="24"
@@ -557,7 +557,7 @@ export default function CreateTab() {
                 name="G"
                 value={valueG}
                 onChange={handleChangeG}
-                className="strings  w-16 h-8 border-solid border-x border-y border-black"
+                className="strings  w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-4"
                 min="0"
                 max="24"
@@ -568,7 +568,7 @@ export default function CreateTab() {
                 name="D"
                 value={valueD}
                 onChange={handleChangeD}
-                className="strings  w-16 h-8 border-solid border-x border-y border-black"
+                className="strings  w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-3"
                 min="0"
                 max="24"
@@ -579,7 +579,7 @@ export default function CreateTab() {
                 name="A"
                 value={valueA}
                 onChange={handleChangeA}
-                className="strings  w-16 h-8 border-solid border-x border-y border-black"
+                className="strings  w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-2"
                 min="0"
                 max="24"
@@ -590,7 +590,7 @@ export default function CreateTab() {
                 name="E"
                 value={valueE}
                 onChange={handleChangeE}
-                className="strings  w-16 h-8 border-solid border-x border-y border-black"
+                className="strings  w-16 h-8 border-solid border-x border-y border-black text-zinc-700"
                 id="string-1"
                 min="0"
                 max="24"
@@ -598,14 +598,14 @@ export default function CreateTab() {
               <div className="flex gap-2 pt-4">
                 <input
                     id="clearNote-guitar"
-                    className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100"
+                    className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100 text-zinc-700"
                     type="button"
                     onClick={clean}
                     defaultValue="Limpiar Tab"
                   />
                 <input
                   id="sendNote-guitar"
-                  className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100"
+                  className="send-notes bg-orange-200 px-2 py-1 rounded hover:bg-orange-100 text-zinc-700"
                   type="button"
                   onClick={sendNotesGuitar}
                   defaultValue="Crear Tab"
@@ -618,28 +618,28 @@ export default function CreateTab() {
           
           {tabCreated === true ? view === 0 ? <article className="mb-2 pb-5">
             <button
-              className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"
+              className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100 text-zinc-700"
               onClick={editBass}
             >
               Editar Bajo
             </button>
             
             <button
-              className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"
+              className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100 text-zinc-700"
               onClick={saveBassNotes}
             >
               Guardar
             </button>
           </article> : <article className="mb-2 pb-5">
             <button
-              className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"
+              className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100 text-zinc-700"
               onClick={editGuitar}
             >
               Editar guitarra
             </button>
             
             <button
-              className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100"
+              className="bg-orange-200 px-4 py-2 mt-5 ml-5 rounded hover:bg-orange-100 text-zinc-700"
               onClick={saveGuitarNotes}
             >
               Guardar
@@ -650,7 +650,7 @@ export default function CreateTab() {
 
         </aside>
 
-        <section className="col-span-3">
+        <section className="col-span-3 text-zinc-700">
           {view === 0 ? <BassTabForm cancelEdit={cancelEdit} saveEdit={saveEdit} editing={editing} /> : <GuitarTabForm cancelEdit={cancelEdit} saveEdit={saveEdit} editing={editing} />}
         </section>
       </main>

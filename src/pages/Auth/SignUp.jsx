@@ -99,12 +99,12 @@ export default function SignUp() {
 
   return (
     <>
-      <main>
+      <main className="bg-zinc-600 text-zinc-300">
         <section className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
           <div className="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4">
             <div className="flex flex-col">
               <div>
-                <h2 className="text-4xl text-black">Let's get started!</h2>
+                <h2 className="text-4xl">Let's get started!</h2>
               </div>
             </div>
             <form>

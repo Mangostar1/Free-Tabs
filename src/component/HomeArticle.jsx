@@ -11,7 +11,7 @@ export default function HomeArticle(props) {
 
             {
                 props.imageIcon ? 
-                    <div className="icon-container flex justify-center items-center">
+                    <div className="icon-container flex justify-center items-center text-orange-500">
                     {props.imageIcon}
                     </div>
                 : null

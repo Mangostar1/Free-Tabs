@@ -40,12 +40,12 @@ export default function LogIn() {
 
   return (
     <>
-      <main className="">
+      <main className="bg-zinc-600 text-zinc-300">
         <section className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
           <article className="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4">
             <div className="flex flex-col">
               <div>
-                <h2 className="text-4xl text-black">Login</h2>
+                <h2 className="text-4xl text-zinc-400">Login</h2>
               </div>
             </div>
             <form onSubmit={handleSubmit}>
@@ -60,6 +60,7 @@ export default function LogIn() {
                     onChange={handleChange}
                     fullWidth
                     variant="standard"
+                    sx={{ label: { color: 'rgb(212 212 216)' } }}
                   />
                 </div>
                 <div className="col-span-full">
@@ -73,6 +74,7 @@ export default function LogIn() {
                     onChange={handleChange}
                     fullWidth
                     variant="standard"
+                    sx={{ label: { color: 'rgb(212 212 216)' } }}
                   />
                 </div>
                 <Button

@@ -15,7 +15,7 @@ const theme = createTheme({
       contrastText: '#000',
     },
     text: {
-      primary: 'rgb(212 212 216)', // Blanco para el texto principal
+      primary: '#ffffff', // Blanco para el texto principal
       secondary: '#e0e0e0', // Invertir el color de fondo para el texto secundario
       disabled: '#888', // Gris claro para texto deshabilitado
     },

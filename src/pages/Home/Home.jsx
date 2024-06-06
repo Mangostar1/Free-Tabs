@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="bg-zinc-600 text-zinc-400 pb-2 main">
+      <main className="bg-zinc-600 text-zinc-200 pb-2 main">
         <section
           className="
                   bg-[url('assets/imgs/op-2.jpg')] bg-cover bg-no-repeat bg-[center_top_1rem] 

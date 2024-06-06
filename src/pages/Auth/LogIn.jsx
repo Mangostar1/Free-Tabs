@@ -45,7 +45,7 @@ export default function LogIn() {
           <article className="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4">
             <div className="flex flex-col">
               <div>
-                <h2 className="text-4xl text-zinc-400">Login</h2>
+                <h2 className="text-4xl text-orange-400">Login</h2>
               </div>
             </div>
             <form onSubmit={handleSubmit}>

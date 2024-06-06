@@ -104,7 +104,7 @@ export default function SignUp() {
           <div className="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4">
             <div className="flex flex-col">
               <div>
-                <h2 className="text-4xl">Let's get started!</h2>
+                <h2 className="text-4xl text-orange-400">¡Empecemos!</h2>
               </div>
             </div>
             <form>

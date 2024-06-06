@@ -149,7 +149,7 @@ export default function UserProfile(props) {
 
   return (
     <>
-      <main className="bg-slate-50">
+      <main className="bg-zinc-600 text-zinc-200">
         {!isLoaded ? (
           // Mostrar el loader mientras se carga la data
           <div className="absolute top-0 left-0 z-50 h-full w-full bg-black/10 flex justify-center items-center">
@@ -184,7 +184,7 @@ export default function UserProfile(props) {
             <section className="flex flex-row justify-between py-5 px-10 m-auto relative">
               <article className="flex flex-row gap-5">
                 <div className="mx-5">
-                  <h2 className="text-gray-700 font-bold">Nombre</h2>
+                  <h2 className="text-zinc-200 font-bold">Nombre</h2>
                   {editMode === false ? (
                     <p className="text-gray-900 font-medium tracking-widest">
                       {userdata.userName}

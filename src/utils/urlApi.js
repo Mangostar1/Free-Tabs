@@ -23,8 +23,8 @@ export const endpoint = {
   getUserTab: `${BASE_URL_TEST}/tab/user-tab`,
   userInfo: `${BASE_URL_TEST}/user-data`,
   userInfoPut: `${BASE_URL_TEST}/user-data-update`,
-}; */
-
+};
+ */
 /*
 
 used on:

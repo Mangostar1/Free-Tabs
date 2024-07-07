@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "home": "Home",
+    "createTab": "Create Tab"
+  },
+  "homePage": {
+    "createAccount": "Create Account",
+    "tryNow": "Try Now"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "createTab": "Crear Tab"
+  },
+  "homePage": {
+    "createAccount": "Crear Cuenta",
+    "tryNow": "Pruebalo Ahora"
+  }
+}

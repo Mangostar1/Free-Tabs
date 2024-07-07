@@ -1,7 +1,7 @@
 export default function GlossaryGuitar() {
   return(
     <div className="">
-      <h2 className="font-bold">Glossary:</h2>
+      <h2 className="font-bold">Glosario:</h2>
       <ul className="ml-6">
         <li className="list-disc">x Dead note</li>
         <li className="list-disc">h Hammer-on</li>

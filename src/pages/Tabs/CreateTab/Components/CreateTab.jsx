@@ -447,7 +447,7 @@ export default function CreateTab() {
           <article>
             <form className="flex justify-center">
               <input
-                placeholder="Band Name"
+                placeholder=" Banda"
                 id="bandName"
                 className="w-48 h-8 border-solid border-x border-y border-black text-zinc-700"
                 type="text"
@@ -455,7 +455,7 @@ export default function CreateTab() {
               />
               <p className="font-bold text-2xl px-2">-</p>
               <input
-                placeholder="Song Name"
+                placeholder=" Cancion"
                 id="songName"
                 className="w-48 h-8 border-solid border-x border-y border-black text-zinc-700"
                 type="text"

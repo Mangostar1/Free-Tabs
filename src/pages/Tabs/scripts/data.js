@@ -18,6 +18,24 @@ const data = [
         countState: 3,
         id: 4
     },
+    {
+        className: 'D',
+        nextClassName: 'E',
+        countState: 4,
+        id: 5
+    },
+    {
+        className: 'E',
+        nextClassName: 'F',
+        countState: 5,
+        id: 6
+    },
+    {
+        className: 'F',
+        nextClassName: 'G',
+        countState: 6,
+        id: 7
+    },
 ];
 
 export default data;

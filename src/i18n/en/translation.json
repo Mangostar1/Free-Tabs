@@ -6,5 +6,9 @@
   "homePage": {
     "createAccount": "Create Account",
     "tryNow": "Try Now"
+  },
+  "createTab": {
+    "clearTab": "Clear Tab",
+    "createTab": "Create Tab"
   }
 }

@@ -1,3 +1,3 @@
-const MAX_TAB = 40;
+const MAX_TAB = 90;
 
 export default MAX_TAB;

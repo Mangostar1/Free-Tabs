@@ -17,8 +17,8 @@ export function addGuitarNotes(element, num, idClass) {
       const guitarStrings = document.createElement("p"); //<-- create <p> the element
       guitarStrings.classList.add("guitar-strings", idClass); //<-- add class
 
-      guitarStrings.textContent += `${scaleNotes[i]} ——${
-        num[i].value === "" ? "—" : num[i].value
+      guitarStrings.textContent += `${scaleNotes[i]} -${
+        num[i].value === "" ? "-" : num[i].value
       }`;
 
       element.appendChild(guitarStrings);
@@ -36,8 +36,8 @@ export function addGuitarNotes(element, num, idClass) {
         );
         break;
       } else {
-        $guitarStrings[i].textContent += `——${
-          num[i].value === "" ? "—" : num[i].value
+        $guitarStrings[i].textContent += `-${
+          num[i].value === "" ? "-" : num[i].value
         }`;
       }
     }

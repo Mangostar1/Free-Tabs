@@ -20,8 +20,8 @@ export function addBassNotes(element, num, idClass) {
       const bassStrings = document.createElement("p"); //<-- create <p> the element
       bassStrings.classList.add("bass-strings", idClass); //<-- add class
 
-      bassStrings.textContent += `${scaleNotes[i]} —${
-        num[i].value === "" ? "—" : num[i].value
+      bassStrings.textContent += `${scaleNotes[i]} -${
+        num[i].value === "" ? "-" : num[i].value
       }`;
 
       element.appendChild(bassStrings);
@@ -38,8 +38,8 @@ export function addBassNotes(element, num, idClass) {
         );
         break;
       } else {
-        $strings[i].textContent += `—${
-          num[i].value === "" ? "—" : num[i].value
+        $strings[i].textContent += `-${
+          num[i].value === "" ? "-" : num[i].value
         }`;
       }
     }

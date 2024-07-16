@@ -111,16 +111,16 @@ export default function CreatedView() {
 
   return (
     <>
-      <main className="grid grid-cols-4 bg-slate-50">
+      <main className="grid grid-cols-4 bg-zinc-600 text-zinc-200">
         <aside className="col-span-1 flex flex-col gap-4 m-5">
           <h2 className="text-center">Instrument</h2>
           <Button onClick={handleBassTabView} variant="contained">Bass</Button>
           <Button onClick={handleGuitarTabView} variant="contained">Guitar</Button>
         </aside>
-        <section id="Tab-Saved" className="bg-gray-100 col-start-2 col-end-5">
+        <section id="Tab-Saved" className="col-start-2 col-end-5">
           <h1 className="font-bold text-center">{`${bandName} - ${songName}`}</h1>
           {tabView === 1 && bassArticle?.div?.id && (
-            <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4">
+            <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 text-zinc-800 w-172 m-auto p-4">
               {bassArticle.div.id.map((item, index) => (
                 <div key={index} className="bass-tab">
                   {bassArticle.div.ptag.content
@@ -138,7 +138,7 @@ export default function CreatedView() {
             </article>
           )}
           {tabView === 2 && guitarArticle?.div?.id && (
-            <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4">
+            <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 text-zinc-800 w-172 m-auto p-4">
               {guitarArticle.div.id.map((item, index) => (
                 <div key={index} className="guitar-tab">
                   {guitarArticle.div.ptag.content
@@ -158,7 +158,7 @@ export default function CreatedView() {
         </section>
         <section className="m-5">
           
-          {isAuthenticated === true ? <Button onClick={sendTab} variant="contained" className="mt-4">Enviar Tab</Button> : <UserNotLogged />}
+          {isAuthenticated ? <Button onClick={sendTab} variant="contained" className="mt-4">Enviar Tab</Button> : <UserNotLogged />}
           
         </section>
       </main>

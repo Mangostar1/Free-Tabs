@@ -185,9 +185,9 @@ export default function UserProfile(props) {
             <section className="flex flex-row justify-between py-5 px-10 m-auto relative">
               <article className="flex flex-row gap-5">
                 <div className="mx-5">
-                  <h2 className="text-zinc-200 font-bold">Nombre</h2>
+                  <h2 className="text-[#ffac33] font-bold">Nombre</h2>
                   {editMode === false ? (
-                    <p className="text-gray-900 font-medium tracking-widest">
+                    <p className="text-gray-100 font-medium tracking-widest">
                       {userdata.userName}
                     </p>
                   ) : (
@@ -207,14 +207,14 @@ export default function UserProfile(props) {
                     <div className="w-full h-0.5 bg-orange-400"></div>
                   )}
 
-                  <h2 className="text-gray-700 font-bold mt-5">E-MAIL</h2>
-                  <p className="text-gray-900 font-medium tracking-widest">
+                  <h2 className="text-[#ffac33] font-bold mt-5">E-MAIL</h2>
+                  <p className="text-gray-100 font-medium tracking-widest">
                     {userdata.email}
                   </p>
 
-                  <h2 className="text-gray-700 font-bold mt-5">Descripción</h2>
+                  <h2 className="text-[#ffac33] font-bold mt-5">Descripción</h2>
                   {editMode === false ? (
-                    <p className="text-gray-900 tracking-widest">
+                    <p className="text-gray-100 tracking-widest">
                       {userDEscription}
                     </p>
                   ) : (

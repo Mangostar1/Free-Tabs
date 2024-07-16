@@ -72,7 +72,7 @@ export default function MyTabs() {
 
   return (
     <>
-      <main className="bg-slate-50 relative grid grid-cols-4">
+      <main className="bg-zinc-600 text-zinc-200 relative grid grid-cols-4">
         
         {!isLoaded ? (//<-- Loader, tras cargar muestra el contenido de la vista
           <div className="absolute top-0 left-0 z-50 h-screen w-screen bg-black/50 flex justify-center items-center">
@@ -91,7 +91,7 @@ export default function MyTabs() {
 
             <section className="p-5">
               <h2 className="font-bold text-center">{userTab.bandName + ' - ' + userTab.songName}</h2>
-              {userTab.bassArticle !== null ? <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4 mt-5">
+              {userTab.bassArticle !== null ? <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 text-zinc-800 w-172 m-auto p-4 mt-5">
                 {userTab.bassArticle.div.id.map((item, index) => (
                     <div key={index} className="bass-tab">
                       {userTab.bassArticle.div.ptag.content
@@ -108,7 +108,7 @@ export default function MyTabs() {
                   ))}
               </article> : null}
 
-              {userTab.guitarArticle !== null ? <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 w-172 m-auto p-4 mt-5">
+              {userTab.guitarArticle !== null ? <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 text-zinc-800 w-172 m-auto p-4 mt-5">
                 {userTab.guitarArticle.div.id.map((item, index) => (
                     <div key={index} className="guitar-tab">
                       {userTab.guitarArticle.div.ptag.content

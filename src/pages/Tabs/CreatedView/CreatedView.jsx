@@ -6,6 +6,9 @@ import Swal from 'sweetalert2';
 
 //Material UI
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import WarningIcon from '@mui/icons-material/Warning';
+
 
 import { endpoint } from "utils/urlApi";
 
@@ -16,6 +19,13 @@ import Footer from "component/Footer";
 import { getObjInSessionStoraje } from "utils/objToStr";
 
 const isAuthenticated = Cookies.get("jwtToken");
+
+function UserNotLogged() {
+  return <div  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+    <WarningIcon color="error" fontSize="large" />
+    <Typography className="mt-4">Debes iniciar sesion para poder guardar tu tablatura o la perderas al salir de la pagina</Typography>
+  </div>
+}
 
 export default function CreatedView() {
   const location = useLocation();
@@ -147,7 +157,9 @@ export default function CreatedView() {
           )}
         </section>
         <section className="m-5">
-          <Button onClick={sendTab} variant="contained" className="mt-4">Enviar Tab</Button>
+          
+          {isAuthenticated === true ? <Button onClick={sendTab} variant="contained" className="mt-4">Enviar Tab</Button> : <UserNotLogged />}
+          
         </section>
       </main>
       <Footer />

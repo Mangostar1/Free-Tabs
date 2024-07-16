@@ -224,7 +224,7 @@ export default function UserProfile(props) {
                 </div>
                 <div className="">
                   <p className="text-gray-900 bg-[#ffac33] font-medium tracking-widest py-1 px-2 rounded">
-                    ROL
+                    {userdata.role}
                   </p>
                 </div>
               </article>

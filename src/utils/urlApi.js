@@ -13,6 +13,7 @@ export const endpoint = {
   userInfoPut: `${BASE_URL}/user-data-update`,
 };
 
+
 /* export const endpoint = {
   localAPI: BASE_URL_TEST,
   login: `${BASE_URL_TEST}/auth/login`,
@@ -23,8 +24,8 @@ export const endpoint = {
   getUserTab: `${BASE_URL_TEST}/tab/user-tab`,
   userInfo: `${BASE_URL_TEST}/user-data`,
   userInfoPut: `${BASE_URL_TEST}/user-data-update`,
-};
- */
+}; */
+
 /*
 
 used on:

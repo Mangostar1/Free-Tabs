@@ -86,6 +86,7 @@ export default function UserProfile(props) {
             userName: response.data.displayName,
             email: response.data.email,
             userImage: response.data.photoURL,
+            role: response.data.userRole
           });
 
           setSocialFacebook(response.data.facebook);

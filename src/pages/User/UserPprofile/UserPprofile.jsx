@@ -28,6 +28,7 @@ export default function UserProfile(props) {
     userImage: undefined,
   });
   const [editMode, setEditMode] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [socialFacebook, setSocialFacebook] = useState(undefined);
   const [socialInstagram, setSocialInstagram] = useState(undefined);
@@ -63,9 +64,20 @@ export default function UserProfile(props) {
     }
   }
 
-  const handleAvatar = () => {
-    console.log("Función deshabilitada");
-  };
+const handleAvatarClick = () => {
+  // Disparar el click en el input de archivo oculto
+  document.getElementById('imageUpload').click();
+};
+
+const handleAvatarChange = (event) => {
+  const file = event.target.files[0]; // Obtener el archivo seleccionado
+
+  if (file) {
+    setSelectedImage(URL.createObjectURL(file)); // Actualizar la imagen seleccionada
+  }
+
+  console.log("File image", file); // Aquí podrías realizar la subida al servidor o cualquier otra acción
+};
 
   const handleEdit = () => {
     setEditMode(!editMode);
@@ -165,20 +177,23 @@ export default function UserProfile(props) {
               </article>
               <article className="relative">
                   <img
-                    src={userImage}
+                    src={selectedImage || userImage}
                     width='100'
                     height='100'
                     alt="profile_img"
                     className="rounded-full"
                   />
                   {editMode === true ? (
-                    <button
-                      onClick={handleAvatar}
-                      title="change avatar"
-                      className="transition absolute bottom-0 right-0 w-10 h-10 shadow-md bg-white rounded-full flex justify-center items-center hover:bg-gray-100"
-                    >
-                      <img src={cameraSvg} alt="change_avatar" className="w-7 h-7" />
-                    </button>
+                    <>
+                      <input type="file" id="imageUpload" accept="image/*" style={{ display: 'none' }} onChange={handleAvatarChange}/>
+                      <button
+                        onClick={handleAvatarClick}
+                        title="change avatar"
+                        className="transition absolute bottom-0 right-0 w-10 h-10 shadow-md bg-white rounded-full flex justify-center items-center hover:bg-gray-100"
+                      >
+                        <img src={cameraSvg} alt="change_avatar" className="w-7 h-7" />
+                      </button>
+                    </>
                   ) : null}
                 </article>
             </section>

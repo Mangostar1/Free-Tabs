@@ -11,6 +11,7 @@ export const endpoint = {
   getUserTab: `${BASE_URL}/tab/user-tab`,
   userInfo: `${BASE_URL}/user-data`,
   userInfoPut: `${BASE_URL}/user-data-update`,
+  deleteTab: `${BASE_URL}/tab/user-tab-delete`,
 };
 
 
@@ -23,7 +24,8 @@ export const endpoint = {
   updateUserTab: (id) => `${BASE_URL_TEST}/tab/user-tab/${id}/update`,
   getUserTab: `${BASE_URL_TEST}/tab/user-tab`,
   userInfo: `${BASE_URL_TEST}/user-data`,
-  userInfoPut: `${BASE_URL_TEST}/user-data-update`,
+  userInfoPut: `${BASE_URL_TEST}/user-data-updat`,
+  deleteTab: `${BASE_URL_TEST}/tab/user-tab-delete`,
 }; */
 
 /*

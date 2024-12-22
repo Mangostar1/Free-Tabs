@@ -2,15 +2,19 @@ import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { endpoint } from "utils/urlApi";
+import Swal from 'sweetalert2'
 
 //Material UI
-import Button from '@mui/material/Button';
+import { Box, Button, IconButton, Menu, MenuItem } from '@mui/material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 //Components
 import Footer from "component/Footer";
 import Loader from "component/Loader";
 
 export default function MyTabs() {
+
+  const [anchorEls, setAnchorEls] = useState({});//<-- Muestra el menu de opciones para cada tab cargada. Ahora permite eliminar tabs
   const [isLoaded, setIsloaded] = useState(false);
   const [responseData, setResponseData] = useState('');
   const [tabOnScreen, setTabOnScreen] = useState(false);
@@ -19,9 +23,12 @@ export default function MyTabs() {
     songName: undefined,
     bassArticle: undefined,
     guitarArticle: undefined,
+    tabID: undefined,
+    userID: undefined,
   });
 
-  //Cookie
+
+  /*----Cookie----*/
   const jwtToken = Cookies.get("jwtToken");
 
   useEffect(() => {
@@ -47,7 +54,7 @@ export default function MyTabs() {
     fetchData();
   }, []);
 
-
+  /*----Muestra-Oculta las tabs creadas por el usuario----*/
   const showTab = (num) => {
 
     if (tabOnScreen) {//<-- Si esta impresa en pantalla, lo oculta
@@ -56,6 +63,8 @@ export default function MyTabs() {
         songName: responseData[num].song_name,
         bassArticle: responseData[num].bass_tab_data,
         guitarArticle: responseData[num].guitar_tab_data,
+        tabID: responseData[num].tabID,
+        userID: responseData[num].userID,
       });
     }
 
@@ -66,9 +75,45 @@ export default function MyTabs() {
         songName: responseData[num].song_name,
         bassArticle: responseData[num].bass_tab_data,
         guitarArticle: responseData[num].guitar_tab_data,
+        tabID: responseData[num].tabID,
+        userID: responseData[num].userID,
       });
     }
   }
+
+  /*----Para eliminar la tab seleccionad----*/
+  const handleMenuOpen = (event, index) => {
+    setAnchorEls((prev) => ({ ...prev, [index]: event.currentTarget }));
+  };
+  
+  const handleMenuClose = (index) => {
+    setAnchorEls((prev) => ({ ...prev, [index]: null }));
+  };
+  
+  const handleDeleteTab = async(tabID, userID) => {
+    
+    try {
+      await axios.delete(endpoint.deleteTab, {
+        data: {
+          tabID: tabID,
+          userID: userID
+        }
+      });
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Tab eliminada con exito",
+        showConfirmButton: false,
+        timer: 1000
+      }).then((result) => {
+        window.location.reload();
+      });
+    } catch (error) {
+      console.error('Error al eliminar la tab:', error);
+    }
+    handleMenuClose();
+  };
 
   return (
     <>
@@ -80,9 +125,18 @@ export default function MyTabs() {
           </div>
         ) : <aside className="mt-5 ml-4 mlr-4 mb-4 col-span-1 flex flex-col gap-2">
           {responseData.map((data, index) => (
-
-            <Button key={index} onClick={() => showTab(index)} variant="contained">{`${data.band_name} - ${data.song_name}`}</Button>
-          
+            <Box key={index} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 2, border: '1px solid #ccc', borderRadius: 2, marginBottom: 2 }}>
+              <div>{`${data.band_name} - ${data.song_name}`}</div>
+              <div>
+                <Button onClick={() => showTab(index)} variant="contained">Ver Tab</Button>
+                <IconButton onClick={(event) => handleMenuOpen(event, index)}>
+                  <MoreVertIcon />
+                </IconButton>
+                <Menu anchorEl={anchorEls[index]} open={Boolean(anchorEls[index])} onClose={() => handleMenuClose(index)}>
+                  <MenuItem onClick={() => handleDeleteTab(data.tabID, data.userID)} sx={{ color: 'black', fontSize: '0.875rem' }}>Eliminar Tab</MenuItem>
+                </Menu>
+              </div>
+            </Box>
           ))}
         </aside>}
 

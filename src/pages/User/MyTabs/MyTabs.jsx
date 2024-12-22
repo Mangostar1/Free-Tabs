@@ -90,13 +90,12 @@ export default function MyTabs() {
     setAnchorEls((prev) => ({ ...prev, [index]: null }));
   };
   
-  const handleDeleteTab = async(tabID, userID) => {
+  const handleDeleteTab = async(tabID) => {
     
     try {
       await axios.delete(endpoint.deleteTab, {
         data: {
           tabID: tabID,
-          userID: userID
         }
       });
 
@@ -133,7 +132,7 @@ export default function MyTabs() {
                   <MoreVertIcon />
                 </IconButton>
                 <Menu anchorEl={anchorEls[index]} open={Boolean(anchorEls[index])} onClose={() => handleMenuClose(index)}>
-                  <MenuItem onClick={() => handleDeleteTab(data.tabID, data.userID)} sx={{ color: 'black', fontSize: '0.875rem' }}>Eliminar Tab</MenuItem>
+                  <MenuItem onClick={() => handleDeleteTab(data.tabID)} sx={{ color: 'black', fontSize: '0.875rem' }}>Eliminar Tab</MenuItem>
                 </Menu>
               </div>
             </Box>

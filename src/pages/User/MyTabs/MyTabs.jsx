@@ -24,7 +24,6 @@ export default function MyTabs() {
     bassArticle: undefined,
     guitarArticle: undefined,
     tabID: undefined,
-    userID: undefined,
   });
 
 
@@ -64,7 +63,6 @@ export default function MyTabs() {
         bassArticle: responseData[num].bass_tab_data,
         guitarArticle: responseData[num].guitar_tab_data,
         tabID: responseData[num].tabID,
-        userID: responseData[num].userID,
       });
     }
 
@@ -76,7 +74,6 @@ export default function MyTabs() {
         bassArticle: responseData[num].bass_tab_data,
         guitarArticle: responseData[num].guitar_tab_data,
         tabID: responseData[num].tabID,
-        userID: responseData[num].userID,
       });
     }
   }

@@ -199,7 +199,7 @@ const handleAvatarChange = (event) => {
             </section>
             <section className="flex flex-row justify-between py-5 px-10 m-auto relative">
               <article className="flex flex-row gap-5">
-                <div className="mx-5">
+                <div className="w-28">
                   <h2 className="text-[#ffac33] font-bold">Nombre</h2>
                   {editMode === false ? (
                     <p className="text-gray-100 font-medium tracking-widest">
@@ -211,7 +211,7 @@ const handleAvatarChange = (event) => {
                       name="userName"
                       placeholder={userdata.userName}
                       value={userdata.userName}
-                      className="w-full tracking-widest"
+                      className="w-full tracking-widest text-black"
                       onChange={handler}
                     />
                   )}

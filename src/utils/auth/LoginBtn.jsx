@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { endpoint } from "utils/urlApi";
 
+//Language
+import translations from "../../i18n/es/translation.json";
+
 //component
 
 export default function LoginBtn() {
@@ -38,7 +41,7 @@ export default function LoginBtn() {
         className="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-[#ff9800] focus:outline-none focus:shadow-outline"
         to="/"
       >
-        Sign out
+        {translations.nav.sign_out}
       </Link>
     );
   } else {
@@ -48,7 +51,7 @@ export default function LoginBtn() {
           className="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-[#ff9800] focus:outline-none focus:shadow-outline"
           to="/login"
         >
-          Sign in
+          {translations.nav.sign_in}
         </Link>
       </>
     );

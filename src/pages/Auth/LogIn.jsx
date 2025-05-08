@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
+//Language
+import translations from "../../i18n/es/translation.json";
+
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
@@ -45,7 +48,7 @@ export default function LogIn() {
           <article className="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4">
             <div className="flex flex-col">
               <div>
-                <h2 className="text-4xl text-orange-400">Login</h2>
+                <h2 className="text-4xl text-orange-400">{translations.nav.login}</h2>
               </div>
             </div>
             <form onSubmit={handleSubmit}>
@@ -83,7 +86,7 @@ export default function LogIn() {
                   color="primary"
                   fullWidth
                 >
-                  Login
+                  {translations.nav.login}
                 </Button>
               </div>
             </form>

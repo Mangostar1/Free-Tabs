@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
+//Language
+import translations from "../i18n/es/translation.json";
+
 //Pages
 import Home from "pages/Home/Home";
 import UserPprofile from "pages/User/UserPprofile/UserPprofile";
@@ -116,13 +119,13 @@ export default function PublicRoutes() {
               className="px-2 py-2 text-sm text-gray-200 lg:px-6 md:px-3 hover:text-[#ff9800]"
               to="/"
             >
-              Inicio
+              {translations.nav.home}
             </Link>
             <Link
               className="px-2 py-2 text-sm text-gray-200 lg:px-6 md:px-3 hover:text-[#ff9800]"
               to="/tab/create"
             >
-              Crear Tab
+              {translations.nav.createTab}
             </Link>
             <TabCreatedLink />
             <div className="hidden mx-10 md:block lg:ml-auto">
@@ -134,7 +137,7 @@ export default function PublicRoutes() {
                 className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-gray-900 rounded-full group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:bg-gray-700 active:bg-gray-800 active:text-white focus-visible:outline-black"
                 to="/sign_up"
               >
-                Sign up
+                {translations.nav.sign_up}
               </Link> : null
               }
 
@@ -171,12 +174,12 @@ export default function PublicRoutes() {
 
                   {
                     isAuthenticated ? <MenuItem onClick={handleCloseUserMenu}>
-                    <UserTabs route="/user/my_tabs" nameRoute="My Tabs" />
+                    <UserTabs route="/user/my_tabs" nameRoute={translations.nav.my_tabs} />
                   </MenuItem> : null
                   }
                   {
                     isAuthenticated ? <MenuItem onClick={handleCloseUserMenu}>
-                    <UserTabs route="/user/profile" nameRoute="User Profile" />
+                    <UserTabs route="/user/profile" nameRoute={translations.nav.user_profile} />
                   </MenuItem> : null
                   }
                 </Menu>

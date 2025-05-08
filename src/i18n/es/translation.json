@@ -1,7 +1,13 @@
 {
   "nav": {
     "home": "Inicio",
-    "createTab": "Crear Tab"
+    "createTab": "Crear Tab",
+    "sign_up": "Registrarse",
+    "sign_in": "Ingresar",
+    "sign_out": "Desconectar",
+    "login": "Ingresar",
+    "my_tabs": "Mis Tabs",
+    "user_profile": "Perfil de usuario"
   },
   "homePage": {
     "createAccount": "Crear Cuenta",
@@ -9,6 +15,9 @@
   },
   "createTab": {
     "clearTab": "Limpiar Tab",
-    "createTab": "Crear Tab"
+    "createTab": "Crear Tab",
+    "instrument": "Instrumentos"
+  },
+  "": {
   }
 }

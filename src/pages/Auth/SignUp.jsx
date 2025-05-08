@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2';
 
+//Language
+import translations from "../../i18n/es/translation.json";
+
 //Material UI
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -169,7 +172,7 @@ export default function SignUp() {
                     color="primary"
                     fullWidth
                   >
-                    Sign-up
+                    {translations.nav.sign_up}
                   </Button>
                 </div>
               </div>

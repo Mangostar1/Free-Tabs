@@ -263,19 +263,19 @@ const handleAvatarChange = (event) => {
                   </>
                 ) : <>
                   <article>
-                    <Link target="_blank" href={"https://www.facebook.com/" + socialFacebook} underline="hover" color="inherit">
+                    <Link target="_blank" href={socialFacebook} underline="hover" color="inherit">
                       <FacebookIcon />
                       <span className="pl-2">{socialFacebook}</span>
                     </Link>
                   </article>
                   <article>
-                    <Link target="_blank" href={"https://www.instagram.com/" + socialInstagram} underline="hover" color="inherit">
+                    <Link target="_blank" href={socialInstagram} underline="hover" color="inherit">
                       <InstagramIcon />
                       <span className="pl-2">{socialInstagram}</span>
                     </Link>
                   </article>
                   <article>
-                    <Link target="_blank" href={"https://twitter.com/" + socialTwitter} underline="hover" color="inherit">
+                    <Link target="_blank" href={socialTwitter} underline="hover" color="inherit">
                       <XIcon />
                       <span className="pl-2">{socialTwitter}</span>
                     </Link>

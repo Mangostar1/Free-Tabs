@@ -17,7 +17,7 @@ import Divider from '@mui/material/Divider';
 import "styles/tabs/chooseIns.css"; //<-- For <from> line 30
 
 //utils
-import { getObjInSessionStoraje } from "utils/objToStr";
+import { getObjInSessionStoraje, saveObjInSessionStoraje } from "utils/objToStr";
 
 //Scripts
 import { createBassTab, addBassNotes, scaleNotes as scaleNotesBass } from "../../scripts/createBassTab";
@@ -30,7 +30,47 @@ import "styles/tabs/editTabStiles.css";
 //Others
 import data from "../../scripts/data";
 import MAX_TAB from "utils/constants";
-import { saveObjInSessionStoraje } from "utils/objToStr";
+
+const { bandName, songName } = getObjInSessionStoraje("bandInfo") || '';
+const { bassArticle } = getObjInSessionStoraje("bassTab") || {};
+let bassArticleJSX = bassArticle?.div?.id && (
+            <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 text-zinc-800 w-172 m-auto p-4">
+              {bassArticle.div.id.map((item, index) => (
+                <div key={index} id={index + 1} className="bass-tab">
+                  {bassArticle.div.ptag.content
+                    .slice(index * 4, index * 4 + 4)
+                    .map((element, innerIndex) => (
+                      <p
+                        key={innerIndex}
+                        className={bassArticle.div.ptag.className+ " "+bassArticle.div.ptag.uniqueClassName[index]}
+                      >
+                        {element}
+                      </p>
+                    ))}
+                </div>
+              ))}
+            </article>
+          )
+
+const { guitarArticle } = getObjInSessionStoraje("guitarTab") || {};
+let guitarArticleJSX = guitarArticle?.div?.id && (
+            <article className="tab-root box-border border-solid border-x border-y border-slate-300 bg-slate-100 text-zinc-800 w-172 m-auto p-4">
+              {guitarArticle.div.id.map((item, index) => (
+                <div key={index} className="guitar-tab">
+                  {guitarArticle.div.ptag.content
+                    .slice(index * 6, index * 6 + 6)
+                    .map((element, innerIndex) => (
+                      <p
+                        key={innerIndex}
+                        className={guitarArticle.div.ptag.className+ " "+guitarArticle.div.ptag.uniqueClassName[index]}
+                      >
+                        {element}
+                      </p>
+                    ))}
+                </div>
+              ))}
+            </article>
+          )
 
 export default function CreateTab() {
   
@@ -48,7 +88,6 @@ export default function CreateTab() {
     setTabCreated(false);
   };
 
-  const { bandName, songName } = getObjInSessionStoraje("bandInfo") || '';
 
     //States
     const [count, setCount] = useState(0); //<-- Used to set unique ID on new tabs create by createBassTab() and more things.
@@ -203,7 +242,7 @@ export default function CreateTab() {
             id: divsID, //array
             ptag: {
               className: pgElementClassName, //string
-              uniqueClassName: pgUniqueClass, //Set
+              uniqueClassName: Array.from(pgUniqueClass), //Set
               content: valoresClase, //array
             },
           },
@@ -343,7 +382,7 @@ export default function CreateTab() {
             id: divsID, //array
             ptag: {
               className: pgElementClassName, //string
-              uniqueClassName: pgUniqueClass, //Set
+              uniqueClassName: Array.from(pgUniqueClass), //Set
               content: valoresClase, //array
             },
           },
@@ -413,6 +452,10 @@ export default function CreateTab() {
       setEditFirstClick(false);
       handleEditState();
     };
+
+    /* Preload information if it exists in sessionStorage. */
+    let bassTabArticleToScreen = bassArticleJSX || <BassTabForm cancelEdit={cancelEdit} saveEdit={saveEdit} editing={editing} />;
+    let guitarTabArticleToScreen = guitarArticleJSX || <GuitarTabForm cancelEdit={cancelEdit} saveEdit={saveEdit} editing={editing} />;
 
   return (
     <>
@@ -651,7 +694,7 @@ export default function CreateTab() {
         </aside>
 
         <section className="col-span-3 text-zinc-700">
-          {view === 0 ? <BassTabForm cancelEdit={cancelEdit} saveEdit={saveEdit} editing={editing} /> : <GuitarTabForm cancelEdit={cancelEdit} saveEdit={saveEdit} editing={editing} />}
+          {view === 0 ? bassTabArticleToScreen : guitarTabArticleToScreen}
         </section>
       </main>
       <Footer />

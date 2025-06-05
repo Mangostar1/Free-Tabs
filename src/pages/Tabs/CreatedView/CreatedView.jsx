@@ -128,7 +128,7 @@ export default function CreatedView() {
                     .map((element, innerIndex) => (
                       <p
                         key={innerIndex}
-                        className={bassArticle.div.ptag.className}
+                        className={bassArticle.div.ptag.className+ " "+bassArticle.div.ptag.uniqueClassName[index]}
                       >
                         {element}
                       </p>
@@ -146,7 +146,7 @@ export default function CreatedView() {
                     .map((element, innerIndex) => (
                       <p
                         key={innerIndex}
-                        className={guitarArticle.div.ptag.className}
+                        className={guitarArticle.div.ptag.className+ " "+guitarArticle.div.ptag.uniqueClassName[index]}
                       >
                         {element}
                       </p>

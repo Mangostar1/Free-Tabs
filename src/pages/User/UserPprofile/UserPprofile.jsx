@@ -250,9 +250,9 @@ const handleAvatarChange = (event) => {
                   <>
                     <article className="">
                       <form className="flex flex-col gap-3">
-                        <TextField label="Facebook" defaultValue={socialFacebook} onChange={handleData} id="social-media-facebook" variant="outlined"></TextField>
-                        <TextField label="Instagram" defaultValue={socialInstagram} onChange={handleData} id="social-media-instagram" variant="outlined"></TextField>
-                        <TextField label="Twitter" defaultValue={socialTwitter} onChange={handleData} id="social-media-twitter" variant="outlined"></TextField>
+                        <TextField label="Facebook" defaultValue={socialFacebook} onChange={handleData} id="social-media-facebook" variant="outlined" placeholder="TEST"></TextField>
+                        <TextField label="Instagram" defaultValue={socialInstagram} onChange={handleData} id="social-media-instagram" variant="outlined" placeholder="TEST"></TextField>
+                        <TextField label="Twitter" defaultValue={socialTwitter} onChange={handleData} id="social-media-twitter" variant="outlined" placeholder="TEST"></TextField>
                       </form>
                     </article>
                   

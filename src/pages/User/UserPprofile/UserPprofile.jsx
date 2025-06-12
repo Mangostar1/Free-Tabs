@@ -2,13 +2,13 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import { endpoint } from "utils/urlApi";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 //Material UI
-import { TextField, Button, Link } from '@mui/material';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import XIcon from '@mui/icons-material/X';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import { TextField, Button, Link } from "@mui/material";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import XIcon from "@mui/icons-material/X";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 //SVG
 import cameraSvg from "assets/icons/camera.svg";
@@ -16,25 +16,40 @@ import cameraSvg from "assets/icons/camera.svg";
 //Components
 import Footer from "component/Footer";
 import Loader from "component/Loader";
+import AvatarSelectorModal from "./component/AvatarSelectorModal";
 
 //Image
-import userImage from 'assets/imgs/user-profile-default.png';
+import userImage from "assets/imgs/user-profile-default.png";
+import avatar1 from 'assets/imgs/avatar/avatar1.png';
+import avatar2 from 'assets/imgs/avatar/avatar2.png';
+import avatar3 from 'assets/imgs/avatar/avatar3.png';
+import avatar4 from 'assets/imgs/avatar/avatar4.png';
+
+const avatarOptions = [
+  { id: 'avatar1.png', src: avatar1 },
+  { id: 'avatar2.png', src: avatar2 },
+  { id: 'avatar3.png', src: avatar3 },
+  { id: 'avatar4.png', src: avatar4 },
+  { id: 'default.png', src: userImage }
+];
 
 export default function UserProfile(props) {
   //States
-  const [userdata, setUserdata] = useState({
-    userName: undefined,
-    email: undefined,
-    userImage: undefined,
-  });
+  const [avatar, setAvatar] = useState(undefined); // Default avatar
+  const [avatarId, setAvatarId] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [socialFacebook, setSocialFacebook] = useState(undefined);
   const [socialInstagram, setSocialInstagram] = useState(undefined);
   const [socialTwitter, setSocialTwitter] = useState(undefined);
   const [userDEscription, setUserDescription] = useState(undefined);
-  
+  const [userdata, setUserdata] = useState({
+    userName: undefined,
+    email: undefined,
+    userImage: avatar,
+  });
+
   //Cookie
   const jwtToken = Cookies.get("jwtToken");
 
@@ -44,40 +59,29 @@ export default function UserProfile(props) {
     setUserdata({ ...userdata, [name]: value });
   };
 
-  const handleData = ({target}) => {
+  const handleData = ({ target }) => {
     const { id, value } = target;
 
-    if (id === 'user-description') {
+    if (id === "user-description") {
       setUserDescription(value);
     }
 
-    if (id === 'social-media-facebook') {
+    if (id === "social-media-facebook") {
       setSocialFacebook(value);
     }
 
-    if (id === 'social-media-instagram') {
+    if (id === "social-media-instagram") {
       setSocialInstagram(value);
     }
 
-    if (id === 'social-media-twitter') {
+    if (id === "social-media-twitter") {
       setSocialTwitter(value);
     }
-  }
+  };
 
-const handleAvatarClick = () => {
-  // Disparar el click en el input de archivo oculto
-  document.getElementById('imageUpload').click();
-};
-
-const handleAvatarChange = (event) => {
-  const file = event.target.files[0]; // Obtener el archivo seleccionado
-
-  if (file) {
-    setSelectedImage(URL.createObjectURL(file)); // Actualizar la imagen seleccionada
-  }
-
-  console.log("File image", file); // Aquí podrías realizar la subida al servidor o cualquier otra acción
-};
+  const handleAvatarClick = () => {
+    setModalOpen(true); // Abrir el modal para seleccionar avatar
+  };
 
   const handleEdit = () => {
     setEditMode(!editMode);
@@ -94,12 +98,27 @@ const handleAvatarChange = (event) => {
       axios
         .get(endpoint.userInfo)
         .then((response) => {
+
+          let avatarSrc = null;
+
+          for (let index = 0; index < avatarOptions.length; index++) {
+
+            if (response.data.photoURL === avatarOptions[index].id) {
+              avatarSrc = avatarOptions[index].src;
+              break;
+            }
+            
+          }
+
           setUserdata({
             userName: response.data.displayName,
             email: response.data.email,
-            userImage: response.data.photoURL,
-            role: response.data.userRole
+            userImage: avatarSrc,
+            role: response.data.userRole,
           });
+
+          setAvatar(avatarSrc);
+          setAvatarId(response.data.photoURL);
 
           setSocialFacebook(response.data.facebook);
           setSocialInstagram(response.data.instagram);
@@ -127,12 +146,20 @@ const handleAvatarChange = (event) => {
       return config;
     });
     axios
-      .put(endpoint.userInfoPut, {userdata: userdata, userFacebook: socialFacebook, userInstagram: socialInstagram, userTwitter: socialTwitter, userDescription: userDEscription})
+      .put(endpoint.userInfoPut, {
+        userdata: userdata,
+        userFacebook: socialFacebook,
+        userInstagram: socialInstagram,
+        userTwitter: socialTwitter,
+        userDescription: userDEscription,
+        userImage: avatarId,
+      })
       .then((response) => {
         if (response.status === 200) {
           setUserdata({
             ...userdata,
             userName: response.data.user_name,
+            userImage: response.data.user_image
           });
           setSocialFacebook(response.data.user_facebook);
           setSocialInstagram(response.data.user_instagram);
@@ -143,7 +170,7 @@ const handleAvatarChange = (event) => {
             icon: "success",
             title: "¡Tu perfil ha sido actualizado exitosamente!",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
         }
       })
@@ -173,29 +200,34 @@ const handleAvatarChange = (event) => {
           <>
             <section className="flex flex-row justify-between py-5 px-10 m-auto relative">
               <article className="absolute top-5 right-8">
-                <Button variant="contained" onClick={handleEdit} size="small">Editar</Button>
+                <Button variant="contained" onClick={handleEdit} size="small">
+                  Editar
+                </Button>
               </article>
               <article className="relative">
-                  <img
-                    src={selectedImage || userImage}
-                    width='100'
-                    height='100'
-                    alt="profile_img"
-                    className="rounded-full"
-                  />
-                  {editMode === true ? (
-                    <>
-                      <input type="file" id="imageUpload" accept="image/*" style={{ display: 'none' }} onChange={handleAvatarChange}/>
-                      <button
-                        onClick={handleAvatarClick}
-                        title="change avatar"
-                        className="transition absolute bottom-0 right-0 w-10 h-10 shadow-md bg-white rounded-full flex justify-center items-center hover:bg-gray-100"
-                      >
-                        <img src={cameraSvg} alt="change_avatar" className="w-7 h-7" />
-                      </button>
-                    </>
-                  ) : null}
-                </article>
+                <img
+                  src={avatar}
+                  width="100"
+                  height="100"
+                  alt="profile_img"
+                  className="rounded-full"
+                />
+                {editMode === true ? (
+                  <>
+                    <button
+                      onClick={handleAvatarClick}
+                      title="change avatar"
+                      className="transition absolute bottom-0 right-0 w-10 h-10 shadow-md bg-white rounded-full flex justify-center items-center hover:bg-gray-100"
+                    >
+                      <img
+                        src={cameraSvg}
+                        alt="change_avatar"
+                        className="w-7 h-7"
+                      />
+                    </button>
+                  </>
+                ) : null}
+              </article>
             </section>
             <section className="flex flex-row justify-between py-5 px-10 m-auto relative">
               <article className="flex flex-row gap-5">
@@ -216,9 +248,7 @@ const handleAvatarChange = (event) => {
                     />
                   )}
 
-                  {editMode === false ? (
-                    null
-                  ) : (
+                  {editMode === false ? null : (
                     <div className="w-full h-0.5 bg-orange-400"></div>
                   )}
 
@@ -233,10 +263,15 @@ const handleAvatarChange = (event) => {
                       {userDEscription}
                     </p>
                   ) : (
-                    <TextField defaultValue={userDEscription} id="user-description" onChange={handleData} fullWidth multiline maxRows={4}></TextField>
+                    <TextField
+                      defaultValue={userDEscription}
+                      id="user-description"
+                      onChange={handleData}
+                      fullWidth
+                      multiline
+                      maxRows={4}
+                    ></TextField>
                   )}
-                  
-
                 </div>
                 <div className="">
                   <p className="text-gray-900 bg-[#ffac33] font-medium tracking-widest py-1 px-2 rounded">
@@ -247,44 +282,106 @@ const handleAvatarChange = (event) => {
             </section>
             <section className="flex flex-col gap-4 justify-between py-5 px-10 m-auto relative">
               {editMode === true ? (
-                  <>
-                    <article className="">
-                      <form className="flex flex-col gap-3">
-                        <TextField label="Facebook" defaultValue={socialFacebook} onChange={handleData} id="social-media-facebook" variant="outlined" placeholder="TEST"></TextField>
-                        <TextField label="Instagram" defaultValue={socialInstagram} onChange={handleData} id="social-media-instagram" variant="outlined" placeholder="TEST"></TextField>
-                        <TextField label="Twitter" defaultValue={socialTwitter} onChange={handleData} id="social-media-twitter" variant="outlined" placeholder="TEST"></TextField>
-                      </form>
-                    </article>
-                  
-                    <div className="flex flex-row gap-4">
-                      <Button variant="contained" onClick={saveChanges} title="Guardar Cambios" size="small">Guardar</Button>
-                      <Button variant="contained" onClick={cancelChanges} size="small">Cancelar</Button>
-                    </div>
-                  </>
-                ) : <>
+                <>
+                  <article className="">
+                    <form className="flex flex-col gap-3">
+                      <TextField
+                        label="Facebook"
+                        defaultValue={socialFacebook}
+                        onChange={handleData}
+                        id="social-media-facebook"
+                        variant="outlined"
+                        placeholder="TEST"
+                      ></TextField>
+                      <TextField
+                        label="Instagram"
+                        defaultValue={socialInstagram}
+                        onChange={handleData}
+                        id="social-media-instagram"
+                        variant="outlined"
+                        placeholder="TEST"
+                      ></TextField>
+                      <TextField
+                        label="Twitter"
+                        defaultValue={socialTwitter}
+                        onChange={handleData}
+                        id="social-media-twitter"
+                        variant="outlined"
+                        placeholder="TEST"
+                      ></TextField>
+                    </form>
+                  </article>
+
+                  <div className="flex flex-row gap-4">
+                    <Button
+                      variant="contained"
+                      onClick={saveChanges}
+                      title="Guardar Cambios"
+                      size="small"
+                    >
+                      Guardar
+                    </Button>
+                    <Button
+                      variant="contained"
+                      onClick={cancelChanges}
+                      size="small"
+                    >
+                      Cancelar
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
                   <article>
-                    <Link target="_blank" href={socialFacebook} underline="hover" color="inherit">
+                    <Link
+                      target="_blank"
+                      href={socialFacebook}
+                      underline="hover"
+                      color="inherit"
+                    >
                       <FacebookIcon />
                       <span className="pl-2">{socialFacebook}</span>
                     </Link>
                   </article>
                   <article>
-                    <Link target="_blank" href={socialInstagram} underline="hover" color="inherit">
+                    <Link
+                      target="_blank"
+                      href={socialInstagram}
+                      underline="hover"
+                      color="inherit"
+                    >
                       <InstagramIcon />
                       <span className="pl-2">{socialInstagram}</span>
                     </Link>
                   </article>
                   <article>
-                    <Link target="_blank" href={socialTwitter} underline="hover" color="inherit">
+                    <Link
+                      target="_blank"
+                      href={socialTwitter}
+                      underline="hover"
+                      color="inherit"
+                    >
                       <XIcon />
                       <span className="pl-2">{socialTwitter}</span>
                     </Link>
                   </article>
                 </>
-              }
+              )}
             </section>
           </>
         )}
+        <AvatarSelectorModal
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          currentAvatar={userdata.userImage}
+          onSave={
+            (selectedAvatarId) => {
+              setAvatar(avatarOptions.find(avatar => avatar.id === selectedAvatarId).src);
+              setAvatarId(avatarOptions.find(avatar => avatar.id === selectedAvatarId).id);
+              setModalOpen(false);
+            }
+          }
+        />
       </main>
       <Footer />
     </>

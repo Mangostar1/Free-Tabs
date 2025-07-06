@@ -80,7 +80,7 @@ export default function PublicRoutes() {
 
   return (
     <BrowserRouter>
-      <header className="w-full mx-auto bg-transparent relative z-10 bg-black">
+      <header className="w-full mx-auto relative z-10 bg-black">
         <div className="relative flex flex-col w-full p-5 mx-auto bg-transparent md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
           <div className="flex flex-row items-center justify-between lg:justify-start mr-5">
             <button

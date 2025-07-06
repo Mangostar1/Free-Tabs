@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode"; // Importa la librería para decodificar el token JWT
+import { jwtDecode } from "jwt-decode"; // Importa la función nombrada
 
 export default function PrivateRoutes({ children }) {
   const token = Cookies.get("jwtToken");
@@ -8,7 +8,7 @@ export default function PrivateRoutes({ children }) {
 
   if (isAuthenticated) {
     // Verificar la expiración del token
-    const decodedToken = jwt_decode(token);
+    const decodedToken = jwtDecode(token);
     const currentTime = Date.now() / 1000; // Obtiene el tiempo actual en segundos
 
     if (decodedToken.exp < currentTime) {

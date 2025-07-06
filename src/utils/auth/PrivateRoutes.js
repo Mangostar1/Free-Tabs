@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode"; // Importa la librería para decodificar el token JWT
+import { jwt_decode } from "jwt-decode"; // Importa la librería para decodificar el token JWT
 
 export default function PrivateRoutes({ children }) {
   const token = Cookies.get("jwtToken");
